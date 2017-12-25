@@ -1,0 +1,20 @@
+{
+    "name": "sickcrud/crud",
+    "description": "A package that speed up admin CRUD development.",
+    "version": "0.0.1",
+    "keywords": [
+        "admin",
+        "panel",
+        "CRUD",
+        "Laravel"
+    ],
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/SickCRUD/CRUD/issues",
+        "source": "https://github.com/SickCRUD/CRUD"
+    },
+    "minimum-stability": "RC",
+    "require": {
+
+    }
+}

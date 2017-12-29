@@ -12,46 +12,58 @@
 
     </title>
 
-    @foreach(SickCRUD_config('layout.styles') as $style)
-        @if(!isset($style['local']) || $style['local'])
-            <link rel="stylesheet" href="{{ asset($style['path']) }}">
-        @else
-            <link rel="stylesheet" href="{{ $style['path'] }}">
-        @endif
+    @yield('beforeStyles')
+
+    @foreach(SickCRUD_config('layout', 'styles') as $style)
+        <link rel="stylesheet" href="{{ SickCRUD_asset($style['path'], ($style['local'] ?? true)) }}">
     @endforeach
+
+    @yield('afterStyles')
 
 </head>
 <body>
 
-<div class="wrapper">
+    <div class="wrapper @yield('bodyClass')">
 
-    <header class="main-header">
+        <header class="main-header">
 
-        <a href="#" class="logo fixed-top">
+            <a href="{{ SickCRUD_url('/') }}" class="logo fixed-top">
 
-            <span class="logo-mini">
-                <b>SC</b>
-            </span>
+                {{-- TODO: accept logo IMG --}}
+                <span class="logo-mini">
+                    {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
+                </span>
 
-            <span class="logo-lg">
-                <b>Sick</b>CRUD
-            </span>
+                <span class="logo-large">
+                    {!! SickCRUD_config('layout', 'navbar.logo.text.logo-large') !!}
+                </span>
 
-        </a>
+            </a>
 
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-
-
-        </nav>
-
-    </header>
-
-    <main class="content">
+            {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
+            <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'navbar-fixed' : '' }}">
 
 
-    </main>
 
-</div>
+            </nav>
+
+        </header>
+
+        <main class="content">
+
+
+
+        </main>
+
+    </div>
+
+    @yield('beforeStyles')
+
+    @foreach(SickCRUD_config('layout', 'scripts') as $script)
+        <script src="{{ SickCRUD_asset($script['path'], ($script['local'] ?? true)) }}"></script>
+    @endforeach
+
+    @yield('afterStyles')
 
 </body>
 </html>

@@ -22,11 +22,20 @@ return [
         ]
     ],
 
+
     /**
-     * Logo to show in the top-left of the navbar
+     * Navbar settings
      */
-    'logo' => [
-        // TODO: finish logo config
+    'navbar' => [
+
+        // should the navbar be fixed on top?
+        'navbar-fixed' => true,
+
+        // logo to show in the top-left of the navbar
+        'logo' => [
+            // TODO: finish logo config
+        ]
+
     ]
 
 ];

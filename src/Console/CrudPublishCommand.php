@@ -40,16 +40,12 @@ class CrudPublishCommand extends Command
     public function handle()
     {
         // user answer
-        $whatShouldBePublished = $this->choice('What "tag" should be published?', $this->publishableChoiches);
+        $whatShouldBePublished = $this->choice('What would you like ti publish?', $this->publishableChoiches);
 
         // are you sure?
         if ($this->confirm('Do you wish to continue?')) {
             if ($this->vendorPublish($whatShouldBePublished)) {
-                if ($whatShouldBePublished == 'All') {
-                    $this->info('All the "tags" for SickCRUD have been published!');
-                } else {
-                    $this->info('The "tag" '.$whatShouldBePublished.' for SickCRUD have been published!');
-                }
+                $this->info(ucfirst($whatShouldBePublished).' for SickCRUD has been published!');
             }
         }
     }

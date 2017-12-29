@@ -7,7 +7,6 @@ use SickCRUD\CRUD\Console\CrudPublishCommand;
 
 class SickCrudServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -27,16 +26,14 @@ class SickCrudServiceProvider extends ServiceProvider
         // if the app is in console
         if ($this->app->runningInConsole()) {
             $this->commands([
-                CrudPublishCommand::class
+                CrudPublishCommand::class,
             ]);
         }
-
 
         // PUBLISHES
 
         // config
-        $this->publishes([__DIR__. '/config' => config_path()], 'config');
-
+        $this->publishes([__DIR__.'/config' => config_path()], 'config');
     }
 
     /**
@@ -58,7 +55,5 @@ class SickCrudServiceProvider extends ServiceProvider
         $aliasLoader = \Illuminate\Foundation\AliasLoader::getInstance();
         $aliasLoader->alias('Form', \Collective\Html\FormFacade::class);
         $aliasLoader->alias('Html', \Collective\Html\HtmlFacade::class);
-
     }
-
 }

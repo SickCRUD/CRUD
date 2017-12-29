@@ -14,3 +14,20 @@ if (!function_exists('SickCRUD_config')) {
         return config('SickCRUD.'.$key, $default);
     }
 }
+
+if (!function_exists('SickCRUD_url')) {
+    /**
+     * Helper to get the CRUD prefixed URL
+     *
+     * @param string $path
+     * @param  mixed   $parameters
+     * @param  bool    $secure
+     *
+     * @return string
+     */
+    function SickCRUD_url($path = null, $parameters = [], $secure = null)
+    {
+        // TODO: add prefix
+        return url($path, $parameters, $secure);
+    }
+}

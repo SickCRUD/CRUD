@@ -18,8 +18,11 @@
         "laravelcollective/html": "^5.2.0"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
-            "SickCRUD\\CRUD\\": "src"
+            "SickCRUD\\CRUD\\": "src/"
         }
     },
     "extra": {
@@ -28,8 +31,7 @@
                 "SickCRUD\\CRUD\\"
             ],
             "aliases": {
-                //"Form": "Collective\\Html\\FormFacade",
-                //"Html": "Collective\\Html\\HtmlFacade"
+
             }
         }
     }

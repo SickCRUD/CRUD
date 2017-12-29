@@ -15,6 +15,21 @@ if (!function_exists('SickCRUD_config')) {
     }
 }
 
+if (!function_exists('SickCRUD_asset')) {
+    /**
+     * Helper to get the CSS URL
+     *
+     * @param string $path
+     * @param boolean $local
+     *
+     * @return string
+     */
+    function SickCRUD_asset($path = null, $local = true)
+    {
+        return $local?asset($path):$path;
+    }
+}
+
 if (!function_exists('SickCRUD_url')) {
     /**
      * Helper to get the CRUD prefixed URL

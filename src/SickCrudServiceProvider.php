@@ -30,10 +30,15 @@ class SickCrudServiceProvider extends ServiceProvider
             ]);
         }
 
+        // LOAD VIEWS
+        $this->loadViews();
+
         // PUBLISHES
 
         // config
         $this->publishes([__DIR__.'/config' => config_path()], 'config');
+        // views
+        $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/SickCRUD')], 'views');
     }
 
     /**
@@ -49,11 +54,26 @@ class SickCrudServiceProvider extends ServiceProvider
         });
 
         // register dependencies
-        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        // $this->app->register(\Collective\Html\HtmlServiceProvider::class);
 
         // register alias for each dependency
-        $aliasLoader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $aliasLoader->alias('Form', \Collective\Html\FormFacade::class);
-        $aliasLoader->alias('Html', \Collective\Html\HtmlFacade::class);
+        // $aliasLoader = \Illuminate\Foundation\AliasLoader::getInstance();
+        // $aliasLoader->alias('Form', \Collective\Html\FormFacade::class);
+        // $aliasLoader->alias('Html', \Collective\Html\HtmlFacade::class);
+    }
+
+    /**
+     * Views loading
+     *
+     * @return void
+     */
+    public function loadViews()
+    {
+        // LOADING VIEWS
+
+        // after the package published views
+        $this->loadViewsFrom(resource_path('views/vendor/SickCRUD'), 'SickCRUD');
+        // after the package un-published views
+        $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'SickCRUD');
     }
 }

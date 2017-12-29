@@ -29,6 +29,7 @@ class CrudPublishCommand extends Command
     protected $publishableChoiches = [
         'All',
         'config',
+        'views',
     ];
 
     /**

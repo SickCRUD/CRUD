@@ -1,12 +1,12 @@
 <?php
+
 namespace SickCRUD\CRUD\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
-class CrudPublishCommand extends Command
+class VendorPublishCommand extends Command
 {
-
     /**
      * The console command signature.
      *
@@ -22,13 +22,13 @@ class CrudPublishCommand extends Command
     protected $description = 'Command to publish the assets of SickCRUD.';
 
     /**
-     * Publishable choiches
+     * Publishable choiches.
      *
      * @var array
      */
     protected $publishableChoiches = [
         'All',
-        'config'
+        'config',
     ];
 
     /**
@@ -43,47 +43,36 @@ class CrudPublishCommand extends Command
 
         // are you sure?
         if ($this->confirm('Do you wish to continue?')) {
-
-            if($this->vendorPublish($whatShouldBePublished)){
-
-                if($whatShouldBePublished == 'All') {
-
+            if ($this->vendorPublish($whatShouldBePublished)) {
+                if ($whatShouldBePublished == 'All') {
                     $this->info('All the "tags" for SickCRUD have been published!');
-
-                }else{
-
-                    $this->info('The "tag" ' . $whatShouldBePublished . ' for SickCRUD have been published!');
-
+                } else {
+                    $this->info('The "tag" '.$whatShouldBePublished.' for SickCRUD have been published!');
                 }
-
             }
-
         }
-
     }
 
     /**
      * Publishing function through Artisan.
      *
      * @param string $tag
-     * @return boolean
+     *
+     * @return bool
      */
     public function vendorPublish($tag = '')
     {
-
         $commandParams = [
-            '--provider' => 'SickCRUD\CRUD\SickCrudServiceProvider'
+            '--provider' => 'SickCRUD\CRUD\SickCrudServiceProvider',
         ];
 
-        if($tag == 'All') {
+        if ($tag == 'All') {
             $commandParams['--all'] = '';
-        }else{
+        } else {
             $commandParams['--tag'] = $tag;
         }
 
         // if the exit code is 0 return true
         return Artisan::call('vendor:publish', $commandParams) == 0;
-
     }
-
 }

@@ -4,14 +4,15 @@ if (!function_exists('SickCRUD_config')) {
     /**
      * Little helper to get the SickCRUD config directly by passing the key.
      *
-     * @param array|string $key
+     * @param string $prefix
+     * @param string $key
      * @param mixed        $default
      *
      * @return mixed|\Illuminate\Config\Repository
      */
-    function SickCRUD_config($key = null, $default = null)
+    function SickCRUD_config($prefix = null, $key = null, $default = null)
     {
-        return config('SickCRUD.'.$key, $default);
+        return config('SickCRUD.'.$prefix.'.'.$key, $default);
     }
 }
 

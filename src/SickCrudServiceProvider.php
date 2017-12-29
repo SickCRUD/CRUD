@@ -33,6 +33,9 @@ class SickCrudServiceProvider extends ServiceProvider
         // LOAD VIEWS
         $this->loadViews();
 
+        // LOAD CONFIG
+        $this->loadConfig();
+
         // PUBLISHES
 
         // config
@@ -76,4 +79,23 @@ class SickCrudServiceProvider extends ServiceProvider
         // after the package un-published views
         $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'SickCRUD');
     }
+
+    /**
+     * Config loading
+     *
+     * @return void
+     */
+    public function loadConfig()
+    {
+        // use the package config
+        $this->mergeConfigFrom(
+            __DIR__.'/config/SickCRUD/crud.php',
+            'SickCRUD.crud'
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/config/SickCRUD/layout.php',
+            'SickCRUD.layout'
+        );
+    }
+
 }

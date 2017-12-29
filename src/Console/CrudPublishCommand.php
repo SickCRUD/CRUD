@@ -5,7 +5,7 @@ namespace SickCRUD\CRUD\Console;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
-class VendorPublishCommand extends Command
+class CrudPublishCommand extends Command
 {
     /**
      * The console command signature.

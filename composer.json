@@ -15,6 +15,7 @@
     },
     "minimum-stability": "RC",
     "require": {
+        "php": ">=7.0.0",
         "laravelcollective/html": "^5.2.0"
     },
     "autoload": {

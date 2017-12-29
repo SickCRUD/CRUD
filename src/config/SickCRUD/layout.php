@@ -22,18 +22,28 @@ return [
         ]
     ],
 
+    /**
+     * Styles to include globally into the layout
+     */
+    'scripts' => [
+        [
+            // this path can be a local path or eventually a CDN link
+            'path' => 'ciao/custom.js',
+            // set local true if you want to wrap the path up with the asset() function, the default value is true
+            'local' => true
+        ]
+    ],
 
     /**
      * Navbar settings
      */
     'navbar' => [
-
-        // should the navbar be fixed on top?
-        'navbar-fixed' => true,
-
-        // logo to show in the top-left of the navbar
+        'navbar-fixed' => false,
         'logo' => [
-            // TODO: finish logo config
+            'text' => [
+                'logo-mini' => 'SC',
+                'logo-large' => '<b>Sick</b>CRUD'
+            ]
         ]
 
     ]

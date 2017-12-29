@@ -4,6 +4,7 @@ namespace SickCRUD\CRUD\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use SickCRUD\CRUD\SickCrudServiceProvider;
 
 class CrudPublishCommand extends Command
 {
@@ -40,12 +41,14 @@ class CrudPublishCommand extends Command
     public function handle()
     {
         // user answer
-        $whatShouldBePublished = $this->choice('What would you like ti publish?', $this->publishableChoiches);
+        $whatShouldBePublished = $this->choice('What would you like to publish?', $this->publishableChoiches);
 
         // are you sure?
         if ($this->confirm('Do you wish to continue?')) {
             if ($this->vendorPublish($whatShouldBePublished)) {
                 $this->info(ucfirst($whatShouldBePublished).' for SickCRUD has been published!');
+            }else{
+                $this->error('There was an error while publishing the assets!');
             }
         }
     }
@@ -57,10 +60,10 @@ class CrudPublishCommand extends Command
      *
      * @return bool
      */
-    public function vendorPublish($tag = '')
+    public function vendorPublish($tag = 'All')
     {
         $commandParams = [
-            '--provider' => 'SickCRUD\CRUD\SickCrudServiceProvider',
+            '--provider' => SickCrudServiceProvider::class,
         ];
 
         if ($tag == 'All') {

@@ -1,9 +1,9 @@
 <?php
 
-namespace SickCRUD\CRUD;
+namespace SickCRUD\CRUD\Package;
 
 use Illuminate\Support\ServiceProvider;
-use SickCRUD\CRUD\Console\CrudPublishCommand;
+use SickCRUD\CRUD\Package\Console\CrudPublishCommand;
 
 class SickCrudServiceProvider extends ServiceProvider
 {
@@ -30,18 +30,15 @@ class SickCrudServiceProvider extends ServiceProvider
             ]);
         }
 
+        // LOAD PUBLISHES
+        $this->loadPublishes();
+
         // LOAD VIEWS
         $this->loadViews();
 
         // LOAD CONFIG
         $this->loadConfig();
 
-        // PUBLISHES
-
-        // config
-        $this->publishes([__DIR__.'/config' => config_path()], 'config');
-        // views
-        $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/SickCRUD')], 'views');
     }
 
     /**
@@ -66,6 +63,21 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
+     * Assets publishing
+     *
+     * @return void
+     */
+    public function loadPublishes()
+    {
+        // PUBLISHES
+
+        // config
+        $this->publishes([__DIR__.'/../config' => config_path()], 'config');
+        // views
+        $this->publishes([__DIR__.'/../publishes/resources/views' => resource_path('views/vendor/SickCRUD')], 'views');
+    }
+
+    /**
      * Views loading
      *
      * @return void
@@ -77,7 +89,7 @@ class SickCrudServiceProvider extends ServiceProvider
         // after the package published views
         $this->loadViewsFrom(resource_path('views/vendor/SickCRUD'), 'SickCRUD');
         // after the package un-published views
-        $this->loadViewsFrom(realpath(__DIR__ . '/resources/views'), 'SickCRUD');
+        $this->loadViewsFrom(realpath(__DIR__ . '/../publishes/resources/views'), 'SickCRUD');
     }
 
     /**
@@ -89,11 +101,11 @@ class SickCrudServiceProvider extends ServiceProvider
     {
         // use the package config
         $this->mergeConfigFrom(
-            __DIR__.'/config/SickCRUD/crud.php',
+            __DIR__.'/../publishes/config/SickCRUD/crud.php',
             'SickCRUD.crud'
         );
         $this->mergeConfigFrom(
-            __DIR__.'/config/SickCRUD/layout.php',
+            __DIR__.'/../publishes/config/SickCRUD/layout.php',
             'SickCRUD.layout'
         );
     }

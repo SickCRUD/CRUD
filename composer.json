@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "SickCRUD\\CRUD\\SickCrudServiceProvider"
+                "SickCRUD\\CRUD\\Package\\SickCrudServiceProvider"
             ],
             "aliases": {
 

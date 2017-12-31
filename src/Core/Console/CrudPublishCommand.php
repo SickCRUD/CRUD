@@ -1,6 +1,6 @@
 <?php
 
-namespace SickCRUD\CRUD\Console;
+namespace SickCRUD\CRUD\Core\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;

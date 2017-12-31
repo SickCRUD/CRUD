@@ -1,10 +1,10 @@
 <?php
 
-namespace SickCRUD\CRUD\Package\Console;
+namespace SickCRUD\CRUD\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
-use SickCRUD\CRUD\Package\SickCrudServiceProvider;
+use SickCRUD\CRUD\SickCrudServiceProvider;
 
 class CrudPublishCommand extends Command
 {

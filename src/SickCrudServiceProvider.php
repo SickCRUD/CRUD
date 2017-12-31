@@ -3,7 +3,7 @@
 namespace SickCRUD\CRUD;
 
 use Illuminate\Support\ServiceProvider;
-use SickCRUD\CRUD\Console\CrudPublishCommand;
+use SickCRUD\CRUD\Core\Console\CrudPublishCommand;
 
 class SickCrudServiceProvider extends ServiceProvider
 {
@@ -13,6 +13,15 @@ class SickCrudServiceProvider extends ServiceProvider
      * @var bool
      */
     protected $defer = false;
+
+    /**
+     * Route files to include
+     *
+     * @var array
+     */
+    protected $routeFiles = [
+        '/routes/SickCRUD/routes.php'
+    ];
 
     /**
      * Perform post-registration booting of services.
@@ -31,6 +40,9 @@ class SickCrudServiceProvider extends ServiceProvider
         // LOAD CONFIG
         $this->loadConfig();
 
+
+        // LOAD ROUTES
+        $this->loadRoutes();
     }
 
     /**
@@ -102,6 +114,23 @@ class SickCrudServiceProvider extends ServiceProvider
             dirname(__DIR__, 1).'/publishes/config/SickCRUD/layout.php',
             'SickCRUD.layout'
         );
+    }
+
+    /**
+     * Routes loading
+     *
+     * @return void
+     */
+    public function loadRoutes()
+    {
+        foreach ($this->routeFiles as $routeFile) {
+            $routeFileToInclude = __DIR__ . $routeFile;
+            // if the files exists outside the package
+            if(file_exists(base_path().$routeFile)) {
+                $routeFileToInclude = base_path().$routeFile;
+            }
+            $this->loadRoutesFrom($routeFileToInclude);
+        }
     }
 
 }

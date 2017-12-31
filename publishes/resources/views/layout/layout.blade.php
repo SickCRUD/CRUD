@@ -8,9 +8,8 @@
     {{-- CSRF Token for every request --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>
-
-    </title>
+    {{-- Include the title partial passing the pageTitle --}}
+    @include('SickCRUD::layout.partials.title', ['pageTitle' => $pageTitle])
 
     @yield('beforeStyles')
 
@@ -23,47 +22,47 @@
 </head>
 <body>
 
-    <div class="wrapper @yield('bodyClass')">
+<div class="wrapper @yield('bodyClass')">
 
-        <header class="main-header">
+    <header class="main-header">
 
-            <a href="{{ SickCRUD_url('/') }}" class="logo fixed-top">
+        <a href="{{ SickCRUD_url('/') }}" class="logo fixed-top">
 
-                {{-- TODO: accept logo IMG --}}
-                <span class="logo-mini">
+            {{-- TODO: accept logo IMG --}}
+            <span class="logo-mini">
                     {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
                 </span>
 
-                <span class="logo-large">
+            <span class="logo-large">
                     {!! SickCRUD_config('layout', 'navbar.logo.text.logo-large') !!}
                 </span>
 
-            </a>
+        </a>
 
-            {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
-            <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'navbar-fixed' : '' }}">
-
-
-
-            </nav>
-
-        </header>
-
-        <main class="content">
+        {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
+        <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'navbar-fixed' : '' }}">
 
 
 
-        </main>
+        </nav>
 
-    </div>
+    </header>
 
-    @yield('beforeStyles')
+    <main class="content">
 
-    @foreach(SickCRUD_config('layout', 'scripts') as $script)
-        <script src="{{ SickCRUD_asset($script['path'], ($script['local'] ?? true)) }}"></script>
-    @endforeach
 
-    @yield('afterStyles')
+
+    </main>
+
+</div>
+
+@yield('beforeStyles')
+
+@foreach(SickCRUD_config('layout', 'scripts') as $script)
+    <script src="{{ SickCRUD_asset($script['path'], ($script['local'] ?? true)) }}"></script>
+@endforeach
+
+@yield('afterStyles')
 
 </body>
 </html>

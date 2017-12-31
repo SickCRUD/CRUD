@@ -47,3 +47,17 @@ if (!function_exists('SickCRUD_url')) {
         return url($path, $parameters, $secure);
     }
 }
+
+if (!function_exists('SickCRUD_title_format')) {
+    /**
+     * Helper to get the formatted title for a page
+     *
+     * @param string $title
+     *
+     * @return string
+     */
+    function SickCRUD_title_format($title = '')
+    {
+        return str_replace('%title', $title, SickCRUD_config('layout', 'page-title.title-format'));
+    }
+}

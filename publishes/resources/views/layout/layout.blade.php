@@ -13,19 +13,19 @@
 
     @yield('beforeStyles')
 
-    {-- Include the styles partial --}}
+    {{-- Include the styles partial --}}
     @include('SickCRUD::layout.partials.styles')
 
     @yield('afterStyles')
 
 </head>
-<body>
+<body class="{{ $bodyClass ?? '' }}">
 
-<div class="wrapper @yield('bodyClass')">
+<div class="wrapper">
 
     <header class="main-header">
 
-        <a href="{{ SickCRUD_url('/') }}" class="logo fixed-top">
+        <a href="{{ SickCRUD_url('/') }}" class="logo {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'fixed-top' : '' }}">
 
             {{-- TODO: accept logo IMG --}}
             <span class="logo-mini">
@@ -39,7 +39,7 @@
         </a>
 
         {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
-        <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'navbar-fixed' : '' }}">
+        <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'fixed-top' : '' }}">
 
 
 
@@ -49,7 +49,7 @@
 
     <main class="content">
 
-
+        @yield('pageContent')
 
     </main>
 
@@ -57,7 +57,7 @@
 
 @yield('beforeStyles')
 
-{-- Include the scripts partial --}}
+{{-- Include the scripts partial --}}
 @include('SickCRUD::layout.partials.styles')
 
 @yield('afterStyles')

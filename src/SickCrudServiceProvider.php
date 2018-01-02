@@ -34,15 +34,18 @@ class SickCrudServiceProvider extends ServiceProvider
         // LOAD PUBLISHES
         $this->loadPublishes();
 
+        // LOAD LANG
+        $this->loadLang();
+
         // LOAD VIEWS
         $this->loadViews();
 
         // LOAD CONFIG
         $this->loadConfig();
 
-
         // LOAD ROUTES
         $this->loadRoutes();
+
     }
 
     /**
@@ -81,6 +84,13 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->publishes([dirname(__DIR__, 1).'/publishes/config' => config_path()], 'config');
         // views
         $this->publishes([dirname(__DIR__, 1).'/publishes/resources/views' => resource_path('views/vendor/SickCRUD')], 'views');
+    }
+
+    public function loadLang()
+    {
+        // LOADING LANG
+
+        $this->loadTranslationsFrom(realpath(dirname(__DIR__, 1).'/publishes/resources/lang'), 'SickCRUD');
     }
 
     /**

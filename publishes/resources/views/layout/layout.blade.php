@@ -8,14 +8,13 @@
     {{-- CSRF Token for every request --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Include the title partial passing the pageTitle --}}
-    @include('SickCRUD::layout.partials.title', ['pageTitle' => $pageTitle])
+    {{-- Include the title partial, pageTitle variable should be already passed --}}
+    @include('SickCRUD::layout.partials.title')
 
     @yield('beforeStyles')
 
-    @foreach(SickCRUD_config('layout', 'styles') as $style)
-        <link rel="stylesheet" href="{{ SickCRUD_asset($style['path'], ($style['local'] ?? true)) }}">
-    @endforeach
+    {-- Include the styles partial --}}
+    @include('SickCRUD::layout.partials.styles')
 
     @yield('afterStyles')
 
@@ -30,12 +29,12 @@
 
             {{-- TODO: accept logo IMG --}}
             <span class="logo-mini">
-                    {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
-                </span>
+                {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
+            </span>
 
             <span class="logo-large">
-                    {!! SickCRUD_config('layout', 'navbar.logo.text.logo-large') !!}
-                </span>
+                {!! SickCRUD_config('layout', 'navbar.logo.text.logo-large') !!}
+            </span>
 
         </a>
 
@@ -58,9 +57,8 @@
 
 @yield('beforeStyles')
 
-@foreach(SickCRUD_config('layout', 'scripts') as $script)
-    <script src="{{ SickCRUD_asset($script['path'], ($script['local'] ?? true)) }}"></script>
-@endforeach
+{-- Include the scripts partial --}}
+@include('SickCRUD::layout.partials.styles')
 
 @yield('afterStyles')
 

@@ -28,6 +28,22 @@ trait ViewData
     }
 
     /**
+     * Set the bodyclass if needed
+     *
+     * @param string $bodyClass
+     *
+     * @return bool
+     */
+    public function setBodyClass($bodyClass = null)
+    {
+        if($bodyClass) {
+            $this->data['bodyClass'] = $bodyClass;
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Set a variable that will be passed to the view
      *
      * @param string   $key

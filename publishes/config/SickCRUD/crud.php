@@ -8,6 +8,9 @@ return [
      * --------------------------------------------------------------------------
      */
 
-    'test-setting' => true,
+    /**
+     * Should SickCRUD setup the auth routes or not?
+     */
+    'setup-auth-routes' => true,
 
 ];

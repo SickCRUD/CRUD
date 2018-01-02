@@ -31,6 +31,7 @@ class CrudPublishCommand extends Command
         'All',
         'config',
         'views',
+        'public',
     ];
 
     /**

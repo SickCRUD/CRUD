@@ -84,6 +84,8 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->publishes([dirname(__DIR__, 1).'/publishes/config' => config_path()], 'config');
         // views
         $this->publishes([dirname(__DIR__, 1).'/publishes/resources/views' => resource_path('views/vendor/SickCRUD')], 'views');
+        // public
+        $this->publishes([dirname(__DIR__, 1).'/publishes/public' => public_path()], 'public');
     }
 
     public function loadLang()

@@ -5,15 +5,20 @@
  */
 return [
 
+    'fields' => [
+        'confirm_password' => 'Repeat password',
+        'email' => 'Email',
+        'name' => 'Name',
+        'password' => 'Password',
+        'remember_me' => 'Remember me',
+    ],
+
     'pages' => [
         'login' => 'Login',
         'register' => 'Register',
     ],
 
-    'email' => 'Email',
     'forgot_password' => 'Forgot Password?',
     'login' => 'Login',
-    'password' => 'Password',
-    'remember_me' => 'Remember me',
 
 ];

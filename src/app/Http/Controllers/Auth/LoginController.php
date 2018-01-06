@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Lang;
 // SickCRUD
 use SickCRUD\CRUD\App\Http\Controllers\Controller;
-use SickCRUD\CRUD\Core\Traits\ViewData;
 
 class LoginController extends Controller
 {
     // import the Laravel authentication
-    use AuthenticatesUsers,
-        // and SickCRUD features
-        ViewData;
+    use AuthenticatesUsers;
 
+    /**
+     * Show the login page view
+     *
+     * @return mixed
+     */
     public function show()
     {
         // set the page title
@@ -25,7 +27,7 @@ class LoginController extends Controller
         // set the page body class
         $this->setBodyClass('auth-page');
 
-        return View::make('SickCRUD::pages.login', $this->getViewData());
+        return View::make('SickCRUD::pages.auth.login', $this->getViewData());
     }
 
 }

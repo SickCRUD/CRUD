@@ -2,7 +2,9 @@
 
 namespace SickCRUD\CRUD;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
+use SickCRUD\CRUD\App\Http\Middleware\ForceHttps;
 use SickCRUD\CRUD\Core\Console\CrudPublishCommand;
 
 class SickCrudServiceProvider extends ServiceProvider
@@ -26,9 +28,10 @@ class SickCrudServiceProvider extends ServiceProvider
     /**
      * Perform post-registration booting of services.
      *
+     * @param \Illuminate\Routing\Router $router
      * @return void
      */
-    public function boot()
+    public function boot(Router $router)
     {
 
         // LOAD PUBLISHES
@@ -45,6 +48,12 @@ class SickCrudServiceProvider extends ServiceProvider
 
         // LOAD ROUTES
         $this->loadRoutes();
+
+        // LOAD MIDDLEWARES
+        $this->loadMiddlewares($router);
+
+        // Set the default schema string length if necessary
+        $this->setSchemaStringLength();
 
     }
 
@@ -69,6 +78,18 @@ class SickCrudServiceProvider extends ServiceProvider
             return new SickCRUD($app);
         });
 
+    }
+
+    /**
+     * Set schema length
+     *
+     * @return void
+     */
+    public function setSchemaStringLength()
+    {
+        if(SickCRUD_config('crud', 'change-schema-string-length')){
+            \Schema::defaultStringLength(191);
+        }
     }
 
     /**
@@ -143,6 +164,17 @@ class SickCrudServiceProvider extends ServiceProvider
             }
             $this->loadRoutesFrom($routeFileToInclude);
         }
+    }
+
+    /**
+     * Middleware loading
+     *
+     * @param \Illuminate\Routing\Router $router
+     * @return void
+     */
+    public function loadMiddlewares(Router $router)
+    {
+        $router->aliasMiddleware('ForceHttps', ForceHttps::class);
     }
 
 }

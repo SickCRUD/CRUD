@@ -3,11 +3,12 @@
 
 Route::group(
     [
-        'namespace' => 'SickCRUD\CRUD\App\Http\Controllers',
         'middleware' => [
             'web',
             'ForceHttps'
-        ]
+        ],
+        'namespace' => 'SickCRUD\CRUD\App\Http\Controllers',
+        'prefix' => SickCRUD_config('crud', 'route-prefix')
     ],
     function () {
 
@@ -33,7 +34,7 @@ Route::group(
                 'as' => 'SickCRUD.auth.register',
                 'uses' => 'Auth\RegisterController@show'
             ]);
-            Route::post('register', 'Auth\RegisterController@login');
+            Route::post('register', 'Auth\RegisterController@register');
         }
 
     }

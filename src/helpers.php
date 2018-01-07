@@ -12,7 +12,7 @@ if (!function_exists('SickCRUD_config')) {
      */
     function SickCRUD_config($prefix = null, $key = null, $default = null)
     {
-        return config('SickCRUD.'.$prefix.'.'.$key, $default);
+        return Config::get('SickCRUD.'.$prefix.'.'.$key, $default);
     }
 }
 
@@ -27,7 +27,7 @@ if (!function_exists('SickCRUD_asset')) {
      */
     function SickCRUD_asset($path = null, $local = true)
     {
-        return $local?asset($path):$path;
+        return $local?URL::asset($path):$path;
     }
 }
 
@@ -43,8 +43,15 @@ if (!function_exists('SickCRUD_url')) {
      */
     function SickCRUD_url($path = null, $parameters = [], $secure = null)
     {
-        // TODO: add prefix
-        return url($path, $parameters, $secure);
+        // config prefix
+        $routePrefix = rtrim(SickCRUD_config('crud', 'route-prefix'), '/');
+
+        // if is just slash
+        if($routePrefix == '/') {
+            $routePrefix = '';
+        }
+
+        return URL::to($routePrefix . $path, $parameters, $secure);
     }
 }
 

@@ -46,12 +46,15 @@ if (!function_exists('SickCRUD_url')) {
         // config prefix
         $routePrefix = rtrim(SickCRUD_config('crud', 'route-prefix'), '/');
 
+        // fix the path
+        $path = ltrim($path, '/');
+
         // if is just slash
         if($routePrefix == '/') {
             $routePrefix = '';
         }
 
-        return URL::to($routePrefix . $path, $parameters, $secure);
+        return URL::to($routePrefix . '/' . $path, $parameters, $secure);
     }
 }
 

@@ -4,15 +4,38 @@ namespace SickCRUD\CRUD\App\Http\Controllers\Auth;
 
 // Laravel
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\URL;
 // SickCRUD
 use SickCRUD\CRUD\App\Http\Controllers\Controller;
 
 class LoginController extends Controller
 {
     // import the Laravel authentication
-    use AuthenticatesUsers;
+    use AuthenticatesUsers {
+        logout as defaultLogout;
+    }
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // use the guest middleware except for logout
+        $this->middleware('guest', ['except' => 'logout']);
+
+        // redirect here after successful login
+        // TODO: Change with URL::route()
+        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo: SickCRUD_url('dasboard');
+
+        // redirect after logout
+        $this->redirectAfterLogout = URL::route('SickCRUD.auth.login');
+    }
 
     /**
      * Show the login page view
@@ -28,6 +51,21 @@ class LoginController extends Controller
         $this->setBodyClass('auth-page');
 
         return View::make('SickCRUD::pages.auth.login', $this->getViewData());
+    }
+
+    /**
+     * Uses the default Laravel logout and then redirect to custom route
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Support\Facades\Redirect;
+     */
+    public function logout(Request $request)
+    {
+        // run the default Laravel logout
+        $this->defaultLogout($request);
+
+        return Redirect::to($this->redirectAfterLogout);
     }
 
 }

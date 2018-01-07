@@ -28,5 +28,10 @@ return [
      */
     'force-https' => false,
 
+    /**
+     * Declare the prefix of the application if needed.
+     * If it's not needed just set it false.
+     */
+    'route-prefix' => 'sick-crud'
 
 ];

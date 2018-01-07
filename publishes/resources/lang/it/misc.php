@@ -6,10 +6,10 @@
 return [
 
     'fields' => [
-        'confirm_password' => 'Conferma password',
         'email' => 'Email',
         'name' => 'Nome',
         'password' => 'Password',
+        'password_confirmation' => 'Conferma password',
         'remember_me' => 'Ricordami'
     ],
 
@@ -18,7 +18,11 @@ return [
         'register' => 'Registrazione',
     ],
 
+    'current' => 'corrente',
     'forgot_password' => 'Password dimenticata?',
+    'hide' => 'Nascondi',
     'login' => 'Accedi',
+    'logout' => 'Logout',
+    'show' => 'Mostra',
 
 ];

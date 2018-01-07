@@ -25,6 +25,11 @@
             "SickCRUD\\CRUD\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "SickCRUD\\CRUD\\Tests\\": "tests"
+        }
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -34,5 +39,9 @@
 
             }
         }
+    },
+    "require-dev": {
+        "laravel/dusk": "^2.0",
+        "phpunit/phpunit": "@stable"
     }
 }

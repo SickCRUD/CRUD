@@ -25,25 +25,7 @@
 
     <header class="main-header">
 
-        <a href="{{ SickCRUD_url('/') }}" class="logo {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'fixed-top' : '' }}">
-
-            {{-- TODO: accept logo IMG --}}
-            <span class="logo-mini">
-                {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
-            </span>
-
-            <span class="logo-large">
-                {!! SickCRUD_config('layout', 'navbar.logo.text.logo-large') !!}
-            </span>
-
-        </a>
-
-        {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
-        <nav class="navbar navbar-expand-md navbar-dark {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'fixed-top' : '' }}">
-
-
-
-        </nav>
+        @include('SickCRUD::layout.partials.top-menu')
 
     </header>
 
@@ -55,12 +37,12 @@
 
 </div>
 
-@yield('beforeStyles')
+@yield('beforeScripts')
 
 {{-- Include the scripts partial --}}
-@include('SickCRUD::layout.partials.styles')
+@include('SickCRUD::layout.partials.scripts')
 
-@yield('afterStyles')
+@yield('afterScripts')
 
 </body>
 </html>

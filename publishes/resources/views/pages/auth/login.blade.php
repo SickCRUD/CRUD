@@ -2,7 +2,7 @@
 
 @section('pageContent')
 
-    <div class="d-table auth-box-container {{ SickCRUD_config('layout', 'navbar.navbar-fixed') ? 'navbar-fixed' : '' }}">
+    <div class="d-table auth-box-container">
 
         <div class="auth-box-aligned">
 

@@ -25,7 +25,7 @@
 
     <header class="main-header">
 
-        @include('SickCRUD::layout.partials.top-menu')
+        @include('SickCRUD::layout.partials.navbar')
 
     </header>
 

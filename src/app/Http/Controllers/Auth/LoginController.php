@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
 // SickCRUD
-use SickCRUD\CRUD\App\Http\Controllers\Controller;
+use SickCRUD\CRUD\App\Http\Controllers\BaseController;
 
-class LoginController extends Controller
+class LoginController extends BaseController
 {
     // import the Laravel authentication
     use AuthenticatesUsers {

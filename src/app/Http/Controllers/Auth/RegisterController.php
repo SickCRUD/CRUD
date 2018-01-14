@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Redirect;
 // SickCRUD
-use SickCRUD\CRUD\App\Http\Controllers\Controller;
+use SickCRUD\CRUD\App\Http\Controllers\BaseController;
 
-class RegisterController extends Controller
+class RegisterController extends BaseController
 {
     // import the Laravel registration
     use RegistersUsers;

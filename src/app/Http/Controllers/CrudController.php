@@ -42,7 +42,7 @@ class CrudController extends BaseController
         // get the calling method
         $sickCallActionMethod = reset($sickCallMatches[2]);
 
-        // return the actual function of the instanciated action
+        // return the actual function of the instantiated action
         $sickCallActionInstance = (new $sickCallActionClass);
 
         if(!method_exists($sickCallActionInstance, $sickCallActionMethod)){

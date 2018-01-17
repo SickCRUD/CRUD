@@ -23,6 +23,7 @@ return [
     'hide' => 'Hide',
     'login' => 'Login',
     'logout' => 'Logout',
+    'register' => 'Register',
     'show' => 'Show',
 
 ];

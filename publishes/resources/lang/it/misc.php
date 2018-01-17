@@ -23,6 +23,7 @@ return [
     'hide' => 'Nascondi',
     'login' => 'Accedi',
     'logout' => 'Logout',
+    'register' => 'Registrati',
     'show' => 'Mostra',
 
 ];

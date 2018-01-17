@@ -53,7 +53,9 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->loadMiddlewares($router);
 
         // Set the default schema string length if necessary
-        $this->setSchemaStringLength();
+        if(SickCRUD_config('crud', 'change-schema-string-length') == true) {
+            $this->setSchemaStringLength();
+        }
 
     }
 
@@ -81,15 +83,23 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
+     * Router function to build the routes
+     *
+     *
+     */
+    public static function resource($name, $controller, array $options = [])
+    {
+        return new CrudRouter($name, $controller, $options);
+    }
+
+    /**
      * Set schema length
      *
      * @return void
      */
     public function setSchemaStringLength()
     {
-        if(SickCRUD_config('crud', 'change-schema-string-length')){
-            \Schema::defaultStringLength(191);
-        }
+        \Schema::defaultStringLength(191);
     }
 
     /**

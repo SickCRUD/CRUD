@@ -9,14 +9,14 @@ class Action
      *
      * @var string
      */
-    protected static $actionName = '';
+    protected static $sickActionName = '';
 
     /**
      * Define if the current actions need to take the id in the route.
      *
      * @var bool
      */
-    public static $requireIdParam = false;
+    public static $sickActionRequireIdParam = false;
 
     /**
      * Get the current action name.
@@ -26,9 +26,9 @@ class Action
     public static function getActionName()
     {
         // get the class that is going to extend
-        $parentClassBasename = basename(get_parent_class(static::class));
+        $sickActionParentClassBasename = basename(get_parent_class(static::class));
         // remove the class suffix if contained to get the action name
-        return static::$actionName ?static::$actionName : strtolower(preg_replace('/'. $parentClassBasename .'$/', '', class_basename(static::class)));
+        return static::$actionName ?static::$actionName : strtolower(preg_replace('/'. $sickActionParentClassBasename .'$/', '', class_basename(static::class)));
     }
 
     /**
@@ -53,16 +53,16 @@ class Action
             preg_match_all($sickActionRoutePattern, $sickActionRouteFunction, $sickActionRouteMatch);
 
             // discover the HTTP verb
-            $routeMethod = strtolower(reset($sickActionRouteMatch[1]));
+            $sickActionRouteMethod = strtolower(reset($sickActionRouteMatch[1]));
 
             // get the route name
-            $routeName = strtolower(reset($sickActionRouteMatch[2]));
+            $sickActionRouteName = strtolower(reset($sickActionRouteMatch[2]));
 
             // store the routes
             $sickActionRoutes[] = [
                 'function' => $sickActionRouteFunction,
-                'name' => $routeName,
-                'method' => $routeMethod,
+                'name' => $sickActionRouteName,
+                'method' => $sickActionRouteMethod,
             ];
 
         }

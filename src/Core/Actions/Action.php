@@ -39,35 +39,35 @@ class Action
     public static function getActionRoutes()
     {
         // regex to match for the functions
-        $sickActionRoutePattern = '/^action(Get|Patch|Post|Put)(.*)/';
+        $actionFunctionRegexPattern = '/^action(Get|Patch|Post|Put)(.*)/';
 
         // return an array with the filtered functions
-        $sickActionRouteFunctions = array_values(preg_grep($sickActionRoutePattern, get_class_methods(new static())));
+        $actionFunctions = array_values(preg_grep($actionFunctionRegexPattern, get_class_methods(new static())));
 
         // action routes array
-        $sickActionRoutes = [];
+        $actionRoutes = [];
 
-        foreach ($sickActionRouteFunctions as $sickActionRouteFunction) {
+        foreach ($actionFunctions as $actionFunction) {
 
             // regex to get the values
-            preg_match_all($sickActionRoutePattern, $sickActionRouteFunction, $sickActionRouteMatch);
+            preg_match_all($actionFunctionRegexPattern, $actionFunction, $actionRouteMatches);
 
             // discover the HTTP verb
-            $sickActionRouteMethod = strtolower(reset($sickActionRouteMatch[1]));
+            $actionRouteMethod = strtolower(reset($actionRouteMatches[1]));
 
             // get the route name
-            $sickActionRouteName = strtolower(reset($sickActionRouteMatch[2]));
+            $actionRouteName = strtolower(reset($actionRouteMatches[2]));
 
             // store the routes
-            $sickActionRoutes[] = [
-                'function' => $sickActionRouteFunction,
-                'name' => $sickActionRouteName,
-                'method' => $sickActionRouteMethod,
+            $actionRoutes[] = [
+                'function' => $actionFunction,
+                'name' => $actionRouteName,
+                'method' => $actionRouteMethod,
             ];
 
         }
 
-        return $sickActionRoutes;
+        return $actionRoutes;
 
     }
 

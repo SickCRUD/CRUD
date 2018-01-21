@@ -44,7 +44,7 @@ class CrudRouter
                 ];
 
                 // declare the route name
-                $routeName = 'SickCRUD.' . $this->name . '.' . $route['name'];
+                $routeName = 'SickCRUD.' . $this->name . ($route['name']?  '.' . $route['name']:null);
 
                 // name them just once
                 if(!\Route::has($routeName)) {

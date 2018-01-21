@@ -9,14 +9,14 @@ class Action
      *
      * @var string
      */
-    protected static $sickActionName = '';
+    protected static $actionName = '';
 
     /**
      * Define if the current actions need to take the id in the route.
      *
      * @var bool
      */
-    public static $sickActionRequireIdParam = false;
+    public static $actionRequireIdParam = false;
 
     /**
      * Get the current action name.

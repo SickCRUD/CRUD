@@ -2,15 +2,10 @@
 
 namespace SickCRUD\CRUD\Core\Traits\CrudTraits;
 
+use SickCRUD\CRUD\Core\Exceptions\AccessDeniedException;
+
 trait ActionAccess
 {
-    /**
-     * The permissions for each action
-     *
-     * @var array
-     */
-    protected $actionAccess = [];
-
     /**
      *  Allows a specific action to execute.
      *
@@ -71,7 +66,7 @@ trait ActionAccess
     public function hasAccessToActionOrFail($actionName)
     {
         if (! $this->hasAccessToAction($actionName)) {
-            throw new \Exception(trans('backpack::crud.unauthorized_access'));
+            throw new AccessDeniedException(trans('backpack::crud.unauthorized_access'));
         }
         return true;
     }

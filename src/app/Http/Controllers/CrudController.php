@@ -65,7 +65,7 @@ class CrudController extends BaseController
         $actionClass = reset($callMatches[1]);
 
         // check if there's the ability to call this specific action
-        $this->crud->hasAccessToActionOrFail($actionClass::getActionName());
+        $this->crud->hasAccessToActionOrFail(call_user_func([$actionClass, 'getActionName']));
 
         // get the calling method
         $actionMethod = reset($callMatches[2]);

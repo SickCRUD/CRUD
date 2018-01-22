@@ -15,6 +15,6 @@ class AccessDeniedException extends Exception
      */
     public function render($request)
     {
-        return Response::make(View::make('errors.403'), 403);
+        return Response::make(View::make('SickCRUD::errors.403'), 403);
     }
 }

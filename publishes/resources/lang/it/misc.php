@@ -5,6 +5,16 @@
  */
 return [
 
+    'errors' => [
+        'error' => 'Errore',
+        'technical_contact' => 'Contatto tecnico',
+        '403' => [
+            'title' => 'Abbiamo avuto dei problemi.',
+            'heading' => 'Accesso negato.',
+            'description' => 'La risorsa richiesta richiede autenticazione.'
+        ]
+    ],
+
     'fields' => [
         'email' => 'Email',
         'name' => 'Nome',

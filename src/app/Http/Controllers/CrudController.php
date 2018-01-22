@@ -2,6 +2,8 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
+use SickCRUD\CRUD\Core\CrudPanel;
+
 class CrudController extends BaseController
 {
     /**
@@ -12,11 +14,34 @@ class CrudController extends BaseController
     protected static $actions = [];
 
     /**
+     * It contains the crud panel object.
+     *
+     * @var \SickCRUD\CRUD\Core\CrudPanel
+     */
+    public $crud;
+
+    /**
+     * It contains the current request of the CrudController.
+     *
+     * @var \Illuminate\Http\Request
+     */
+    public $request;
+
+    /**
      * CrudController constructor.
      */
     public function __construct()
     {
-
+        if (! $this->crud) {
+            $this->crud = \App::make(CrudPanel::class);
+            $this->middleware(function ($request, $next) {
+                // set the request where it should be
+                $this->setRequest($request);
+                // run the setup function
+                $this->crudSetup();
+                return $next($request);
+            });
+        }
     }
 
     /**
@@ -26,32 +51,57 @@ class CrudController extends BaseController
      * @param array  $arguments
      *
      * @return mixed
-     * @throws \Exception if the method on the action does not exists.
+     * @throws \Exception if the method on the action does not exists or if the the passed class does not extend the action.
      */
     public function __call($method, $arguments) {
 
         // declare the SickCall match pattern
-        $sickCallPattern = '/SickCall_(.*)@(.*)/';
+        $callRegexPattern = '/(.*)@(.*)/';
 
         // extract the results
-        preg_match_all($sickCallPattern, $method, $sickCallMatches);
+        preg_match_all($callRegexPattern, $method, $callMatches);
 
         // get the calling class
-        $sickCallActionClass = reset($sickCallMatches[1]);
+        $actionClass = reset($callMatches[1]);
+
+        // check if there's the ability to call this specific action
+        $this->crud->hasAccessToActionOrFail($actionClass::getActionName());
 
         // get the calling method
-        $sickCallActionMethod = reset($sickCallMatches[2]);
+        $actionMethod = reset($callMatches[2]);
 
         // return the actual function of the instantiated action
-        $sickCallActionInstance = (new $sickCallActionClass);
+        $actionInstance = (new $actionClass);
 
-        if(!method_exists($sickCallActionInstance, $sickCallActionMethod)){
+        // if the called action does not extend the Action class then throw an exception
+        if(!is_subclass_of($actionInstance, \SickCRUD\CRUD\Core\Actions\Action::class)){
 
-            throw new \Exception('The action method [' . $sickCallActionMethod . '] on the class [' . $sickCallActionClass . '] was not found.');
+            throw new \Exception('The class [' . $actionClass . '] must extend ' . \SickCRUD\CRUD\Core\Actions\Action::class);
 
         }
 
-        return $sickCallActionInstance->{$sickCallActionMethod}($this);
+        // if the method does not exists then throw an exception
+        if(!method_exists($actionInstance, $actionMethod)){
+
+            throw new \Exception('The action method [' . $actionMethod . '] on the class [' . $actionClass . '] was not found.');
+
+        }
+
+        // build the parameters, passing an instance of the controller
+        $parameters = array_merge([$this], $arguments);
+
+        // call the function and pass as parameters an array of arguments, first the controller instance itself
+        return call_user_func_array(array($actionInstance, $actionMethod), $parameters);
+
+    }
+
+    /**
+     * This function allows to setup all the fields ecc...
+     *
+     * @return void
+     */
+    public function crudSetup()
+    {
 
     }
 
@@ -77,6 +127,21 @@ class CrudController extends BaseController
             $routes = array_merge($routes, $action::getRoutes());
         }
         return $routes;
+    }
+
+    /**
+     * Set the request where it should be.
+     *
+     * @param $request
+     *
+     * @return void
+     */
+    public function setRequest($request)
+    {
+        // if the CRUD exists
+        if($this->crud){
+            $this->crud->request = $request;
+        }
     }
 
 }

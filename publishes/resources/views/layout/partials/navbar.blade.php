@@ -13,7 +13,6 @@
 
     </a>
 
-    {{-- TODO: add a setting to customize the scroll of the navbar (fixed or not) --}}
     <nav class="navbar navbar-expand-md navbar-dark">
 
         <ul class="navbar-nav d-flex flex-row ml-auto">

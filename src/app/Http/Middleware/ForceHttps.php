@@ -17,7 +17,7 @@ class ForceHttps
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (SickCRUD_config('crud', 'force-https') == true && !$request->isSecure()) {
+        if (!$request->isSecure()) {
             return redirect()->secure($request->getRequestUri());
         }
         return $next($request);

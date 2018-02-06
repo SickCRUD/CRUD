@@ -1,6 +1,5 @@
-@foreach(SickCRUD_config('layout', 'styles') as $style)
-    <link rel="stylesheet" href="{{ SickCRUD_asset($style['path'], ($style['local'] ?? true)) }}">
-@endforeach
+<link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/sick-crud.min.css') }}">
 
 @foreach(SickCRUD_config('layout', 'optional-plugins') as $optionalPlugin)
     @php

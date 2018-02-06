@@ -83,9 +83,9 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Router function to build the routes
+     * Router function to build the routes.
      *
-     *
+     * @return \SickCRUD\CRUD\CrudRouter;
      */
     public static function resource($name, $controller, array $options = [])
     {
@@ -93,7 +93,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Set schema length
+     * Set schema length.
      *
      * @return void
      */
@@ -103,7 +103,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Assets publishing
+     * Assets publishing.
      *
      * @return void
      */
@@ -119,6 +119,11 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->publishes([dirname(__DIR__, 1).'/publishes/public' => public_path()], 'public');
     }
 
+    /**
+     * Languages loading.
+     *
+     * @return void
+     */
     public function loadLang()
     {
         // LOADING LANG
@@ -127,7 +132,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Views loading
+     * Views loading.
      *
      * @return void
      */
@@ -142,7 +147,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Config loading
+     * Config loading.
      *
      * @return void
      */
@@ -160,7 +165,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Routes loading
+     * Routes loading.
      *
      * @return void
      */
@@ -177,7 +182,7 @@ class SickCrudServiceProvider extends ServiceProvider
     }
 
     /**
-     * Middleware loading
+     * Middleware loading.
      *
      * @param \Illuminate\Routing\Router $router
      * @return void

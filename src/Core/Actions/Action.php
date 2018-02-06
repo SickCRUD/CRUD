@@ -2,14 +2,14 @@
 
 namespace SickCRUD\CRUD\Core\Actions;
 
-class Action
+abstract class Action
 {
     /**
      * Define the action name.
      *
-     * @var string
+     * @var null|string
      */
-    protected static $actionName = '';
+    protected static $actionName = null;
 
     /**
      * Define if the current actions need to take the id in the route.
@@ -17,6 +17,13 @@ class Action
      * @var bool
      */
     public static $actionRequireIdParam = false;
+
+    /**
+     * Define if the current action needs a prefix in it's route.
+     *
+     * @var bool
+     */
+    public static $actionPrefixRoute = false;
 
     /**
      * Get the current action name.
@@ -27,12 +34,12 @@ class Action
     {
         // get the class that is going to extend
         $sickActionParentClassBasename = basename(get_parent_class(static::class));
-        // remove the class suffix if contained to get the action name
+        // remove the class suffix if contained to get the action name TODO: use str_replace (?), maybe regex not needed.
         return static::$actionName ?static::$actionName : strtolower(preg_replace('/'. $sickActionParentClassBasename .'$/', '', class_basename(static::class)));
     }
 
     /**
-     * Returns the routes related with the actions.
+     * Returns the routes related with the actions, used by the CrudRouter.
      *
      * @return array
      */

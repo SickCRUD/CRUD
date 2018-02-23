@@ -6,34 +6,32 @@ use SickCRUD\CRUD\Core\Traits\ViewData;
 
 class ListAction extends Action
 {
-
     use ViewData;
 
     /**
-     * The action name to reference for permissions
+     * The action name to reference for permissions.
      *
      * @var string
      */
     protected $actionName = 'list';
 
     /**
-     * The HTTP requests supported (piped|piped)
+     * The HTTP requests supported (piped|piped).
      *
      * @var string|array
      */
     protected $actionRequests = [
         'post',
-        'get'
+        'get',
     ];
 
     /**
-     * This function will handle the bulk action
+     * This function will handle the bulk action.
      *
      * @param $id
      */
     public function handleList($id)
     {
-
     }
 
     public function getList()
@@ -43,7 +41,5 @@ class ListAction extends Action
 
     public function postList()
     {
-
     }
-
 }

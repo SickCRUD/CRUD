@@ -1,9 +1,10 @@
 <?php
+
 namespace SickCRUD\CRUD\Core\Exceptions;
 
 use Exception;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Response;
 
 class AccessDeniedException extends Exception
 {

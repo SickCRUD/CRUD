@@ -9,6 +9,6 @@ return [
     */
 
     // this is shown on error pages, leave it empty or false to hide it (it should be an email)
-    'technical-contact' => ''
+    'technical-contact' => '',
 
 ];

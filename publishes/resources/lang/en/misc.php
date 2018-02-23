@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SickCRUD EN Translation
+ * SickCRUD EN Translation.
  */
 return [
 
@@ -11,8 +11,8 @@ return [
         '403' => [
             'title' => 'We\'ve got some trouble.',
             'heading' => 'Access Denied.',
-            'description' => 'The requested resource requires an authentication.'
-        ]
+            'description' => 'The requested resource requires an authentication.',
+        ],
     ],
 
     'fields' => [

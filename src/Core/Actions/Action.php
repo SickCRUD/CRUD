@@ -35,7 +35,7 @@ abstract class Action
         // get the class that is going to extend
         $sickActionParentClassBasename = basename(get_parent_class(static::class));
         // remove the class suffix if contained to get the action name TODO: use str_replace (?), maybe regex not needed.
-        return static::$actionName ?static::$actionName : strtolower(preg_replace('/'. $sickActionParentClassBasename .'$/', '', class_basename(static::class)));
+        return static::$actionName ? static::$actionName : strtolower(preg_replace('/'.$sickActionParentClassBasename.'$/', '', class_basename(static::class)));
     }
 
     /**
@@ -71,11 +71,8 @@ abstract class Action
                 'name' => $actionRouteName,
                 'method' => $actionRouteMethod,
             ];
-
         }
 
         return $actionRoutes;
-
     }
-
 }

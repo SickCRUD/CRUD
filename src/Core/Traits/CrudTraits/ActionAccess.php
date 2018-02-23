@@ -52,6 +52,7 @@ trait ActionAccess
         if (! in_array($actionName, $this->actionAccess)) {
             return false;
         }
+
         return true;
     }
 
@@ -68,7 +69,7 @@ trait ActionAccess
         if (! $this->hasAccessToAction($actionName)) {
             throw new AccessDeniedException(trans('backpack::crud.unauthorized_access'));
         }
+
         return true;
     }
-
 }

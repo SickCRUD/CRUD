@@ -16,24 +16,24 @@ if (! function_exists('SickCRUD_config')) {
     }
 }
 
-if (!function_exists('SickCRUD_asset')) {
+if (! function_exists('SickCRUD_asset')) {
     /**
-     * Helper to get the CSS URL
+     * Helper to get the CSS URL.
      *
      * @param string $path
-     * @param boolean $local
+     * @param bool $local
      *
      * @return string
      */
     function SickCRUD_asset($path = null, $local = true)
     {
-        return $local?URL::asset($path):$path;
+        return $local ? URL::asset($path) : $path;
     }
 }
 
-if (!function_exists('SickCRUD_url')) {
+if (! function_exists('SickCRUD_url')) {
     /**
-     * Helper to get the CRUD prefixed URL
+     * Helper to get the CRUD prefixed URL.
      *
      * @param string $path
      * @param  mixed   $parameters
@@ -50,17 +50,17 @@ if (!function_exists('SickCRUD_url')) {
         $path = ltrim($path, '/');
 
         // if is just slash
-        if($routePrefix == '/') {
+        if ($routePrefix == '/') {
             $routePrefix = '';
         }
 
-        return URL::to($routePrefix . '/' . $path, $parameters, $secure);
+        return URL::to($routePrefix.'/'.$path, $parameters, $secure);
     }
 }
 
-if (!function_exists('SickCRUD_title_format')) {
+if (! function_exists('SickCRUD_title_format')) {
     /**
-     * Helper to get the formatted title for a page
+     * Helper to get the formatted title for a page.
      *
      * @param string $title
      *

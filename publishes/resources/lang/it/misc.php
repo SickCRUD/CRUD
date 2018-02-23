@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SickCRUD IT Translation
+ * SickCRUD IT Translation.
  */
 return [
 
@@ -11,8 +11,8 @@ return [
         '403' => [
             'title' => 'Abbiamo avuto dei problemi.',
             'heading' => 'Accesso negato.',
-            'description' => 'La risorsa richiesta richiede autenticazione.'
-        ]
+            'description' => 'La risorsa richiesta richiede autenticazione.',
+        ],
     ],
 
     'fields' => [
@@ -20,7 +20,7 @@ return [
         'name' => 'Nome',
         'password' => 'Password',
         'password_confirmation' => 'Conferma password',
-        'remember_me' => 'Ricordami'
+        'remember_me' => 'Ricordami',
     ],
 
     'pages' => [

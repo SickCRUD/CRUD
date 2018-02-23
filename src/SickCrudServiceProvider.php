@@ -17,12 +17,12 @@ class SickCrudServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
-     * Route files to include
+     * Route files to include.
      *
      * @var array
      */
     protected $routeFiles = [
-        '/routes/SickCRUD/routes.php'
+        '/routes/SickCRUD/routes.php',
     ];
 
     /**
@@ -53,10 +53,9 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->loadMiddlewares($router);
 
         // Set the default schema string length if necessary
-        if(SickCRUD_config('crud', 'change-schema-string-length') == true) {
+        if (SickCRUD_config('crud', 'change-schema-string-length') == true) {
             $this->setSchemaStringLength();
         }
-
     }
 
     /**
@@ -79,7 +78,6 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->app->bind('SickCRUD', function ($app) {
             return new SickCRUD($app);
         });
-
     }
 
     /**
@@ -143,7 +141,7 @@ class SickCrudServiceProvider extends ServiceProvider
         // after the package published views
         $this->loadViewsFrom(resource_path('views/vendor/SickCRUD'), 'SickCRUD');
         // after the package un-published views
-        $this->loadViewsFrom(realpath(dirname(__DIR__, 1) . '/publishes/resources/views'), 'SickCRUD');
+        $this->loadViewsFrom(realpath(dirname(__DIR__, 1).'/publishes/resources/views'), 'SickCRUD');
     }
 
     /**
@@ -172,9 +170,9 @@ class SickCrudServiceProvider extends ServiceProvider
     public function loadRoutes()
     {
         foreach ($this->routeFiles as $routeFile) {
-            $routeFileToInclude = __DIR__ . $routeFile;
+            $routeFileToInclude = __DIR__.$routeFile;
             // if the files exists outside the package
-            if(file_exists(base_path().$routeFile)) {
+            if (file_exists(base_path().$routeFile)) {
                 $routeFileToInclude = base_path().$routeFile;
             }
             $this->loadRoutesFrom($routeFileToInclude);
@@ -191,5 +189,4 @@ class SickCrudServiceProvider extends ServiceProvider
     {
         $router->aliasMiddleware('ForceHttps', ForceHttps::class);
     }
-
 }

@@ -8,7 +8,7 @@ return [
      * --------------------------------------------------------------------------
      */
 
-    /**
+    /*
      * Page title settings, this can be overwritten from the /resources/views/vendor/SickCRUD/layout/partials/title.blade.php view
      */
     'page-title' => [
@@ -17,10 +17,10 @@ return [
         // specify the title separator, 'MyAwesomeTitle - SickCRUD' where '-' is the separator
         'title-separator' => '-',
         // specify the suffix for the title after the separator
-        'title-suffix' => 'SickCRUD'
+        'title-suffix' => 'SickCRUD',
     ],
 
-    /**
+    /*
      * Navbar settings
      */
     'navbar' => [
@@ -28,13 +28,13 @@ return [
         'logo' => [
             'text' => [
                 'logo-mini' => 'SC',
-                'logo-large' => '<b>Sick</b>CRUD'
-            ]
-        ]
+                'logo-large' => '<b>Sick</b>CRUD',
+            ],
+        ],
 
     ],
 
-    /**
+    /*
      * Here there's a list of plugins that you can disable (they are enabled by default)
      *
      * CssBrowserSelector: Is a plugin without dependencies (js vanilla) for using some CSS rules for specific browsers (should not be touched)
@@ -45,26 +45,26 @@ return [
     'optional-plugins' => [
         'CssBrowserSelector',
         'jQuery',
-        'HideShowPassword'
+        'HideShowPassword',
     ],
 
-    /**
+    /*
      * Preinitialized plugins templates Array (name => ['css' => [], 'js' => [])
      */
     'optional-plugins-list'  => [
         'CssBrowserSelector' => [
-            'js' => 'vendor/css_browser_selector/js/css_browser_selector.min.js'
+            'js' => 'vendor/css_browser_selector/js/css_browser_selector.min.js',
         ],
         'jQuery' => [
-            'js' => 'vendor/jquery/js/jquery-2.2.4.min.js'
+            'js' => 'vendor/jquery/js/jquery-2.2.4.min.js',
         ],
         'HideShowPassword' => [
             'css' => 'vendor/hideShowPassword/css/hideShowPassword.css',
             'js' => [
                 'vendor/hideShowPassword/js/hideShowPassword.min.js',
-                'js/HideShowPassword.min.js'
-            ]
-        ]
-    ]
+                'js/HideShowPassword.min.js',
+            ],
+        ],
+    ],
 
 ];

@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('SickCRUD_config')) {
+if (! function_exists('SickCRUD_config')) {
     /**
      * Little helper to get the SickCRUD config directly by passing the key.
      *

@@ -34,6 +34,11 @@ abstract class BaseActionTest extends BaseTest
  */
 class TestAction extends Action
 {
+
+    // override default values
+    public $actionRequireIdParam = true;
+    public $actionRoutePrefix = true;
+
     /**
      * For testing purposes we should be able to change the $actionName protected variable.
      *

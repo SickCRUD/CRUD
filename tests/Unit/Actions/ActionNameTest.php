@@ -20,13 +20,13 @@ class ActionNameTest extends BaseActionTest
     public function testGetModifiedActionName()
     {
         // choose a new action name
-        $newName = 'ciao';
+        $newActionName = 'ciao';
 
         // set the name variable
-        $this->action->setName($newName);
+        $this->action->setName($newActionName);
 
         // should be equal to the new name set
-        $this->assertEquals($this->action->getName(), $newName);
+        $this->assertEquals($this->action->getName(), $newActionName);
     }
 
 }

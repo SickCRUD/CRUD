@@ -6,7 +6,7 @@ use SickCRUD\CRUD\Core\Actions\Action;
 use SickCRUD\CRUD\Tests\BaseTest;
 
 /**
- * Class BaseActionTest
+ * Class BaseActionTest.
  * @package SickCRUD\CRUD\Tests\Unit\Actions
  */
 abstract class BaseActionTest extends BaseTest
@@ -29,7 +29,7 @@ abstract class BaseActionTest extends BaseTest
 }
 
 /**
- * Class TestAction extending the package action
+ * Class TestAction extending the package action.
  * @package SickCRUD\CRUD\Tests\Unit\Actions
  */
 class TestAction extends Action

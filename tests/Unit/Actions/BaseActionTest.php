@@ -101,7 +101,7 @@ class TestAction extends Action
     }
 
     /**
-     * Test named route POST.
+     * Test named route PUT.
      */
     public function actionPutTest()
     {

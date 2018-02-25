@@ -1,6 +1,4 @@
-@foreach(SickCRUD_config('layout', 'scripts') as $script)
-    <script src="{{ SickCRUD_asset($script['path'], ($script['local'] ?? true)) }}"></script>
-@endforeach
+{{-- <script src="{{ URL::asset('') }}"></script> --}}
 
 @foreach(SickCRUD_config('layout', 'optional-plugins') as $optionalPlugin)
     @php

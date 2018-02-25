@@ -1,6 +1,6 @@
 <?php
 
-namespace SickCRUD\CRUD\Tests\Unit\Actions;
+namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
 
 class ActionPropertiesTest extends BaseActionTest

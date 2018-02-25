@@ -3,31 +3,6 @@
 namespace SickCRUD\CRUD\Tests\Unit\Actions;
 
 use SickCRUD\CRUD\Core\Actions\Action;
-use SickCRUD\CRUD\Tests\BaseTest;
-
-/**
- * Class BaseActionTest.
- * @package SickCRUD\CRUD\Tests\Unit\Actions
- */
-abstract class BaseActionTest extends BaseTest
-{
-    /**
-     * @var Action
-     */
-    protected $action;
-
-    /**
-     * Setup the test environment.
-     *
-     * @return void
-     */
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->action = new TestAction();
-    }
-}
-
 /**
  * Class TestAction extending the package action.
  * @package SickCRUD\CRUD\Tests\Unit\Actions
@@ -35,7 +10,7 @@ abstract class BaseActionTest extends BaseTest
 class TestAction extends Action
 {
 
-    // override default values
+// override default values
     public $actionRequireIdParam = true;
     public $actionRoutePrefix = true;
 

@@ -5,37 +5,37 @@ namespace SickCRUD\CRUD\Core\Actions;
 abstract class Action
 {
     /**
-     * Define the action name.
+     * Define the action name, if null then class name will be used.
      *
      * @var null|string
      */
-    protected static $actionName = null;
+    protected $actionName = null;
 
     /**
      * Define if the current actions need to take the id in the route.
      *
      * @var bool
      */
-    public static $actionRequireIdParam = false;
+    public $actionRequireIdParam = false;
 
     /**
      * Define if the current action needs a prefix in it's route.
      *
      * @var bool
      */
-    public static $actionPrefixRoute = false;
+    public $actionPrefixRoute = false;
 
     /**
      * Get the current action name.
      *
      * @return string
      */
-    public static function getActionName()
+    public function getActionName()
     {
         // get the class that is going to extend
-        $sickActionParentClassBasename = basename(get_parent_class(static::class));
-        // remove the class suffix if contained to get the action name TODO: use str_replace (?), maybe regex not needed.
-        return static::$actionName ? static::$actionName : strtolower(preg_replace('/'.$sickActionParentClassBasename.'$/', '', class_basename(static::class)));
+        $actionParentClassBasename = basename(get_parent_class(static::class));
+        // remove the class suffix if contained to get the action name
+        return $this->actionName ? $this->actionName : strtolower(str_replace($actionParentClassBasename, '', class_basename(static::class)));
     }
 
     /**

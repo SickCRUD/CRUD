@@ -29,6 +29,7 @@
         "psr-4": {
             "SickCRUD\\CRUD\\Tests\\": "tests"
         }
+
     },
     "extra": {
         "laravel": {
@@ -36,12 +37,13 @@
                 "SickCRUD\\CRUD\\SickCrudServiceProvider"
             ],
             "aliases": {
-
+                "SickCRUD": "SickCRUD\\CRUD\\SickCrudServiceProvider"
             }
         }
     },
     "require-dev": {
         "laravel/dusk": "^2.0",
-        "phpunit/phpunit": "@stable"
+        "phpunit/phpunit": "@stable",
+        "orchestra/testbench": "~3.0"
     }
 }

@@ -37,51 +37,79 @@ class CrudRouter
         $routeGroupStack = \Route::getGroupStack();
 
         // get the last element of the stack
-        $lastRouteGroupStack = end($routeGroupStack);
+        $lastRouteOfStack = end($routeGroupStack);
 
         // build the element namespace
-        $controllerNamespaceName = ($lastRouteGroupStack['namespace'].'\\'.$this->controller);
+        $controllerFqn = '\\' . ltrim(($lastRouteOfStack['namespace'] . '\\' . $this->controller), '\\');
 
         // get the actions of the controller
-        $controllerActions = $controllerNamespaceName::getControllerActions();
+        $controllerActions = $this->getControllerActions($controllerFqn);
 
-        // cycle the actions
+        // $controllerActions = $controllerFqn::getControllerActions();
+
+        // cycle the routes of the action
         foreach ($controllerActions as $controllerAction) {
 
-            // cycle the routes of the action
-            foreach ($controllerAction::getActionRoutes() as $route) {
+            $controllerActionInstance = \App::make($controllerAction);
+
+            foreach ($controllerActionInstance->getRoutes() as $route) {
 
                 // optional id / route controller name / route action name
-                $routePath = ($controllerAction::$actionRequireIdParam == true ? '{id?}' : '').'/'.$this->name.($controllerAction::$actionPrefixRoute == true ? '/'.$controllerAction::getActionName() : '').'/'.$route['name'];
+                $routePath = ($controllerActionInstance->actionRequireIdParam == true ? '{id?}' : '').'/'.$this->name.($controllerActionInstance->actionRoutePrefix == true ? '/'.$controllerActionInstance->getName() : '').'/'.$route['name'];
 
                 // controller fqn
-                $controllerFqn = '\\'.ltrim($controllerNamespaceName, '\\');
+                $controllerFqn =  '\\' . ltrim($controllerFqn, '\\');
 
                 // controller method
-                $controllerMethod = '\\'.ltrim($controllerAction, '\\').'@'.$route['function'];
+                $controllerMethod ='\\' . ltrim($controllerAction, '\\') . '@' . $route['function'];
 
                 // declare the route options
                 $routeOptions = [
-                    'uses' => $controllerFqn.'@'.$controllerMethod,
+                    'uses' => $controllerFqn . '@' . $controllerMethod
                 ];
 
                 // declare the route name
-                $routeName = 'SickCRUD.'.$this->name.($controllerAction::$actionPrefixRoute == true ? '.'.$controllerAction::getActionName() : '').($route['name'] ? '.'.$route['name'] : null);
+                $routeName = 'SickCRUD.' . $this->name . ($controllerActionInstance->actionRoutePrefix==true?'.' .$controllerActionInstance->getName():'') . ($route['name']?  '.' . $route['name']:null);
 
                 // name them just once
-                if (! \Route::has($routeName)) {
+                if(!\Route::has($routeName)) {
                     $routeOptions['as'] = $routeName;
                 }
 
                 // declare the route
                 \Route::{$route['method']}($routePath, $routeOptions);
+
             }
+
         }
+
+
+    }
+
+    /**
+     * Get the controller actions.
+     *
+     * @param string $controllerFqn
+     * @return array
+     */
+    public function getControllerActions(string $controllerFqn)
+    {
+        // we build an instance of the controller
+        $controllerInstance = \App::make($controllerFqn);
+
+        // store the actions
+        $controllerActions = $controllerInstance->getActions();
+
+        // frees the controller instance
+        unset($controllerInstance);
+
+        // controller actions
+        return $controllerActions;
     }
 
     /**
      * Call other methods in this class, that register extra routes.
-     * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L84.
+     * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L84
      *
      * @param mixed $injectables
      * @return mixed
@@ -107,7 +135,7 @@ class CrudRouter
 
     /**
      * Register the routes that were passed using the "with" syntax.
-     * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L112.
+     * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L112
      *
      * @return void
      */
@@ -121,4 +149,18 @@ class CrudRouter
             }
         }
     }
+
+    /**
+     * Call eventual CrudRouter methods.
+     * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L123
+     *
+     * @return void
+     */
+    public function __call($method, $parameters = null)
+    {
+        if (method_exists($this, $method)) {
+            $this->{$method}($parameters);
+        }
+    }
+
 }

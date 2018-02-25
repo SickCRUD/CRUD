@@ -23,7 +23,7 @@ abstract class Action
      *
      * @var bool
      */
-    public $actionPrefixRoute = false;
+    public $actionRoutePrefix = false;
 
     /**
      * Get the current action name.
@@ -77,6 +77,26 @@ abstract class Action
 
         return $actionRoutes;
 
+    }
+
+    /**
+     * Return if the ID parameter is required in the route.
+     *
+     * @return bool
+     */
+    public function isIdParamRequired()
+    {
+        return (bool)$this->actionRequireIdParam;
+    }
+
+    /**
+     * Return if the route should be prefixed with its own name.
+     *
+     * @return bool
+     */
+    public function hasRoutePrefix()
+    {
+        return (bool)$this->actionRoutePrefix;
     }
 
 }

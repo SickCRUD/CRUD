@@ -5,14 +5,14 @@ namespace SickCRUD\CRUD\Core\Traits;
 trait ViewData
 {
     /**
-     * The data that will be sent to the view
+     * The data that will be sent to the view.
      *
      * @var array
      */
     protected $data = [];
 
     /**
-     * Set the page title
+     * Set the page title.
      *
      * @param string $title
      *
@@ -20,15 +20,17 @@ trait ViewData
      */
     public function setPageTitle($title = null)
     {
-        if($title) {
+        if ($title) {
             $this->data['pageTitle'] = $title;
+
             return true;
         }
+
         return false;
     }
 
     /**
-     * Set the bodyclass if needed
+     * Set the bodyclass if needed.
      *
      * @param string $bodyClass
      *
@@ -36,15 +38,17 @@ trait ViewData
      */
     public function setBodyClass($bodyClass = null)
     {
-        if($bodyClass) {
+        if ($bodyClass) {
             $this->data['bodyClass'] = $bodyClass;
+
             return true;
         }
+
         return false;
     }
 
     /**
-     * Set a variable that will be passed to the view
+     * Set a variable that will be passed to the view.
      *
      * @param string   $key
      * @param mixed $value
@@ -53,15 +57,17 @@ trait ViewData
      */
     public function setViewData($key = null, $value = null)
     {
-        if($key && $value) {
+        if ($key && $value) {
             $this->data[$key] = $value;
+
             return true;
         }
+
         return false;
     }
 
     /**
-     * Get the variable that will be passed to the view
+     * Get the variable that will be passed to the view.
      *
      * @param string $key
      *
@@ -69,14 +75,15 @@ trait ViewData
      */
     public function getViewData($key = null)
     {
-        if($key && array_key_exists($this->data[$key])) {
+        if ($key && array_key_exists($this->data[$key])) {
             return $this->data[$key];
         }
+
         return $this->data;
     }
 
     /**
-     * Delete the data from the variable that will be passed to the view
+     * Delete the data from the variable that will be passed to the view.
      *
      * @param string $key
      *
@@ -84,11 +91,12 @@ trait ViewData
      */
     public function deleteViewData($key = null)
     {
-        if($key && array_key_exists($this->data[$key])) {
+        if ($key && array_key_exists($this->data[$key])) {
             unset($this->data[$key]);
-            return !array_key_exists($this->data[$key]);
+
+            return ! array_key_exists($this->data[$key]);
         }
+
         return false;
     }
-
 }

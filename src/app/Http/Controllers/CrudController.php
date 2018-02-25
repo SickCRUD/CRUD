@@ -39,6 +39,7 @@ class CrudController extends BaseController
                 $this->setRequest($request);
                 // run the setup function
                 $this->crudSetup();
+
                 return $next($request);
             });
         }
@@ -53,7 +54,8 @@ class CrudController extends BaseController
      * @return mixed
      * @throws \Exception if the method on the action does not exists or if the the passed class does not extend the action.
      */
-    public function __call($method, $arguments) {
+    public function __call($method, $arguments)
+    {
 
         // declare the SickCall match pattern
         $callRegexPattern = '/(.*)@(.*)/';
@@ -74,25 +76,20 @@ class CrudController extends BaseController
         $actionInstance = (new $actionClass);
 
         // if the called action does not extend the Action class then throw an exception
-        if(!is_subclass_of($actionInstance, \SickCRUD\CRUD\Core\Actions\Action::class)){
-
-            throw new \Exception('The class [' . $actionClass . '] must extend ' . \SickCRUD\CRUD\Core\Actions\Action::class);
-
+        if (! is_subclass_of($actionInstance, \SickCRUD\CRUD\Core\Actions\Action::class)) {
+            throw new \Exception('The class ['.$actionClass.'] must extend '.\SickCRUD\CRUD\Core\Actions\Action::class);
         }
 
         // if the method does not exists then throw an exception
-        if(!method_exists($actionInstance, $actionMethod)){
-
-            throw new \Exception('The action method [' . $actionMethod . '] on the class [' . $actionClass . '] was not found.');
-
+        if (! method_exists($actionInstance, $actionMethod)) {
+            throw new \Exception('The action method ['.$actionMethod.'] on the class ['.$actionClass.'] was not found.');
         }
 
         // build the parameters, passing an instance of the controller
         $parameters = array_merge([$this], $arguments);
 
         // call the function and pass as parameters an array of arguments, first the controller instance itself
-        return call_user_func_array(array($actionInstance, $actionMethod), $parameters);
-
+        return call_user_func_array([$actionInstance, $actionMethod], $parameters);
     }
 
     /**
@@ -102,7 +99,6 @@ class CrudController extends BaseController
      */
     public function crudSetup()
     {
-
     }
 
     /**
@@ -112,7 +108,7 @@ class CrudController extends BaseController
      */
     public static function getControllerActions()
     {
-        return (array)static::$actions;
+        return (array) static::$actions;
     }
 
     /**
@@ -126,6 +122,7 @@ class CrudController extends BaseController
         foreach (static::$actions as $action) {
             $routes = array_merge($routes, $action::getRoutes());
         }
+
         return $routes;
     }
 
@@ -139,9 +136,8 @@ class CrudController extends BaseController
     public function setRequest($request)
     {
         // if the CRUD exists
-        if($this->crud){
+        if ($this->crud) {
             $this->crud->request = $request;
         }
     }
-
 }

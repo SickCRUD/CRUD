@@ -48,7 +48,7 @@ class CrudPublishCommand extends Command
         if ($this->confirm('Do you wish to continue?')) {
             if ($this->vendorPublish($whatShouldBePublished)) {
                 $this->info(ucfirst($whatShouldBePublished).' for SickCRUD has been published!');
-            }else{
+            } else {
                 $this->error('There was an error while publishing the assets!');
             }
         }

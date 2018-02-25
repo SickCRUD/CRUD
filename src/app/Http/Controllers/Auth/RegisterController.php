@@ -3,13 +3,13 @@
 namespace SickCRUD\CRUD\App\Http\Controllers\Auth;
 
 // Laravel
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\View;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Auth\RegistersUsers;
 // SickCRUD
 use SickCRUD\CRUD\App\Http\Controllers\BaseController;
 
@@ -41,7 +41,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Show the register page view
+     * Show the register page view.
      *
      * @return mixed
      */
@@ -57,7 +57,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Register the new user to the database
+     * Register the new user to the database.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -73,7 +73,7 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Validate the register request
+     * Validate the register request.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -82,7 +82,7 @@ class RegisterController extends BaseController
     public function validateRegister(Request $request)
     {
         // return the validated response
-         return $request->validate([
+        return $request->validate([
             'name'     => 'required|max:255',
             'email'    => 'required|email|max:255|unique:'.$this->user->getTable(),
             'password' => 'required|min:6|confirmed',
@@ -90,14 +90,13 @@ class RegisterController extends BaseController
     }
 
     /**
-     * Create the user and save it to database
+     * Create the user and save it to database.
      *
      * @param array $data
      *
      * @return Model;
-     *
      */
-    public function create(Array $data = [])
+    public function create(array $data = [])
     {
         // encrypt the password before saving it
         $data['password'] = Hash::make($data['password']);
@@ -105,5 +104,4 @@ class RegisterController extends BaseController
         // then, save it
         return $this->user->create($data);
     }
-
 }

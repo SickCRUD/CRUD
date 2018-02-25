@@ -3,12 +3,12 @@
 namespace SickCRUD\CRUD\App\Http\Controllers\Auth;
 
 // Laravel
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 // SickCRUD
 use SickCRUD\CRUD\App\Http\Controllers\BaseController;
 
@@ -31,14 +31,14 @@ class LoginController extends BaseController
 
         // redirect here after successful login
         // TODO: Change with URL::route()
-        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo: SickCRUD_url('dasboard');
+        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo : SickCRUD_url('dasboard');
 
         // redirect after logout
         $this->redirectAfterLogout = URL::route('SickCRUD.auth.login');
     }
 
     /**
-     * Show the login page view
+     * Show the login page view.
      *
      * @return mixed
      */
@@ -54,7 +54,7 @@ class LoginController extends BaseController
     }
 
     /**
-     * Uses the default Laravel logout and then redirect to custom route
+     * Uses the default Laravel logout and then redirect to custom route.
      *
      * @param Request $request
      *
@@ -67,5 +67,4 @@ class LoginController extends BaseController
 
         return Redirect::to($this->redirectAfterLogout);
     }
-
 }

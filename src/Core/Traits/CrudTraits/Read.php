@@ -4,7 +4,6 @@ namespace SickCRUD\CRUD\Core\Traits\CrudTraits;
 
 trait Read
 {
-
     /**
      * Find and retrieve an entry in the database or fail.
      *
@@ -18,6 +17,7 @@ trait Read
         if (! $this->entry) {
             $this->entry = $this->model->findOrFail($id);
         }
+
         return $this->entry;
     }
 
@@ -30,12 +30,10 @@ trait Read
     {
 
         // if the query instance isset and valid, then return it
-        if($this->query && get_class($this->query) == \Illuminate\Database\Eloquent\Builder::class){
+        if ($this->query && get_class($this->query) == \Illuminate\Database\Eloquent\Builder::class) {
             return $this->query->get();
         }
 
         return $this->getModel()->select('*')->get();
-
     }
-
 }

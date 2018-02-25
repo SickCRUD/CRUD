@@ -9,7 +9,7 @@ return [
      */
 
     /*
-     * Should SickCRUD change the default schema sting lenght to 191?
+     * Should SickCRUD change the default schema string length to 191?
      */
     'change-schema-string-length' => true,
 

@@ -56,6 +56,26 @@ class ActionNameTest extends BaseActionTest
                 'method' => 'put',
                 'name' => false
             ],
+            [
+                'function' => 'actionGetTest',
+                'method' => 'get',
+                'name' => 'test'
+            ],
+            [
+                'function' => 'actionPatchTest',
+                'method' => 'patch',
+                'name' => 'test'
+            ],
+            [
+                'function' => 'actionPostTest',
+                'method' => 'post',
+                'name' => 'test'
+            ],
+            [
+                'function' => 'actionPutTest',
+                'method' => 'put',
+                'name' => 'test'
+            ]
         ];
 
         // array of extracted action routes

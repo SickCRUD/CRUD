@@ -76,4 +76,36 @@ class TestAction extends Action
         return '// some kind of response';
     }
 
+    /**
+     * Test named route GET.
+     */
+    public function actionGetTest()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Test named route PATCH.
+     */
+    public function actionPatchTest()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Test named route POST.
+     */
+    public function actionPostTest()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Test named route POST.
+     */
+    public function actionPutTest()
+    {
+        return '// some kind of response';
+    }
+
 }

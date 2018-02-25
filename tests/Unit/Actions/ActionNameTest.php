@@ -11,7 +11,7 @@ class ActionNameTest extends BaseActionTest
     public function testGetActionName()
     {
         // should be TestAction ^Action
-        $this->assertEquals($this->action->getName(), 'test', 'The action name extracted from the class name is wrong.');
+        $this->assertEquals($this->action->getName(), str_replace('action', '', strtolower(class_basename($this->action))), 'The action name extracted from the class name is wrong.');
     }
 
     /**

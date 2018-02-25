@@ -30,7 +30,7 @@ abstract class Action
      *
      * @return string
      */
-    public function getActionName()
+    public function getName()
     {
         // get the class that is going to extend
         $actionParentClassBasename = basename(get_parent_class(static::class));
@@ -43,17 +43,18 @@ abstract class Action
      *
      * @return array
      */
-    public static function getActionRoutes()
+    public function getRoutes()
     {
         // regex to match for the functions
         $actionFunctionRegexPattern = '/^action(Get|Patch|Post|Put)(.*)/';
 
         // return an array with the filtered functions
-        $actionFunctions = array_values(preg_grep($actionFunctionRegexPattern, get_class_methods(new static())));
+        $actionFunctions = array_values(preg_grep($actionFunctionRegexPattern, get_class_methods(static::class)));
 
         // action routes array
         $actionRoutes = [];
 
+        // cycle the routes
         foreach ($actionFunctions as $actionFunction) {
 
             // regex to get the values
@@ -68,11 +69,14 @@ abstract class Action
             // store the routes
             $actionRoutes[] = [
                 'function' => $actionFunction,
-                'name' => $actionRouteName,
                 'method' => $actionRouteMethod,
+                'name' => $actionRouteName ? $actionRouteName : false
             ];
+
         }
 
         return $actionRoutes;
+
     }
+
 }

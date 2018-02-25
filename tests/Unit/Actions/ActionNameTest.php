@@ -11,7 +11,7 @@ class ActionNameTest extends BaseActionTest
     public function testGetActionName()
     {
         // should be TestAction ^Action
-        $this->assertEquals($this->action->getName(), 'test');
+        $this->assertEquals($this->action->getActionName(), 'test');
     }
 
     /**
@@ -26,7 +26,7 @@ class ActionNameTest extends BaseActionTest
         $this->action->setName($newActionName);
 
         // should be equal to the new name set
-        $this->assertEquals($this->action->getName(), $newActionName);
+        $this->assertEquals($this->action->getActionName(), $newActionName);
     }
 
 }

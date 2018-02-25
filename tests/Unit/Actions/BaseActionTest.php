@@ -43,4 +43,37 @@ class TestAction extends Action
     {
         $this->actionName = $name;
     }
+
+    /**
+     * Non-named route GET.
+     */
+    public function actionGet()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Non-named route PATCH.
+     */
+    public function actionPatch()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Non-named route POST.
+     */
+    public function actionPost()
+    {
+        return '// some kind of response';
+    }
+
+    /**
+     * Non-named route PUT.
+     */
+    public function actionPut()
+    {
+        return '// some kind of response';
+    }
+
 }

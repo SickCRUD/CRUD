@@ -2,6 +2,12 @@
 
 namespace SickCRUD\CRUD\Core\Actions;
 
+/**
+ * Class Action
+ * The base class that will be extended to create all the new actions.
+ *
+ * @package SickCRUD\CRUD\Core\Actions
+ */
 abstract class Action
 {
     /**
@@ -12,14 +18,14 @@ abstract class Action
     protected $actionName = null;
 
     /**
-     * Define if the current actions need to take the id in the route.
+     * Define if the current actions need to take the id in the route ({?id}).
      *
      * @var bool
      */
     public $actionRequireIdParam = false;
 
     /**
-     * Define if the current action needs a prefix in it's route.
+     * Define if the current action needs a prefix in it's route (it will be prefixed with the $actionName).
      *
      * @var bool
      */
@@ -39,7 +45,8 @@ abstract class Action
     }
 
     /**
-     * Returns the routes related with the actions, used by the CrudRouter.
+     * Returns the routes related with the action, used by the CrudRouter to make the routes.
+     * TODO: Make this function static?
      *
      * @return array
      */

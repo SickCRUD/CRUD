@@ -15,11 +15,11 @@
     },
     "minimum-stability": "RC",
     "require": {
-        "php": ">=7.0.13"
+        "php": ">=7.0"
     },
     "require-dev": {
         "laravel/dusk": "^2.0",
-        "phpunit/phpunit": "^7",
+        "phpunit/phpunit": "^6",
         "orchestra/testbench": "~3.0"
     },
     "autoload": {

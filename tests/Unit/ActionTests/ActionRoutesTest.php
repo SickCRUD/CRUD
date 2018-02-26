@@ -2,7 +2,6 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-
 class ActionRoutesTest extends BaseActionTest
 {
     /**
@@ -15,43 +14,43 @@ class ActionRoutesTest extends BaseActionTest
             [
                 'function' => 'actionGet',
                 'method' => 'get',
-                'name' => false
+                'name' => false,
             ],
             [
                 'function' => 'actionPatch',
                 'method' => 'patch',
-                'name' => false
+                'name' => false,
             ],
             [
                 'function' => 'actionPost',
                 'method' => 'post',
-                'name' => false
+                'name' => false,
             ],
             [
                 'function' => 'actionPut',
                 'method' => 'put',
-                'name' => false
+                'name' => false,
             ],
             [
                 'function' => 'actionGetTest',
                 'method' => 'get',
-                'name' => 'test'
+                'name' => 'test',
             ],
             [
                 'function' => 'actionPatchTest',
                 'method' => 'patch',
-                'name' => 'test'
+                'name' => 'test',
             ],
             [
                 'function' => 'actionPostTest',
                 'method' => 'post',
-                'name' => 'test'
+                'name' => 'test',
             ],
             [
                 'function' => 'actionPutTest',
                 'method' => 'put',
-                'name' => 'test'
-            ]
+                'name' => 'test',
+            ],
         ];
 
         // array of extracted action routes
@@ -62,11 +61,7 @@ class ActionRoutesTest extends BaseActionTest
 
         // cycle them for the assertion
         foreach ($actionRoutes as $key => $actionRoute) {
-
-            $this->assertContains($actionRoute, $actionRoutesExpected, 'Array not matching on index ' . $key . '.');
-
+            $this->assertContains($actionRoute, $actionRoutesExpected, 'Array not matching on index '.$key.'.');
         }
-
     }
-
 }

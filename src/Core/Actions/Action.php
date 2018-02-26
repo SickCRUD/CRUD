@@ -70,13 +70,10 @@ abstract class Action
             $actionRoutes[] = [
                 'function' => $actionFunction,
                 'method' => $actionRouteMethod,
-                'name' => $actionRouteName ? $actionRouteName : false
+                'name' => $actionRouteName ? $actionRouteName : false,
             ];
-
         }
 
         return $actionRoutes;
-
     }
-
 }

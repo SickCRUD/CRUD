@@ -2,13 +2,12 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-use SickCRUD\CRUD\Core\Actions\Action;
 use SickCRUD\CRUD\Tests\BaseTest;
+use SickCRUD\CRUD\Core\Actions\Action;
 use SickCRUD\CRUD\Tests\Unit\ActionTests\Actions\TestAction;
 
 /**
  * Class BaseActionTest.
- * @package SickCRUD\CRUD\Tests\Unit\Actions
  */
 abstract class BaseActionTest extends BaseTest
 {

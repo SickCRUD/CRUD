@@ -16,10 +16,11 @@
         </testsuite>
     </testsuites>
     <filter>
+        <blacklist>
+            <directory suffix=".php">./vendor</directory>
+        </blacklist>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <exclude>
-                <file>./src/CrudRouter.php</file>
-            </exclude>
+            <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
 </phpunit>

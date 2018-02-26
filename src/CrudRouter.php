@@ -4,6 +4,7 @@ namespace SickCRUD\CRUD;
 
 // Laravel
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 
 class CrudRouter
 {
@@ -36,29 +37,25 @@ class CrudRouter
         $this->name = $name;
         $this->controller = $controller;
 
-        // get the route group stack
-        $routeGroupStack = \Route::getGroupStack();
-
         // get the last element of the stack
-        $lastRouteOfStack = end($routeGroupStack);
+        $lastRouteOfStack = $this->getLastRouteOfStack();
 
         // build the element namespace
-        $controllerFqn = '\\'.ltrim(($lastRouteOfStack['namespace'].'\\'.$this->controller), '\\');
+        $controllerFqn = $this->buildFqn($lastRouteOfStack['namespace'], $this->controller);
 
         // get the actions of the controller
         $controllerActions = $this->getControllerActions($controllerFqn);
 
         // cycle the routes of the action
         foreach ($controllerActions as $controllerAction) {
-            $controllerActionInstance = \App::make($controllerAction);
+
+            // build action instance
+            $controllerActionInstance = App::make($controllerAction);
 
             foreach ($controllerActionInstance->getRoutes() as $route) {
 
                 // optional id / route controller name / route action name
                 $routePath = ($controllerActionInstance->actionRequireIdParam == true ? '{id?}' : '').'/'.$this->name.($controllerActionInstance->actionRoutePrefix == true ? '/'.$controllerActionInstance->getName() : '').'/'.$route['name'];
-
-                // controller fqn
-                $controllerFqn = '\\'.ltrim($controllerFqn, '\\');
 
                 // controller method
                 $controllerMethod = '\\'.ltrim($controllerAction, '\\').'@'.$route['function'];
@@ -72,14 +69,20 @@ class CrudRouter
                 $routeName = 'SickCRUD.'.$this->name.($controllerActionInstance->actionRoutePrefix == true ? '.'.$controllerActionInstance->getName() : '').($route['name'] ? '.'.$route['name'] : null);
 
                 // name them just once
-                if (! \Route::has($routeName)) {
+                if (! Route::has($routeName)) {
                     $routeOptions['as'] = $routeName;
                 }
 
                 // declare the route
-                \Route::{$route['method']}($routePath, $routeOptions);
+                Route::{$route['method']}($routePath, $routeOptions);
+
             }
+
+            // destroy action instance
+            unset($controllerActionInstance);
+
         }
+
     }
 
     /**
@@ -91,7 +94,7 @@ class CrudRouter
     public function getControllerActions(string $controllerFqn)
     {
         // we build an instance of the controller
-        $controllerInstance = \App::make($controllerFqn);
+        $controllerInstance = App::make($controllerFqn);
 
         // store the actions
         $controllerActions = $controllerInstance->getActions();
@@ -101,6 +104,35 @@ class CrudRouter
 
         // controller actions
         return $controllerActions;
+    }
+
+    /**
+     * Get the last route from router.
+     *
+     * @return mixed
+     */
+    public function getLastRouteOfStack()
+    {
+
+        // get the route group stack
+        $routeGroupStack = Route::getGroupStack();
+
+        // get the last element of the stack
+        $lastRouteOfStack = end($routeGroupStack);
+
+        return $lastRouteOfStack;
+    }
+
+    /**
+     * Build the fully qualified class name.
+     *
+     * @param string $namespace
+     * @param string $class
+     * @return string
+     */
+    public function buildFqn(string $namespace, string $class)
+    {
+        return '\\'.ltrim(($namespace.'\\'.$class), '\\');
     }
 
     /**

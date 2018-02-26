@@ -2,7 +2,6 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-
 class ActionNameTest extends BaseActionTest
 {
     /**
@@ -28,5 +27,4 @@ class ActionNameTest extends BaseActionTest
         // should be equal to the new name set
         $this->assertEquals($newActionName, $this->action->getName(), 'There was an error with the custom action name.');
     }
-
 }

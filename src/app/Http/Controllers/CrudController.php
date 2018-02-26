@@ -3,15 +3,13 @@
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
 // Core imports.
-use Illuminate\Foundation\Validation\ValidatesRequests;
-
-// SickCRUD specific imports.
 use SickCRUD\CRUD\Core\CrudPanel;
+// SickCRUD specific imports.
 use SickCRUD\CRUD\Core\Traits\ViewData;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CrudController extends BaseController
 {
-
     use ValidatesRequests;
     use ViewData;
 
@@ -104,7 +102,6 @@ class CrudController extends BaseController
      */
     public function crudStartup()
     {
-
     }
 
     /**
@@ -114,7 +111,7 @@ class CrudController extends BaseController
      */
     public function getActions()
     {
-        return (array)$this->actions;
+        return (array) $this->actions;
     }
 
     /**
@@ -154,5 +151,4 @@ class CrudController extends BaseController
             $this->crud->request = $request;
         }
     }
-
 }

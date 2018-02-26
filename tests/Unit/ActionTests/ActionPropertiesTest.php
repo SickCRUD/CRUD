@@ -2,7 +2,6 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-
 class ActionPropertiesTest extends BaseActionTest
 {
     /**

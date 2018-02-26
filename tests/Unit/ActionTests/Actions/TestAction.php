@@ -3,14 +3,13 @@
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests\Actions;
 
 use SickCRUD\CRUD\Core\Actions\Action;
+
 /**
  * Class TestAction extending the package action.
- * @package SickCRUD\CRUD\Tests\Unit\Actions
  */
 class TestAction extends Action
 {
-
-// override default values
+    // override default values
     public $actionRequireIdParam = true;
     public $actionRoutePrefix = true;
 
@@ -87,5 +86,4 @@ class TestAction extends Action
     {
         return '// some kind of response';
     }
-
 }

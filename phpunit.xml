@@ -15,4 +15,11 @@
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <exclude>
+                <file>./src/CrudRouter.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
 </phpunit>

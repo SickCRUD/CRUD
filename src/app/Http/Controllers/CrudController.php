@@ -65,21 +65,20 @@ class CrudController extends BaseController
      */
     public function __call($method, $arguments)
     {
-
         // declare the SickCall match pattern
         $action = explode('@', $method);
 
         // get the calling class
         $actionClass = $action[0];
 
+        // get the calling method
+        $actionMethod = $action[1];
+
         // return the actual function of the instantiated action
         $actionInstance = \App::make($actionClass);
 
         // check if there's the ability to call this specific action
-        $this->crud->hasAccessToActionOrFail($actionInstance->getActionName());
-
-        // get the calling method
-        $actionMethod = $action[1];
+        $this->crud->hasAccessToActionOrFail($actionInstance->getName());
 
         // if the called action does not extend the Action class then throw an exception
         if (! is_subclass_of($actionInstance, \SickCRUD\CRUD\Core\Actions\Action::class)) {

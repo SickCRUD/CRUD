@@ -33,7 +33,7 @@ abstract class Action
     public function getName()
     {
         // get the class that is going to extend
-        $actionParentClassBasename = basename(get_parent_class(static::class));
+        $actionParentClassBasename = substr(strrchr(get_parent_class(static::class), "\\"), 1);
         // remove the class suffix if contained to get the action name
         return $this->actionName ? $this->actionName : strtolower(str_replace($actionParentClassBasename, '', class_basename(static::class)));
     }

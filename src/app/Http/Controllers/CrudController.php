@@ -2,16 +2,25 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
+// Core imports.
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+// SickCRUD specific imports.
 use SickCRUD\CRUD\Core\CrudPanel;
+use SickCRUD\CRUD\Core\Traits\ViewData;
 
 class CrudController extends BaseController
 {
+
+    use ValidatesRequests;
+    use ViewData;
+
     /**
      * Declare all the actions of the controllers (array of classes).
      *
      * @var array
      */
-    protected static $actions = [];
+    protected $actions = [];
 
     /**
      * It contains the crud panel object.
@@ -38,7 +47,7 @@ class CrudController extends BaseController
                 // set the request where it should be
                 $this->setRequest($request);
                 // run the setup function
-                $this->crudSetup();
+                $this->crudStartup();
 
                 return $next($request);
             });
@@ -58,22 +67,19 @@ class CrudController extends BaseController
     {
 
         // declare the SickCall match pattern
-        $callRegexPattern = '/(.*)@(.*)/';
-
-        // extract the results
-        preg_match_all($callRegexPattern, $method, $callMatches);
+        $action = explode('@', $method);
 
         // get the calling class
-        $actionClass = reset($callMatches[1]);
-
-        // check if there's the ability to call this specific action
-        $this->crud->hasAccessToActionOrFail(call_user_func([$actionClass, 'getActionName']));
-
-        // get the calling method
-        $actionMethod = reset($callMatches[2]);
+        $actionClass = $action[0];
 
         // return the actual function of the instantiated action
-        $actionInstance = (new $actionClass);
+        $actionInstance = \App::make($actionClass);
+
+        // check if there's the ability to call this specific action
+        $this->crud->hasAccessToActionOrFail($actionInstance->getActionName());
+
+        // get the calling method
+        $actionMethod = $action[1];
 
         // if the called action does not extend the Action class then throw an exception
         if (! is_subclass_of($actionInstance, \SickCRUD\CRUD\Core\Actions\Action::class)) {
@@ -97,18 +103,19 @@ class CrudController extends BaseController
      *
      * @return void
      */
-    public function crudSetup()
+    public function crudStartup()
     {
+
     }
 
     /**
-     * Static function to get all the actions in the controller.
+     * Function to get all the actions in the controller.
      *
      * @return array
      */
-    public static function getControllerActions()
+    public function getActions()
     {
-        return (array) static::$actions;
+        return (array)$this->actions;
     }
 
     /**
@@ -116,11 +123,19 @@ class CrudController extends BaseController
      *
      * @return array
      */
-    public static function getControllerActionsRoutes()
+    public function getControllerActionsRoutes()
     {
         $routes = [];
-        foreach (static::$actions as $action) {
-            $routes = array_merge($routes, $action::getRoutes());
+
+        foreach ($this->actions as $action) {
+            // instantiate the current action
+            $actionInstance = \App::make($action);
+
+            // push the routes
+            $routes = array_merge($routes, $actionInstance->getRoutes());
+
+            // unset the instatiated class
+            unset($actionInstance);
         }
 
         return $routes;
@@ -140,4 +155,5 @@ class CrudController extends BaseController
             $this->crud->request = $request;
         }
     }
+
 }

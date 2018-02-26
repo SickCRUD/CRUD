@@ -15,6 +15,7 @@ class ActionNameTest extends BaseActionTest
 
     /**
      * Try to set another name and then check if it's correct.
+     * It could seem an useless test but it's not because some kinds modifiers can be applied while setting the variable.
      */
     public function testGetModifiedActionName()
     {

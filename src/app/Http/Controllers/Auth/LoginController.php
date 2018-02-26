@@ -30,7 +30,7 @@ class LoginController extends BaseController
         $this->middleware('guest', ['except' => 'logout']);
 
         // redirect here after successful login
-        // TODO: Change with URL::route()
+        // TODO: Change with URL::route()?
         $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo : SickCRUD_url('dasboard');
 
         // redirect after logout

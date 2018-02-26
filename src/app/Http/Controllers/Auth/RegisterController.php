@@ -26,7 +26,7 @@ class RegisterController extends BaseController
     protected $user = null;
 
     /**
-     * RegisterController constructor.
+     * Create a new controller instance.
      *
      * @return void
      */

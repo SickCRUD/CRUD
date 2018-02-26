@@ -45,8 +45,6 @@ class CrudRouter
         // get the actions of the controller
         $controllerActions = $this->getControllerActions($controllerFqn);
 
-        // $controllerActions = $controllerFqn::getControllerActions();
-
         // cycle the routes of the action
         foreach ($controllerActions as $controllerAction) {
 

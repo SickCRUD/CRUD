@@ -4,7 +4,7 @@ namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
 use SickCRUD\CRUD\Core\Actions\Action;
 use SickCRUD\CRUD\Tests\BaseTest;
-use SickCRUD\CRUD\Tests\Unit\Actions\TestAction;
+use SickCRUD\CRUD\Tests\Unit\ActionTests\Actions\TestAction;
 
 /**
  * Class BaseActionTest.

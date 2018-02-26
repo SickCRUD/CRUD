@@ -2,6 +2,9 @@
 
 namespace SickCRUD\CRUD;
 
+// Laravel
+use Illuminate\Support\Facades\Route;
+
 class CrudRouter
 {
     /**
@@ -139,13 +142,26 @@ class CrudRouter
      */
     private function registerExtraRoutes()
     {
-        foreach ($this->extraRoutes as $route) {
-            if (is_string($route)) {
-                $this->{$route}();
-            } else {
-                $route();
+
+        // group with a prefix
+        Route::group(
+            [
+                'prefix' => $this->name
+            ],
+            function () {
+
+                // cycle and call all the functions
+                foreach ($this->extraRoutes as $route) {
+                    if (is_string($route)) {
+                        $this->{$route}();
+                    } else {
+                        $route();
+                    }
+                }
+
             }
-        }
+        );
+
     }
 
     /**

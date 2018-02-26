@@ -2,12 +2,6 @@
 
 namespace SickCRUD\CRUD\Core\Actions;
 
-/**
- * Class Action
- * The base class that will be extended to create all the new actions.
- *
- * @package SickCRUD\CRUD\Core\Actions
- */
 abstract class Action
 {
     /**

@@ -7,7 +7,7 @@ trait Read
     /**
      * Find and retrieve an entry in the database or fail.
      *
-     * @param int|string The id of the row to fetch
+     * @param int|string The id of the row to fetch.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */

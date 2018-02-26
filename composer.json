@@ -15,15 +15,20 @@
     },
     "minimum-stability": "RC",
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.0.13"
+    },
+    "require-dev": {
+        "laravel/dusk": "^2.0",
+        "phpunit/phpunit": "^7",
+        "orchestra/testbench": "~3.0"
     },
     "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-4": {
             "SickCRUD\\CRUD\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
@@ -41,9 +46,7 @@
             }
         }
     },
-    "require-dev": {
-        "laravel/dusk": "^2.0",
-        "phpunit/phpunit": "@stable",
-        "orchestra/testbench": "~3.0"
+    "scripts": {
+        "test": "composer update && phpunit"
     }
 }

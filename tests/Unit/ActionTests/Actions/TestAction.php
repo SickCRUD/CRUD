@@ -1,6 +1,6 @@
 <?php
 
-namespace SickCRUD\CRUD\Tests\Unit\Actions;
+namespace SickCRUD\CRUD\Tests\Unit\ActionTests\Actions;
 
 use SickCRUD\CRUD\Core\Actions\Action;
 /**

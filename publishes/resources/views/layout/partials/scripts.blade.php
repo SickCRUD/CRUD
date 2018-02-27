@@ -1,5 +1,9 @@
 {{-- <script src="{{ URL::asset('') }}"></script> --}}
 
+@if(SickCRUD_config('general', 'login-reCaptcha', false) || SickCRUD_config('general', 'register-reCaptcha', false))
+    {!! NoCaptcha::renderJs(App::getLocale()) !!}
+@endif
+
 @foreach(SickCRUD_config('layout', 'optional-plugins') as $optionalPlugin)
     @php
         $optionalPluginScripts = SickCRUD_config('layout', 'optional-plugins-list' . '.' . $optionalPlugin);

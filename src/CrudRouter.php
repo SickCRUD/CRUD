@@ -29,8 +29,6 @@ class CrudRouter
      *
      * @param string $name
      * @param string $controller
-     *
-     * @return void
      */
     public function __construct($name, $controller)
     {
@@ -89,6 +87,7 @@ class CrudRouter
      * Get the controller actions.
      *
      * @param string $controllerFqn
+     *
      * @return array
      */
     public function getControllerActions(string $controllerFqn)
@@ -113,7 +112,6 @@ class CrudRouter
      */
     public function getLastRouteOfStack()
     {
-
         // get the route group stack
         $routeGroupStack = Route::getGroupStack();
 
@@ -130,7 +128,7 @@ class CrudRouter
      * @param string $class
      * @return string
      */
-    public function buildFqn(string $namespace, string $class)
+    protected function buildFqn(string $namespace, string $class)
     {
         return '\\'.ltrim(($namespace.'\\'.$class), '\\');
     }
@@ -140,6 +138,7 @@ class CrudRouter
      * From: https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L84.
      *
      * @param mixed $injectables
+     *
      * @return mixed
      */
     public function with($injectables)
@@ -169,7 +168,6 @@ class CrudRouter
      */
     private function registerExtraRoutes()
     {
-
         // group with a prefix
         Route::group(
             [

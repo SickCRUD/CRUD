@@ -59,6 +59,7 @@ class CrudController extends BaseController
      * @param array  $arguments
      *
      * @return mixed
+     *
      * @throws \Exception if the method on the action does not exists or if the the passed class does not extend the action.
      */
     public function __call($method, $arguments)

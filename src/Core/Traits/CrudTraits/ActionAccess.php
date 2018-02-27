@@ -60,6 +60,7 @@ trait ActionAccess
      * Check if tha action can be executed, if not than throw exception.
      *
      * @param string $actionName
+     *
      * @return bool
      *
      * @throws \Exception

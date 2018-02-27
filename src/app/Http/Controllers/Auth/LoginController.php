@@ -21,8 +21,6 @@ class LoginController extends BaseController
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -57,6 +55,7 @@ class LoginController extends BaseController
      * Validate the user login request.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return void
      */
     protected function validateLogin(Request $request)

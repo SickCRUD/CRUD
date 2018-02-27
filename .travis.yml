@@ -1,11 +1,16 @@
+sudo: required
 language: php
 
 php:
   - 7.0
   - 7.1
   - 7.2
+  - nightly
 
-sudo: false
+before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
 
 install: travis_retry composer install --no-interaction --prefer-source
 

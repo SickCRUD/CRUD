@@ -54,6 +54,28 @@ class LoginController extends BaseController
     }
 
     /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     */
+    protected function validateLogin(Request $request)
+    {
+        // declare validation rules
+        $validationRules = [
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ];
+
+        // if the captcha is config enabled
+        if(SickCRUD_config('general', 'login-reCaptcha') == true) {
+            $validationRules['g-recaptcha-response'] = 'required|captcha';
+        }
+
+        $request->validate($validationRules);
+    }
+
+    /**
      * Uses the default Laravel logout and then redirect to custom route.
      *
      * @param Request $request

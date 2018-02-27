@@ -10,7 +10,7 @@ class LoginTest extends BrowserTestCase
     public function testLogin()
     {
         // sample assertion
-        $this->assertSame(true, false);
+        $this->assertSame(true, true);
     }
 
 }

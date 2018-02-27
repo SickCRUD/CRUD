@@ -1,6 +1,6 @@
 <?php
 
-namespace SickCRUD\CRUD\Tests\Auth;
+namespace SickCRUD\CRUD\Tests\Browser\Auth;
 
 // Laravel
 use Laravel\Dusk\Browser;

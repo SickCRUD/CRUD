@@ -157,6 +157,10 @@ class SickCrudServiceProvider extends ServiceProvider
             'SickCRUD.crud'
         );
         $this->mergeConfigFrom(
+            dirname(__DIR__, 1).'/publishes/config/SickCRUD/general.php',
+            'SickCRUD.general'
+        );
+        $this->mergeConfigFrom(
             dirname(__DIR__, 1).'/publishes/config/SickCRUD/layout.php',
             'SickCRUD.layout'
         );

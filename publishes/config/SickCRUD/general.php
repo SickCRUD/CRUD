@@ -11,4 +11,8 @@ return [
     // this is shown on error pages, leave it empty or false to hide it (it should be an email)
     'technical-contact' => '',
 
+    // should be reCaptcha enabled in login and registration forms? (Remember to set NOCAPTCHA_SECRET and NOCAPTCHA_SITEKEY in the .env file
+    'login-reCaptcha' => true,
+    'register-reCaptcha' => true
+
 ];

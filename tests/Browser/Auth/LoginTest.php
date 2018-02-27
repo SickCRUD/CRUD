@@ -20,7 +20,8 @@ class LoginTest extends BrowserTestCase
 
         // run browser
         $this->browse(function (Browser $browser) {
-            $browser->visit('test-route')->dump();
+            $browser->visit('sick-crud/login')
+                ->assertSee('Login');
         });
 
     }

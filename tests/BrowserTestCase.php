@@ -63,6 +63,11 @@ abstract class BrowserTestCase extends TestCase
         // set default language
         $app['config']->set('app.locale', 'en');
 
+        // testing route
+        $app['router']->get('test-route', function (){
+            return 'test-route';
+        });
+
     }
 
     /**

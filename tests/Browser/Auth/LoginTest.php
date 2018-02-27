@@ -1,5 +1,7 @@
 <?php
 
+namespace SickCRUD\CRUD\Tests\Auth;
+
 // Laravel
 use Laravel\Dusk\Browser;
 
@@ -16,9 +18,9 @@ class LoginTest extends BrowserTestCase
         // $response = $this->get('/');
         // $response->assertStatus(404);
 
+        // run browser
         $this->browse(function (Browser $browser) {
-            $browser->visit('sick-crud/login')
-                ->assertSee('Login');
+            $browser->visit('test-route')->dump();
         });
 
     }

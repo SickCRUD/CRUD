@@ -15,7 +15,8 @@
     },
     "minimum-stability": "RC",
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "anhskohbo/no-captcha": "^3.0"
     },
     "require-dev": {
         "laravel/dusk": "^2.0",

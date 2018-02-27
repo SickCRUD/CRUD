@@ -38,7 +38,7 @@
                         @endif
                     </div>
 
-                    @if(SickCRUD_config('general', 'login-reCaptcha', false))
+                    @if(SickCRUD_config('general', 'login-reCaptcha', false) === true)
                         <div class="form-group">
                             {!! NoCaptcha::display() !!}
                             @if ($errors->has('g-recaptcha-response'))

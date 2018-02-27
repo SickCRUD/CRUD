@@ -6,6 +6,8 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Orchestra\Testbench\Dusk\TestCase;
 
+use SickCRUD\CRUD\SickCrudServiceProvider;
+
 abstract class BrowserTestCase extends TestCase
 {
 
@@ -14,7 +16,36 @@ abstract class BrowserTestCase extends TestCase
      */
     protected function setUp()
     {
+        $this->prepareSqLite();
         parent::setUp();
+    }
+
+    /**
+     * Add the package providers used.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array
+     */
+    protected function getPackageProviders($app)
+    {
+        return [
+            SickCrudServiceProvider::class
+        ];
+    }
+
+    /**
+     * Added test aliases.
+     *
+     * @param \Illuminate\Foundation\Application $app
+     *
+     * @return array
+     */
+    protected function getPackageAliases($app)
+    {
+        return [
+            'SickCRUD' => SickCrudServiceProvider::class
+        ];
     }
 
     /**
@@ -28,6 +59,10 @@ abstract class BrowserTestCase extends TestCase
     {
         // use sqlitedb
         $app['config']->set('database.default', 'sqlite');
+
+        // set default language
+        $app['config']->set('app.locale', 'en');
+
     }
 
     /**
@@ -35,18 +70,18 @@ abstract class BrowserTestCase extends TestCase
      *
      * @return void
      */
-    public function prepareSqLite()
+    protected function prepareSqLite()
     {
-        // instantiate process
-        $process = new Process('php ../vendor/orchestra/testbench-core/create-sqlite-db');
 
-        // run it
-        $process->run(function ($type, $buffer) {
+        $directory = 'vendor/orchestra/testbench-dusk/laravel/database';
 
-        });
+        if (! file_exists($directory . '/database.sqlite')) {
+            $sqliteCreated = touch($directory .'/database.sqlite');
 
-        // assert process succesful
-        $this->assertSame(true, $process->isSuccessful(), 'Failed SqLite prepare.');
+            // assert process succesful
+            $this->assertSame(true, $sqliteCreated, 'Failed SqLite prepare.');
+
+        }
 
     }
 

@@ -10,7 +10,6 @@ use SickCRUD\CRUD\SickCrudServiceProvider;
 
 abstract class BrowserTestCase extends TestCase
 {
-
     /**
      * Setup the test environment.
      */
@@ -78,7 +77,7 @@ abstract class BrowserTestCase extends TestCase
     protected function prepareSqLite()
     {
 
-        $directory = 'vendor/orchestra/testbench-dusk/laravel/database';
+        $directory = __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel/database';
 
         if (! file_exists($directory . '/database.sqlite')) {
             $sqliteCreated = touch($directory .'/database.sqlite');

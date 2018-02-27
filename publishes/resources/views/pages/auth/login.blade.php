@@ -41,6 +41,11 @@
                     @if(SickCRUD_config('general', 'login-reCaptcha', false))
                         <div class="form-group">
                             {!! NoCaptcha::display() !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('g-recaptcha-response') }}
+                                </div>
+                            @endif
                         </div>
                     @endif
 

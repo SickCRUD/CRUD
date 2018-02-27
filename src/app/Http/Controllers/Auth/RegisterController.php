@@ -81,12 +81,20 @@ class RegisterController extends BaseController
      */
     public function validateRegister(Request $request)
     {
+        // declare validation rules
+        $validationRules = [
+            'name'     => 'required',
+            'email'    => 'required|email|unique:'.$this->user->getTable(),
+            'password' => 'required|confirmed',
+        ];
+
+        // if the captcha is config enabled
+        if(SickCRUD_config('general', 'register-reCaptcha') == true) {
+            $validationRules['g-recaptcha-response'] = 'required|captcha';
+        }
+
         // return the validated response
-        return $request->validate([
-            'name'     => 'required|max:255',
-            'email'    => 'required|email|max:255|unique:'.$this->user->getTable(),
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return $request->validate($validationRules);
     }
 
     /**

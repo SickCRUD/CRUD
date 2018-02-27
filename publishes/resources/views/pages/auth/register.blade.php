@@ -56,6 +56,12 @@
                         @endif
                     </div>
 
+                    @if(SickCRUD_config('general', 'register-reCaptcha', false))
+                        <div class="form-group">
+                            {!! NoCaptcha::display() !!}
+                        </div>
+                    @endif
+
                     <div class="row no-gutters align-items-center justify-content-between">
 
                         <div class="form-check mx-auto">

@@ -36,6 +36,9 @@ class RegisterController extends BaseController
         // build the user default model class
         $userFqn = SickCRUD_config('crud', 'user-fqn');
         $this->user = new $userFqn();
+
+        // change redirect
+        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo : SickCRUD_url('dashboard');
     }
 
     /**

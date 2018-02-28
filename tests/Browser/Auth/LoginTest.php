@@ -27,11 +27,11 @@ class LoginTest extends BrowserTestCase
 
         // run browser
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit('/' . $this->routePrefix . '/login')
+            $browser->visit($this->buildUrl('login'))
                 ->type('email', $user->email)
                 ->type('password', 'secret')
                 ->press('LOGIN')
-                ->assertPathIs('/' . $this->routePrefix . '/dashboard');
+                ->assertPathIs($this->buildUrl('dashboard'));
         });
 
     }

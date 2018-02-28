@@ -183,4 +183,15 @@ abstract class BrowserTestCase extends TestCase
         }
     }
 
+    /**
+     * Build the prefixe URL.
+     *
+     * @param string|null $url
+     * @return string
+     */
+    protected function buildUrl(string $url = null)
+    {
+        return '/' . $this->routePrefix . '/' . ltrim($url, '/');
+    }
+
 }

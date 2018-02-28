@@ -65,13 +65,13 @@ class CrudController extends BaseController
     public function __call($method, $arguments)
     {
         // declare the SickCall match pattern
-        $action = explode('@', $method);
+        $action = explode('@', $method, 2);
 
         // get the calling class
-        $actionClass = $action[0];
+        $actionClass = reset($action);
 
         // get the calling method
-        $actionMethod = $action[1];
+        $actionMethod = end($action);
 
         // return the actual function of the instantiated action
         $actionInstance = \App::make($actionClass);

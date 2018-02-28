@@ -53,7 +53,7 @@ class SickCrudServiceProvider extends ServiceProvider
         $this->loadMiddlewares($router);
 
         // Set the default schema string length if necessary
-        if (SickCRUD_config('crud', 'change-schema-string-length') == true) {
+        if (SickCRUD_config('crud', 'change-schema-string-length') === true) {
             $this->setSchemaStringLength();
         }
     }

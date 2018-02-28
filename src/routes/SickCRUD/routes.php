@@ -5,7 +5,7 @@ $middlewares = [
     'web'
 ];
 
-if(SickCRUD_config('crud', 'force-https') == true) {
+if(SickCRUD_config('crud', 'force-https') === true) {
     $middlewares[] = 'ForceHttps';
 }
 
@@ -18,7 +18,7 @@ Route::group(
     function () {
 
         // if is strictly trues
-        if (SickCRUD_config('crud', 'setup-auth-routes') == true) {
+        if (SickCRUD_config('crud', 'setup-auth-routes') === true) {
             // authentication
             Route::get('login', [
                 'as' => 'SickCRUD.auth.login',
@@ -33,7 +33,7 @@ Route::group(
         }
 
         // registration
-        if (SickCRUD_config('crud', 'setup-register-routes') == true) {
+        if (SickCRUD_config('crud', 'setup-register-routes') === true) {
             Route::get('register', [
                 'as' => 'SickCRUD.auth.register',
                 'uses' => 'Auth\RegisterController@show',

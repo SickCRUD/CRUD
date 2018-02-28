@@ -38,7 +38,7 @@ abstract class BrowserTestCase extends TestCase
         parent::setUp();
 
         $this->prepareSqLite();
-        $this->withFactories(__DIR__ . '/app/factories');
+        $this->withFactories(__DIR__ . '/app/Factories');
         $this->loadLaravelMigrations(config('database.default'));
 
     }

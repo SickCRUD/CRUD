@@ -24,12 +24,23 @@ abstract class BrowserTestCase extends TestCase
     public static $laravelDuskPublicFolder = __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel/public/';
 
     /**
+     * It contains the route prefix.
+     *
+     * @var string
+     */
+    protected $routePrefix;
+
+    /**
      * Setup the test environment.
      */
     protected function setUp()
     {
-        $this->prepareSqLite();
         parent::setUp();
+
+        $this->prepareSqLite();
+        $this->withFactories(__DIR__ . '/factories');
+        $this->loadLaravelMigrations(config('database.default'));
+
     }
 
     /**
@@ -73,6 +84,19 @@ abstract class BrowserTestCase extends TestCase
     {
         // set default language
         $app['config']->set('app.locale', 'en');
+
+        // set the route prefix
+        $this->routePrefix = 'test';
+        $app['config']->set('SickCRUD.crud.route-prefix', $this->routePrefix);
+
+        // set default user model
+        $app['config']->set('SickCRUD.crud.user-fqn', \Illuminate\Foundation\Auth\User::class);
+
+        // disable the captcha since no app keys are set
+        $testReCaptcha = false;
+        $app['config']->set('SickCRUD.general.login-reCaptcha', $testReCaptcha);
+        $app['config']->set('SickCRUD.general.register-reCaptcha', $testReCaptcha);
+
     }
 
     /**

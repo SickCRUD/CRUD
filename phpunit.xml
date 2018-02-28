@@ -20,6 +20,7 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>src/App/Http/Controllers/Auth</directory>
             <directory>src/Core/Actions</directory>
         </whitelist>
     </filter>

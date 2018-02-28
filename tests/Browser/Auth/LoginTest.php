@@ -4,10 +4,9 @@ namespace SickCRUD\CRUD\Tests\Browser\Auth;
 
 // Laravel
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Auth\User;
-
+// SickCRUD
 use SickCRUD\CRUD\Tests\BrowserTestCase;
+use SickCRUD\CRUD\Tests\App\Models\User;
 
 class LoginTest extends BrowserTestCase
 {

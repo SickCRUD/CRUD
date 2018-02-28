@@ -1,8 +1,9 @@
 <?php
 
 use Faker\Generator as Faker;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
+// SickCRUD
+use SickCRUD\CRUD\Tests\App\Models\User;
 
 /*
 |--------------------------------------------------------------------------

@@ -17,7 +17,7 @@
 
         <ul class="navbar-nav d-flex flex-row ml-auto">
 
-            @if (SickCRUD_config('crud', 'setup-auth-routes') == true)
+            @if (SickCRUD_config('crud', 'setup-auth-routes') === true)
 
                 @if (Auth::guest())
 

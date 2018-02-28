@@ -90,7 +90,7 @@ class RegisterController extends BaseController
         ];
 
         // if the captcha is config enabled
-        if(SickCRUD_config('general', 'register-reCaptcha') == true) {
+        if(SickCRUD_config('general', 'register-reCaptcha') === true) {
             $validationRules['g-recaptcha-response'] = 'required|captcha';
         }
 

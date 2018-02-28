@@ -2,11 +2,13 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
+// Laravel
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\App;
 // Core imports.
 use SickCRUD\CRUD\Core\CrudPanel;
 // SickCRUD specific imports.
 use SickCRUD\CRUD\Core\Traits\ViewData;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CrudController extends BaseController
 {
@@ -40,7 +42,7 @@ class CrudController extends BaseController
     public function __construct()
     {
         if (! $this->crud) {
-            $this->crud = \App::make(CrudPanel::class);
+            $this->crud = App::make(CrudPanel::class);
             $this->middleware(function ($request, $next) {
                 // set the request where it should be
                 $this->setRequest($request);
@@ -74,7 +76,7 @@ class CrudController extends BaseController
         $actionMethod = end($action);
 
         // return the actual function of the instantiated action
-        $actionInstance = \App::make($actionClass);
+        $actionInstance =App::make($actionClass);
 
         // check if there's the ability to call this specific action
         $this->crud->hasAccessToActionOrFail($actionInstance->getName());
@@ -126,7 +128,7 @@ class CrudController extends BaseController
 
         foreach ($this->actions as $action) {
             // instantiate the current action
-            $actionInstance = \App::make($action);
+            $actionInstance = App::make($action);
 
             // push the routes
             $routes = array_merge($routes, $actionInstance->getRoutes());

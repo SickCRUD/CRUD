@@ -29,7 +29,7 @@ class LoginController extends BaseController
 
         // redirect here after successful login
         // TODO: Change with URL::route()?
-        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo : SickCRUD_url('dasboard');
+        $this->redirectTo = property_exists($this, 'redirectTo') ? $this->redirectTo : SickCRUD_url('dashboard');
 
         // redirect after logout
         $this->redirectAfterLogout = URL::route('SickCRUD.auth.login');

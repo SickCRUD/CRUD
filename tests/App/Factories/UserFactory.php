@@ -1,5 +1,7 @@
 <?php
 
+namespace SickCRUD\CRUD\Tests\App\Factories;
+
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 // SickCRUD

@@ -5,7 +5,7 @@ namespace SickCRUD\CRUD;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use SickCRUD\CRUD\App\Http\Middleware\ForceHttps;
-use SickCRUD\CRUD\Core\Console\CrudPublishCommand;
+use SickCRUD\CRUD\Core\Console\CrudInstallCommand;
 
 class SickCrudServiceProvider extends ServiceProvider
 {
@@ -70,7 +70,7 @@ class SickCrudServiceProvider extends ServiceProvider
         // if the app is in console
         if ($this->app->runningInConsole()) {
             $this->commands([
-                CrudPublishCommand::class,
+                CrudInstallCommand::class,
             ]);
         }
 

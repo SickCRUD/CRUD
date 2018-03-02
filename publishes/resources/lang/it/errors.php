@@ -1,7 +1,7 @@
 <?php
 
 /**
- * SickCRUD EN Errors translations.
+ * SickCRUD IT Errors translations.
  */
 return [
 

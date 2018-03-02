@@ -14,5 +14,4 @@ return [
     'error' => 'Error',
     'technical_contact' => 'Technical contact',
 
-
 ];

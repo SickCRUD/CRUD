@@ -94,6 +94,11 @@ class RegisterController extends BaseController
             $validationRules['g-recaptcha-response'] = 'required|captcha';
         }
 
+        // if the tos are config enabled
+        if(SickCRUD_config('general', 'register-require-tos') === true) {
+            $validationRules['tos'] = 'required';
+        }
+
         // return the validated response
         return $request->validate($validationRules);
     }

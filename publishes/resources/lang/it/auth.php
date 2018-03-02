@@ -19,6 +19,8 @@ return [
         'register' => 'Registrazione',
     ],
 
-    'register-account' => 'Registra il tuo account.'
+    'register-account' => 'Registra il tuo account.',
+    'tos-read-and-accept' => 'Ho letto ed accetto i',
+    'tos-terms-and-conditions' => 'termini e le condizioni'
 
 ];

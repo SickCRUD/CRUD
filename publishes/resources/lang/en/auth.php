@@ -20,5 +20,7 @@ return [
     ],
 
     'register-account' => 'Register your account.',
+    'tos-read-and-accept' => 'I read and accept',
+    'tos-terms-and-conditions' => 'terms and conditions'
 
 ];

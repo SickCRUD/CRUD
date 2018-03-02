@@ -67,15 +67,11 @@
                         </div>
                     @endif
 
-                    <div class="row no-gutters align-items-center justify-content-between">
+                    @if(SickCRUD_config('general', 'register-require-tos', false) === true)
 
-                        <div class="form-check mx-auto">
-                            <label class="form-check-label">
-                                <input type="checkbox" name="remember" class="form-check-input"> I read and accept <a href="">terms and conditions</a>
-                            </label>
-                        </div>
+                        @include('SickCRUD::pages.auth.partials.tos')
 
-                    </div>
+                    @endif
 
                     <button type="submit" class="submit-button btn btn-block btn-primary my-4 mx-auto">{{ Lang::get('SickCRUD::auth.actions.register') }}</button>
 

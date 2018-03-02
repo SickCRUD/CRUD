@@ -5,19 +5,20 @@
  */
 return [
 
+    'actions' => [
+        'forgot_password' => 'Forgot Password?',
+        'login' => 'Login',
+        'logout' => 'Logout',
+        'register' => 'Register',
+    ],
+
+    'login-into-account' => 'Login into your account.',
+
     'pages' => [
         'login' => 'Login',
         'register' => 'Register',
     ],
 
-    'actions' => [
-        'login' => 'Login',
-        'logout' => 'Logout',
-        'register' => 'Register',
-        'forgot_password' => 'Forgot Password?',
-    ],
-
-    'login-into-account' => 'Login into your account.',
-    'register-account' => 'Login into your account.'
+    'register-account' => 'Register your account.',
 
 ];

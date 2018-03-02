@@ -12,6 +12,10 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
 
+matrix:
+    allow_failures:
+        - php: nightly
+
 install: travis_retry composer install --no-interaction --prefer-source
 
 script: vendor/bin/phpunit --coverage-clover=coverage.xml

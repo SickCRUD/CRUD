@@ -16,6 +16,6 @@ return [
     'register-reCaptcha' => false,
 
     // should SickCRUD answer to accept custom TOS while registering? (override pages.auth.partials.tos partial)
-    'register-require-tos' => true
+    'register-require-tos' => false
 
 ];

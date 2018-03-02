@@ -22,13 +22,13 @@
                 @if (Auth::guest())
 
                     <li class="nav-item {{ URL::current() == URL::route('SickCRUD.auth.login') ? 'active' : '' }}">
-                        <a class="nav-link p-2" href="{{ URL::route('SickCRUD.auth.login') }}">{{ Lang::get('SickCRUD::misc.pages.login') }} <span class="sr-only">({{ Lang::get('SickCRUD::misc.current') }})</span></a>
+                        <a class="nav-link p-2" href="{{ URL::route('SickCRUD.auth.login') }}">{{ Lang::get('SickCRUD::auth.pages.login') }} <span class="sr-only">({{ Lang::get('SickCRUD::misc.current') }})</span></a>
                     </li>
 
                     @if (SickCRUD_config('crud', 'setup-register-routes'))
 
                         <li class="nav-item {{ URL::current() == URL::route('SickCRUD.auth.register') ? 'active' : '' }}">
-                            <a class="nav-link p-2" href="{{ URL::route('SickCRUD.auth.register') }}">{{ Lang::get('SickCRUD::misc.pages.register') }} <span class="sr-only">({{ Lang::get('SickCRUD::misc.current') }})</span></a>
+                            <a class="nav-link p-2" href="{{ URL::route('SickCRUD.auth.register') }}">{{ Lang::get('SickCRUD::auth.pages.register') }} <span class="sr-only">({{ Lang::get('SickCRUD::misc.current') }})</span></a>
                         </li>
 
                     @endif
@@ -37,7 +37,7 @@
 
                     <li class="nav-item">
                         <a href="{{ URL::route('SickCRUD.auth.logout') }}" class="nav-link">
-                            <i class="fa fa-btn fa-sign-out"></i> {{ trans('SickCRUD::misc.') }}
+                            <i class="fa fa-btn fa-sign-out"></i> {{ trans('SickCRUD::auth.actions.logout') }}
                         </a>
                     </li>
 

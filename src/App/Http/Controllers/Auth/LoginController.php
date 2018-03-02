@@ -43,7 +43,7 @@ class LoginController extends BaseController
     public function show()
     {
         // set the page title
-        $this->setPageTitle(Lang::get('SickCRUD::misc.pages.login'));
+        $this->setPageTitle(Lang::get('SickCRUD::auth.pages.login'));
 
         // set the page body class
         $this->setBodyClass('auth-page');

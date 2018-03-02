@@ -49,7 +49,7 @@ class RegisterController extends BaseController
     public function show()
     {
         // set the page title
-        $this->setPageTitle(Lang::get('SickCRUD::misc.pages.register'));
+        $this->setPageTitle(Lang::get('SickCRUD::auth.pages.register'));
 
         // set the page body class
         $this->setBodyClass('auth-page');

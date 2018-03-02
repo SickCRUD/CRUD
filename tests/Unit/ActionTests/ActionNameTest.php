@@ -2,7 +2,7 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-class ActionNameTest extends BaseActionTest
+class ActionNameTest extends BaseActionTestCase
 {
     /**
      * Check if the extracted name is correct (from class name).

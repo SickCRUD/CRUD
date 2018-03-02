@@ -2,7 +2,7 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-class ActionRoutesTest extends BaseActionTest
+class ActionRoutesTest extends BaseActionTestCase
 {
     /**
      * Test if the routes are parsed correctly.

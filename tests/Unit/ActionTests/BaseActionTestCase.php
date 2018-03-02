@@ -2,14 +2,14 @@
 
 namespace SickCRUD\CRUD\Tests\Unit\ActionTests;
 
-use SickCRUD\CRUD\Tests\BaseTest;
+use SickCRUD\CRUD\Tests\BaseTestCase;
 use SickCRUD\CRUD\Core\Actions\Action;
 use SickCRUD\CRUD\Tests\Unit\ActionTests\Actions\TestAction;
 
 /**
  * Class BaseActionTest.
  */
-abstract class BaseActionTest extends BaseTest
+abstract class BaseActionTestCase extends BaseTestCase
 {
     /**
      * @var Action

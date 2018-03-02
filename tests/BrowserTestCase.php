@@ -97,6 +97,9 @@ abstract class BrowserTestCase extends TestCase
         $app['config']->set('SickCRUD.general.login-reCaptcha', $testReCaptcha);
         $app['config']->set('SickCRUD.general.register-reCaptcha', $testReCaptcha);
 
+        // disable tos flag required
+        $app['config']->set('SickCRUD.general.register-require-tos', false);
+
     }
 
     /**

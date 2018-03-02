@@ -12,32 +12,83 @@ use SickCRUD\CRUD\Tests\BrowserTestCase;
 class RegisterTest extends BrowserTestCase
 {
     /**
-     * Test login controller.
+     * Fake User to register.
+     *
+     * @var array
      */
-    public function testRegistration()
-    {
-        // declare registrationn user
-        $user = [
-            'name' => 'Register Testing User',
-            'email' => 'register-testing-user@tests.it',
-            'password' => 'secret'
-        ];
+    protected $userToRegister = [
+        'name' => 'Register Testing User',
+        'email' => 'register-testing-user@tests.it',
+        'password' => 'secret'
+    ];
 
+    /**
+     * Test login controller without config flag 'tos' enabled.
+     */
+    public function testRegistrationWithoutTos()
+    {
         // run browser
-        $this->browse(function (Browser $browser) use ($user) {
+        $this->browse(function (Browser $browser) {
             $browser->visit($this->buildUrl('register'))
-                ->type('name', $user['name'])
-                ->type('email', $user['email'])
-                ->type('password', $user['password'])
-                ->type('password_confirmation', $user['password'])
+                ->type('name', $this->userToRegister['name'])
+                ->type('email', $this->userToRegister['email'])
+                ->type('password', $this->userToRegister['password'])
+                ->type('password_confirmation', $this->userToRegister['password'])
                 ->press('REGISTER')
                 ->assertPathIs($this->buildUrl('dashboard'));
         });
 
         // fetch the created user
-        $user = User::where('email', $user['email'])->first();
+        $user = User::where('email', $this->userToRegister['email'])->first();
         $this->assertNotNull($user);
 
+        // delete the user
+        $user->delete();
+
     }
+
+    public function testRegistrationWithTos()
+    {
+        // set the config
+        $this->tweakApplication(function ($app) {
+            $app['config']->set('SickCRUD.general.register-require-tos', true);
+        });
+
+        // run browser and check if the user is not created without tos flag
+        $this->browse(function (Browser $browser) {
+            $browser->visit($this->buildUrl('register'))
+                ->type('name', $this->userToRegister['name'])
+                ->type('email', $this->userToRegister['email'])
+                ->type('password', $this->userToRegister['password'])
+                ->type('password_confirmation', $this->userToRegister['password'])
+                ->press('REGISTER')
+                ->assertPathIs($this->buildUrl('register'));
+        });
+
+        // try to fetch the created user and check if do not exist
+        $user = User::where('email', $this->userToRegister['email'])->first();
+        $this->assertNull($user);
+
+        // run browser and check if the user is created with tos flag
+        $this->browse(function (Browser $browser) {
+            $browser->visit($this->buildUrl('register'))
+                ->type('name', $this->userToRegister['name'])
+                ->type('email', $this->userToRegister['email'])
+                ->type('password', $this->userToRegister['password'])
+                ->type('password_confirmation', $this->userToRegister['password'])
+                ->check('tos')
+                ->press('REGISTER')
+                ->assertPathIs($this->buildUrl('dashboard'));
+        });
+
+        // fetch the created user
+        $user = User::where('email', $this->userToRegister['email'])->first();
+        $this->assertNotNull($user);
+
+        // delete the user
+        $user->delete();
+
+    }
+
 
 }

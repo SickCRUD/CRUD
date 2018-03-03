@@ -8,5 +8,4 @@ An adjective similar to cool referring to something that is either **_great_** o
 
 1. Your awesome new skateboard is sick! 
 2. What you said to her was just plain sick.
-
----
+##

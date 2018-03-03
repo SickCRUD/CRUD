@@ -19,10 +19,11 @@
         "anhskohbo/no-captcha": "^3.0"
     },
     "require-dev": {
-        "laravel/dusk": "^2.0",
-        "phpunit/phpunit": "^6",
+        "codedungeon/phpunit-result-printer": "*",
+        "laravel/dusk": "~2.0",
         "orchestra/testbench": "~3.5",
-        "orchestra/testbench-dusk": "~3.5"
+        "orchestra/testbench-dusk": "3.5.x-dev",
+        "phpunit/phpunit": "^6"
     },
     "autoload": {
         "psr-4": {
@@ -34,7 +35,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "SickCRUD\\CRUD\\Tests\\": "tests"
+            "SickCRUD\\CRUD\\Tests\\": "tests/"
         }
 
     },

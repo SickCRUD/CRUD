@@ -13,7 +13,7 @@ class ActionPropertiesTest extends BaseActionTestCase
     }
 
     /**
-     * Check if the prefix is needed (should match our TestAction class).
+     * Check if the id param is needed (should match our TestAction class).
      */
     public function testIfIdParamIsRequired()
     {

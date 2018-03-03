@@ -4,7 +4,6 @@ namespace SickCRUD\CRUD\Tests\Browser\Auth;
 
 // Laravel
 use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Auth\User;
 
 use SickCRUD\CRUD\Tests\BrowserTestCase;
@@ -23,7 +22,7 @@ class RegisterTest extends BrowserTestCase
     ];
 
     /**
-     * Test login controller without config flag 'tos' enabled.
+     * Test register controller without config flag 'tos' enabled.
      */
     public function testRegistrationWithoutTos()
     {
@@ -47,6 +46,9 @@ class RegisterTest extends BrowserTestCase
 
     }
 
+    /**
+     * Test register controller with config flag 'tos' enabled.
+     */
     public function testRegistrationWithTos()
     {
         // set the config

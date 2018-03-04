@@ -22,7 +22,7 @@
         "codedungeon/phpunit-result-printer": "*",
         "laravel/dusk": "~2.0",
         "orchestra/testbench": "~3.5",
-        "orchestra/testbench-dusk": "3.5.x-dev",
+        "orchestra/testbench-dusk": "3.5",
         "phpunit/phpunit": "^6"
     },
     "autoload": {

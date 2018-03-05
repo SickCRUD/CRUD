@@ -2,10 +2,10 @@
 
 namespace SickCRUD\CRUD\Core\Console;
 
-use Anhskohbo\NoCaptcha\NoCaptchaServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use SickCRUD\CRUD\SickCrudServiceProvider;
+use Anhskohbo\NoCaptcha\NoCaptchaServiceProvider;
 
 class CrudInstallCommand extends Command
 {
@@ -30,15 +30,13 @@ class CrudInstallCommand extends Command
      */
     public function handle()
     {
-
         $providersToPublish = [
             SickCrudServiceProvider::class => 'all',
-            NoCaptchaServiceProvider::class => 'all'
+            NoCaptchaServiceProvider::class => 'all',
         ];
 
         // publish CRUD files
         $this->massPublish($providersToPublish);
-
     }
 
     /**
@@ -80,17 +78,16 @@ class CrudInstallCommand extends Command
         $progress->setFormat(" %current%/%max% [%bar%] %percent:3s%% \r");
 
         // cycle through the providers
-        foreach ($providersArray as $publishProvider => $tag){
+        foreach ($providersArray as $publishProvider => $tag) {
 
             // publishing verbose
-            $this->output->write('Publishing ' . $publishProvider . ' files.');
+            $this->output->write('Publishing '.$publishProvider.' files.');
 
             // update the progressbar
             $progress->advance();
 
             // publish the provider
             $this->vendorPublish($publishProvider, $tag);
-
         }
 
         // progress end
@@ -101,7 +98,5 @@ class CrudInstallCommand extends Command
 
         // notify operation end
         $this->output->writeLn('All the files were published.');
-
     }
-    
 }

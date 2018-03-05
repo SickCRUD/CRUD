@@ -3,12 +3,12 @@
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
 // Laravel
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use SickCRUD\CRUD\Core\CrudPanel;
 use Illuminate\Support\Facades\App;
 // Core imports.
-use SickCRUD\CRUD\Core\CrudPanel;
-// SickCRUD specific imports.
 use SickCRUD\CRUD\Core\Traits\ViewData;
+// SickCRUD specific imports.
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CrudController extends BaseController
 {
@@ -76,7 +76,7 @@ class CrudController extends BaseController
         $actionMethod = end($action);
 
         // return the actual function of the instantiated action
-        $actionInstance =App::make($actionClass);
+        $actionInstance = App::make($actionClass);
 
         // check if there's the ability to call this specific action
         $this->crud->hasAccessToActionOrFail($actionInstance->getName());

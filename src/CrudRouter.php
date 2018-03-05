@@ -3,8 +3,8 @@
 namespace SickCRUD\CRUD;
 
 // Laravel
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
 
 class CrudRouter
 {
@@ -73,14 +73,11 @@ class CrudRouter
 
                 // declare the route
                 Route::{$route['method']}($routePath, $routeOptions);
-
             }
 
             // destroy action instance
             unset($controllerActionInstance);
-
         }
-
     }
 
     /**

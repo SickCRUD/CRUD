@@ -5,8 +5,8 @@ namespace SickCRUD\CRUD\Tests\Browser\Auth;
 // Laravel
 use Laravel\Dusk\Browser;
 // SickCRUD
-use SickCRUD\CRUD\Tests\BrowserTestCase;
 use SickCRUD\CRUD\Tests\App\Models\User;
+use SickCRUD\CRUD\Tests\BrowserTestCase;
 
 class LoginTest extends BrowserTestCase
 {
@@ -32,7 +32,5 @@ class LoginTest extends BrowserTestCase
                 ->press('LOGIN')
                 ->assertPathIs($this->buildUrl('dashboard'));
         });
-
     }
-
 }

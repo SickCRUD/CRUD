@@ -3,9 +3,8 @@
 namespace SickCRUD\CRUD\Tests;
 
 use Orchestra\Testbench\Dusk\TestCase;
-
-use Anhskohbo\NoCaptcha\NoCaptchaServiceProvider;
 use SickCRUD\CRUD\SickCrudServiceProvider;
+use Anhskohbo\NoCaptcha\NoCaptchaServiceProvider;
 
 abstract class BrowserTestCase extends TestCase
 {
@@ -14,14 +13,14 @@ abstract class BrowserTestCase extends TestCase
      *
      * @var string
      */
-    public static $packagePublicFolder = __DIR__ . '/../publishes/public/';
+    public static $packagePublicFolder = __DIR__.'/../publishes/public/';
 
     /**
      * Laravel dusk public folder where to publish.
      *
      * @var string
      */
-    public static $laravelDuskPublicFolder = __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel/public/';
+    public static $laravelDuskPublicFolder = __DIR__.'/../vendor/orchestra/testbench-dusk/laravel/public/';
 
     /**
      * It contains the route prefix.
@@ -38,9 +37,8 @@ abstract class BrowserTestCase extends TestCase
         parent::setUp();
 
         $this->prepareSqLite();
-        $this->withFactories(__DIR__ . '/App/Factories');
+        $this->withFactories(__DIR__.'/App/Factories');
         $this->loadLaravelMigrations(config('database.default'));
-
     }
 
     /**
@@ -54,7 +52,7 @@ abstract class BrowserTestCase extends TestCase
     {
         return [
             NoCaptchaServiceProvider::class,
-            SickCrudServiceProvider::class
+            SickCrudServiceProvider::class,
         ];
     }
 
@@ -99,7 +97,6 @@ abstract class BrowserTestCase extends TestCase
 
         // disable tos flag required
         $app['config']->set('SickCRUD.general.register-require-tos', false);
-
     }
 
     /**
@@ -110,16 +107,14 @@ abstract class BrowserTestCase extends TestCase
     protected function prepareSqLite()
     {
         // choose the directory
-        $directory = __DIR__ . '/../vendor/orchestra/testbench-dusk/laravel/database';
+        $directory = __DIR__.'/../vendor/orchestra/testbench-dusk/laravel/database';
 
-        if (! file_exists($directory . '/database.sqlite')) {
-            $sqliteCreated = touch($directory .'/database.sqlite');
+        if (! file_exists($directory.'/database.sqlite')) {
+            $sqliteCreated = touch($directory.'/database.sqlite');
 
             // assert process succesful
             $this->assertSame(true, $sqliteCreated, 'Failed SqLite prepare.');
-
         }
-
     }
 
     /**
@@ -156,15 +151,16 @@ abstract class BrowserTestCase extends TestCase
         @mkdir($destination);
         while (false !== ($file = readdir($directory))) {
             if (($file != '.') && ($file != '..')) {
-                if (is_dir($source . DIRECTORY_SEPARATOR . $file)) {
-                    static::recursiveCopy($source . DIRECTORY_SEPARATOR . $file, $destination . DIRECTORY_SEPARATOR . $file);
+                if (is_dir($source.DIRECTORY_SEPARATOR.$file)) {
+                    static::recursiveCopy($source.DIRECTORY_SEPARATOR.$file, $destination.DIRECTORY_SEPARATOR.$file);
                 } else {
-                    copy($source . DIRECTORY_SEPARATOR . $file, $destination . DIRECTORY_SEPARATOR . $file);
+                    copy($source.DIRECTORY_SEPARATOR.$file, $destination.DIRECTORY_SEPARATOR.$file);
                 }
             }
         }
         closedir($directory);
     }
+
     /**
      * Delete a specific directory content.
      *
@@ -173,11 +169,11 @@ abstract class BrowserTestCase extends TestCase
      */
     public static function deleteDirectoryContent(string $directory, bool $delete = false)
     {
-        $contents = glob($directory . '*');
-        foreach($contents as $item) {
+        $contents = glob($directory.'*');
+        foreach ($contents as $item) {
             if (is_dir($item)) {
-                static::deleteDirectoryContent($item . DIRECTORY_SEPARATOR, true);
-            }else{
+                static::deleteDirectoryContent($item.DIRECTORY_SEPARATOR, true);
+            } else {
                 unlink($item);
             }
         }
@@ -194,7 +190,6 @@ abstract class BrowserTestCase extends TestCase
      */
     protected function buildUrl(string $url = null)
     {
-        return '/' . $this->routePrefix . '/' . ltrim($url, '/');
+        return '/'.$this->routePrefix.'/'.ltrim($url, '/');
     }
-
 }

@@ -2,10 +2,10 @@
 
 
 $middlewares = [
-    'web'
+    'web',
 ];
 
-if(SickCRUD_config('crud', 'force-https') === true) {
+if (SickCRUD_config('crud', 'force-https') === true) {
     $middlewares[] = 'ForceHttps';
 }
 
@@ -13,7 +13,7 @@ Route::group(
     [
         'middleware' => $middlewares,
         'namespace' => '\SickCRUD\CRUD\App\Http\Controllers',
-        'prefix' => SickCRUD_config('crud', 'route-prefix')
+        'prefix' => SickCRUD_config('crud', 'route-prefix'),
     ],
     function () {
 

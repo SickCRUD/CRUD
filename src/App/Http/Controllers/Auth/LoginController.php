@@ -67,7 +67,7 @@ class LoginController extends BaseController
         ];
 
         // if the captcha is config enabled
-        if(SickCRUD_config('general', 'login-reCaptcha') === true) {
+        if (SickCRUD_config('general', 'login-reCaptcha') === true) {
             $validationRules['g-recaptcha-response'] = 'required|captcha';
         }
 

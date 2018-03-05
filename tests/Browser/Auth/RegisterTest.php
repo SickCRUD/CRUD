@@ -5,7 +5,6 @@ namespace SickCRUD\CRUD\Tests\Browser\Auth;
 // Laravel
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Auth\User;
-
 use SickCRUD\CRUD\Tests\BrowserTestCase;
 
 class RegisterTest extends BrowserTestCase
@@ -18,7 +17,7 @@ class RegisterTest extends BrowserTestCase
     protected $userToRegister = [
         'name' => 'Register Testing User',
         'email' => 'register-testing-user@tests.it',
-        'password' => 'secret'
+        'password' => 'secret',
     ];
 
     /**
@@ -43,7 +42,6 @@ class RegisterTest extends BrowserTestCase
 
         // delete the user
         $user->delete();
-
     }
 
     /**
@@ -89,8 +87,5 @@ class RegisterTest extends BrowserTestCase
 
         // delete the user
         $user->delete();
-
     }
-
-
 }

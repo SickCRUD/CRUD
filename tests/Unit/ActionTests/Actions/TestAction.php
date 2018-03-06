@@ -10,8 +10,8 @@ use SickCRUD\CRUD\Core\Actions\Action;
 class TestAction extends Action
 {
     // override default values
-    public $actionRequireIdParam = true;
-    public $actionRoutePrefix = true;
+    public $requireIdParam = true;
+    public $routePrefix = true;
 
     /**
      * For testing purposes we should be able to change the $actionName protected variable.
@@ -20,7 +20,7 @@ class TestAction extends Action
      */
     public function setName(string $name)
     {
-        $this->actionName = $name;
+        $this->name = $name;
     }
 
     /**

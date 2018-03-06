@@ -53,7 +53,7 @@ class CrudRouter
             foreach ($controllerActionInstance->getRoutes() as $route) {
 
                 // optional id / route controller name / route action name
-                $routePath = ($controllerActionInstance->actionRequireIdParam == true ? '{id?}' : '').'/'.$this->name.($controllerActionInstance->actionRoutePrefix == true ? '/'.$controllerActionInstance->getName() : '').'/'.$route['name'];
+                $routePath = ($controllerActionInstance->requireIdParam == true ? '{id?}' : '').'/'.$this->name.($controllerActionInstance->routePrefix == true ? '/'.$controllerActionInstance->getName() : '').'/'.$route['name'];
 
                 // controller method
                 $controllerMethod = '\\'.ltrim($controllerAction, '\\').'@'.$route['function'];
@@ -64,7 +64,7 @@ class CrudRouter
                 ];
 
                 // declare the route name
-                $routeName = 'SickCRUD.'.$this->name.($controllerActionInstance->actionRoutePrefix == true ? '.'.$controllerActionInstance->getName() : '').($route['name'] ? '.'.$route['name'] : null);
+                $routeName = 'SickCRUD.'.$this->name.($controllerActionInstance->routePrefix == true ? '.'.$controllerActionInstance->getName() : '').($route['name'] ? '.'.$route['name'] : null);
 
                 // name them just once
                 if (! Route::has($routeName)) {

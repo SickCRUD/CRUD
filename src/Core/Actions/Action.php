@@ -9,21 +9,21 @@ abstract class Action
      *
      * @var null|string
      */
-    protected $actionName = null;
+    protected $name = null;
 
     /**
      * Define if the current actions need to take the id in the route ({?id}).
      *
      * @var bool
      */
-    public $actionRequireIdParam = false;
+    public $requireIdParam = false;
 
     /**
      * Define if the current action needs a prefix in it's route (it will be prefixed with the $actionName).
      *
      * @var bool
      */
-    public $actionRoutePrefix = false;
+    public $routePrefix = false;
 
     /**
      * Get the current action name.
@@ -35,7 +35,7 @@ abstract class Action
         // get the class that is going to extend
         $actionParentClassBasename = substr(strrchr(get_parent_class(static::class), '\\'), 1);
         // remove the class suffix if contained to get the action name
-        return $this->actionName ? $this->actionName : strtolower(str_replace($actionParentClassBasename, '', class_basename(static::class)));
+        return $this->name ? $this->name : strtolower(str_replace($actionParentClassBasename, '', class_basename(static::class)));
     }
 
     /**
@@ -77,4 +77,27 @@ abstract class Action
 
         return $actionRoutes;
     }
+
+    /**
+     * Function to handle the bulk actions.
+     *
+     * @param mixed $id
+     *
+     * @return void
+     */
+    public function handleBulk($id)
+    {
+        
+    }
+
+    /**
+     * This define the icon that should be used for the action.
+     *
+     * @return string
+     */
+    public function icon()
+    {
+        return 'fas fa-asterisk';
+    }
+
 }

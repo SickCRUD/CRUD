@@ -9,7 +9,7 @@ class ActionPropertiesTest extends BaseActionTestCase
      */
     public function testIfPrefixIsNeeded()
     {
-        $this->assertSame(true, $this->action->actionRoutePrefix);
+        $this->assertSame(true, $this->action->routePrefix);
     }
 
     /**
@@ -17,6 +17,6 @@ class ActionPropertiesTest extends BaseActionTestCase
      */
     public function testIfIdParamIsRequired()
     {
-        $this->assertSame(true, $this->action->actionRequireIdParam);
+        $this->assertSame(true, $this->action->requireIdParam);
     }
 }

@@ -13,7 +13,7 @@ class ListAction extends Action
      *
      * @var string
      */
-    protected $actionName = 'list';
+    protected $actionName = null;
 
     /**
      * The HTTP requests supported (piped|piped).

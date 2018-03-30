@@ -2,12 +2,9 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
-// Laravel
-use SickCRUD\CRUD\Core\CrudPanel;
+use SickCRUD\CRUD\Facades\CRUDPanel;
 use Illuminate\Support\Facades\App;
-// Core imports.
 use SickCRUD\CRUD\Core\Traits\ViewData;
-// SickCRUD specific imports.
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CrudController extends BaseController
@@ -42,7 +39,7 @@ class CrudController extends BaseController
     public function __construct()
     {
         if (! $this->crud) {
-            $this->crud = App::make(CrudPanel::class);
+            $this->crud = CRUDPanel::getFacadeRoot();
             $this->middleware(function ($request, $next) {
                 // set the request where it should be
                 $this->setRequest($request);
@@ -51,6 +48,8 @@ class CrudController extends BaseController
 
                 return $next($request);
             });
+        }else{
+            CRUDPanel::swap($this->crud);
         }
     }
 

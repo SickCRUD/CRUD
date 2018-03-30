@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use SickCRUD\CRUD\App\Http\Middleware\ForceHttps;
 use SickCRUD\CRUD\Core\Console\CrudInstallCommand;
+use SickCRUD\CRUD\Core\CrudPanel;
 
 class SickCrudServiceProvider extends ServiceProvider
 {
@@ -74,9 +75,14 @@ class SickCrudServiceProvider extends ServiceProvider
             ]);
         }
 
-        // bind the CRUD instance
+        // bind the SickCRUD instance
         $this->app->bind('SickCRUD', function ($app) {
             return new SickCRUD($app);
+        });
+
+        // bind the CRUD instance
+        $this->app->bind('CRUDPanel', function () {
+            return new CRUDPanel();
         });
     }
 

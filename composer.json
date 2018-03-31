@@ -23,7 +23,9 @@
         "laravel/dusk": "~2.0",
         "orchestra/testbench": "~3.5",
         "orchestra/testbench-dusk": "~3.5",
-        "phpunit/phpunit": "^6"
+        "phpunit/phpunit": "^6",
+        "composer/semver": "^1.4",
+        "nategood/httpful": "*"
     },
     "autoload": {
         "psr-4": {

@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use SickCRUD\CRUD\App\Http\Middleware\ForceHttps;
 use SickCRUD\CRUD\Core\Console\CrudInstallCommand;
+use SickCRUD\CRUD\Core\Console\PackagesVersionsCheckCommand;
 use SickCRUD\CRUD\Core\CrudPanel;
 
 class SickCrudServiceProvider extends ServiceProvider
@@ -72,6 +73,7 @@ class SickCrudServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 CrudInstallCommand::class,
+                PackagesVersionsCheckCommand::class,
             ]);
         }
 

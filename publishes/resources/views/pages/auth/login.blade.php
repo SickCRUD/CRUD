@@ -18,17 +18,38 @@
 
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="text" name="email" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            {{ $errors->first('email') }}
+                        </span>
+                    @endif
+
                     <span class="fas fa-envelope form-control-feedback"></span>
                 </div>
 
                 <div class="form-group has-feedback  {{ $errors->has('password') ? 'has-error' : '' }}">
                     <input type="password" name="password" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.password') }}">
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            {{ $errors->first('password') }}
+                        </span>
+                    @endif
+
                     <span class="fas fa-lock form-control-feedback"></span>
                 </div>
 
                 @if(SickCRUD_config('general', 'login-reCaptcha', false) === true)
                     <div class="form-group has-feedback {{ $errors->has('g-recaptcha-response') ? 'has-error' : '' }}">
                         {!! NoCaptcha::display() !!}
+
+                        @if ($errors->has('g-recaptcha-response'))
+                            <span class="help-block">
+                                {{ $errors->first('g-recaptcha-response') }}
+                            </span>
+                        @endif
+
                     </div>
                 @endif
 

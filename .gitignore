@@ -1,5 +1,6 @@
-/vendor/
 .idea/
+debug.log
+/node_modules/
 /tests/Browser/console
 /tests/Browser/screenshots
-debug.log
+/vendor/

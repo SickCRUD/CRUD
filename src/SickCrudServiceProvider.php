@@ -3,11 +3,11 @@
 namespace SickCRUD\CRUD;
 
 use Illuminate\Routing\Router;
+use SickCRUD\CRUD\Core\CrudPanel;
 use Illuminate\Support\ServiceProvider;
 use SickCRUD\CRUD\App\Http\Middleware\ForceHttps;
 use SickCRUD\CRUD\Core\Console\CrudInstallCommand;
 use SickCRUD\CRUD\Core\Console\PackagesVersionsCheckCommand;
-use SickCRUD\CRUD\Core\CrudPanel;
 
 class SickCrudServiceProvider extends ServiceProvider
 {

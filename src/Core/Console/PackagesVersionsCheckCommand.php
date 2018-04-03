@@ -2,8 +2,8 @@
 
 namespace SickCRUD\CRUD\Core\Console;
 
-use Illuminate\Console\Command;
 use Composer\Semver\Comparator;
+use Illuminate\Console\Command;
 
 class PackagesVersionsCheckCommand extends Command
 {
@@ -38,7 +38,6 @@ class PackagesVersionsCheckCommand extends Command
      */
     public function handle()
     {
-
         foreach ($this->dependenciesGithub as $repository => $version) {
 
             // clean the version
@@ -46,19 +45,16 @@ class PackagesVersionsCheckCommand extends Command
             $latestVersion = $this->getLatestVersion($repository);
             $isOutdated = Comparator::lessThan($localVersion, $latestVersion);
 
-            if($isOutdated) {
+            if ($isOutdated) {
 
                 // then say check the update thanks
-                $this->warn('The repository ' . $repository .' needs an update! ' . mb_convert_encoding("\x27\x16", 'UTF-8', 'UTF-16BE') . ' (https://www.github.com/' . $repository . ')');
+                $this->warn('The repository '.$repository.' needs an update! '.mb_convert_encoding("\x27\x16", 'UTF-8', 'UTF-16BE').' (https://www.github.com/'.$repository.')');
                 continue;
-
             }
 
             // then say it's all fine and and go to next iteration
-            $this->info('The repository ' . $repository . ' is fine! ' . mb_convert_encoding("\x27\x13", 'UTF-8', 'UTF-16BE'));
-
+            $this->info('The repository '.$repository.' is fine! '.mb_convert_encoding("\x27\x13", 'UTF-8', 'UTF-16BE'));
         }
-        
     }
 
     /**
@@ -78,8 +74,8 @@ class PackagesVersionsCheckCommand extends Command
      */
     public function getLatestVersion($repository)
     {
-        $response = \Httpful\Request::get('https://api.github.com/repos/' . $repository . '/releases/latest')->send();
+        $response = \Httpful\Request::get('https://api.github.com/repos/'.$repository.'/releases/latest')->send();
+
         return $this->cleanVersion($response->body->tag_name);
     }
-
 }

@@ -2,8 +2,8 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
-use SickCRUD\CRUD\Facades\CRUDPanel;
 use Illuminate\Support\Facades\App;
+use SickCRUD\CRUD\Facades\CRUDPanel;
 use SickCRUD\CRUD\Core\Traits\ViewData;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 
@@ -48,7 +48,7 @@ class CrudController extends BaseController
 
                 return $next($request);
             });
-        }else{
+        } else {
             CRUDPanel::swap($this->crud);
         }
     }

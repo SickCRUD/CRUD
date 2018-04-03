@@ -87,7 +87,6 @@ abstract class Action
      */
     public function handleBulk($id)
     {
-        
     }
 
     /**
@@ -99,5 +98,4 @@ abstract class Action
     {
         return 'fas fa-asterisk';
     }
-
 }

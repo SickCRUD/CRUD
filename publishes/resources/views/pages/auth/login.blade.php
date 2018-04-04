@@ -2,7 +2,8 @@
 
 @section('pageContent')
 
-    <div class="login-box-middle">
+    <section class="content container-fluid">
+
 
         <div class="login-box">
 
@@ -74,8 +75,9 @@
                 <a href="#">{{ Lang::get('SickCRUD::auth.actions.forgot_password') }}</a>
 
             </div>
+
         </div>
 
-    </div>
+    </section>
 
 @endsection

@@ -21,6 +21,18 @@ return [
     ],
 
     /*
+     *  All the available skins lass
+     *
+     *  skin-blue, skin-blue-light
+     *  skin-yellow, skin-yellow-light
+     *  skin-green, skin-green-light
+     *  skin-purple, skin-purple-light
+     *  skin-red, skin-red-light
+     *  skin-black, skin-black-light
+     */
+    'css-skin' => 'skin-purple',
+
+    /*
      * Navbar settings
      */
     'navbar' => [

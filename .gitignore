@@ -1,5 +1,7 @@
 .idea/
 debug.log
+package-lock.json
+composer.lock
 /node_modules/
 /tests/Browser/console
 /tests/Browser/screenshots

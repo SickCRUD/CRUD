@@ -32,7 +32,7 @@ class RegisterTest extends BrowserTestCase
                 ->type('email', $this->userToRegister['email'])
                 ->type('password', $this->userToRegister['password'])
                 ->type('password_confirmation', $this->userToRegister['password'])
-                ->press('REGISTER')
+                ->press('Register')
                 ->assertPathIs($this->buildUrl('dashboard'));
         });
 
@@ -61,7 +61,7 @@ class RegisterTest extends BrowserTestCase
                 ->type('email', $this->userToRegister['email'])
                 ->type('password', $this->userToRegister['password'])
                 ->type('password_confirmation', $this->userToRegister['password'])
-                ->press('REGISTER')
+                ->press('Register')
                 ->assertPathIs($this->buildUrl('register'));
         });
 
@@ -77,7 +77,7 @@ class RegisterTest extends BrowserTestCase
                 ->type('password', $this->userToRegister['password'])
                 ->type('password_confirmation', $this->userToRegister['password'])
                 ->check('tos')
-                ->press('REGISTER')
+                ->press('Register')
                 ->assertPathIs($this->buildUrl('dashboard'));
         });
 

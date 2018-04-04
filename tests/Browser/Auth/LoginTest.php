@@ -29,7 +29,7 @@ class LoginTest extends BrowserTestCase
             $browser->visit($this->buildUrl('login'))
                 ->type('email', $user->email)
                 ->type('password', 'secret')
-                ->press('LOGIN')
+                ->press('Login')
                 ->assertPathIs($this->buildUrl('dashboard'));
         });
     }

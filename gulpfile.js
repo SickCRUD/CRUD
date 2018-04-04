@@ -65,10 +65,40 @@ gulp.task('css', function () {
 
 });
 
+// GULP JS MINIFY TO MINIFY JS
+gulp.task('js', function () {
+
+    return gulp.src([
+        'frontend/js/*.js'
+    ])
+        .pipe(
+            gulp.dest('publishes/public/js')
+        )
+        .pipe(
+            uglify({
+                mangle: true,
+                compress: {
+                    typeofs: false
+                }
+            }).on('error', function(uglify) {
+                console.error(uglify.message);
+            })
+        )
+        .pipe(
+            rename({
+                suffix: '.min'
+            })
+        )
+        .pipe(
+            gulp.dest('publishes/public/js')
+        );
+
+});
+
 // DEFAULT GULP TASK
 gulp.task('default', function() {
     return new Promise(function(resolve, reject) {
-        runSequence(['sass', 'css']);
+        runSequence(['sass', 'css', 'js']);
         resolve();
     });
 });

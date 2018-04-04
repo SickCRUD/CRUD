@@ -1,7 +1,10 @@
 .login-page, .register-page {
 
+  background: transparent;
+
   .wrapper {
     background-color: transparent;
+    overflow-y: scroll;
   }
 
   .hideShowPassword-wrapper {
@@ -10,23 +13,27 @@
     }
   }
 
-  .content {
-    margin-top: 50px;
-    display: table;
-    height: 100%;
-    height: calc(100% - 50px);
+  .content-wrapper {
+
+    min-height: 200px;
+
+    .content {
+      width: 100%;
+    }
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    .login-box-middle {
-      .login-box, .register-box {
-        .login-logo {
-          b {
-            font-weight: 400;
-          }
+
+    .login-box, .register-box {
+
+      .login-logo {
+        b {
+          font-weight: 400;
         }
-        margin: 0 auto;
       }
-      display:table-cell;
-      vertical-align:middle;
+
     }
 
   }

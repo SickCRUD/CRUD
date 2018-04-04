@@ -531,7 +531,7 @@ throw new Error('AdminLTE requires jQuery')
 
   var Default = {
     slimscroll : true,
-    resetHeight: true
+    resetHeight: false
   };
 
   var Selector = {

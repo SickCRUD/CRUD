@@ -1,5 +1,13 @@
 .login-page, .register-page {
+
   .wrapper {
     background-color: transparent;
   }
+
+  .hideShowPassword-wrapper {
+    button {
+      margin-right: 30px;
+    }
+  }
+
 }

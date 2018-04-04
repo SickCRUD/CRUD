@@ -1,5 +1,5 @@
 <!-- Logo -->
-<a href="{{ SickCRUD_url('/') }}" class="logo {{ SickCRUD_config('layout', 'navbar.navbar-fixed') == true ? 'position-fixed' : '' }}">
+<a href="{{ SickCRUD_url('/') }}" class="logo">
     <span class="logo-mini">
         {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}
     </span>
@@ -8,7 +8,7 @@
     </span>
 </a>
 
-<nav class="navbar {{ SickCRUD_config('layout', 'navbar.navbar-fixed') == true ? 'navbar-fixed-top' : 'navbar-static-top' }}" role="navigation">
+<nav class="navbar" role="navigation">
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
     </a>

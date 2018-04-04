@@ -1,6 +1,6 @@
 // overrides
-
 @import "overrides/bootstrap";
+@import "overrides/global";
 
 // helpers
 @import "helpers/position";
@@ -9,4 +9,4 @@
 @import "pages/auth";
 
 // components
-@import "components/navbar";
+@import "components/header";

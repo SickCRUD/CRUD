@@ -10,4 +10,25 @@
     }
   }
 
+  .content {
+    margin-top: 50px;
+    display: table;
+    height: 100%;
+    height: calc(100% - 50px);
+    width: 100%;
+    .login-box-middle {
+      .login-box, .register-box {
+        .login-logo {
+          b {
+            font-weight: 400;
+          }
+        }
+        margin: 0 auto;
+      }
+      display:table-cell;
+      vertical-align:middle;
+    }
+
+  }
+
 }

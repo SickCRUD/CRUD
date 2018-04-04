@@ -20,6 +20,10 @@ return [
         'title-suffix' => 'SickCRUD',
     ],
 
+    'body-classes' => [
+        'sidebar-mini'
+    ],
+
     /*
      *  All the available skins lass
      *
@@ -56,6 +60,9 @@ return [
      */
     'optional-plugins' => [
         'jQuery',
+        'AdminLTE',
+        'SickCRUD',
+        'jQuery-slimscroll',
         'CssBrowserSelector',
         'HideShowPassword',
     ],
@@ -64,11 +71,20 @@ return [
      * Preinitialized plugins templates Array (name => ['css' => [], 'js' => [])
      */
     'optional-plugins-list'  => [
-        'CssBrowserSelector' => [
-            'js' => 'vendor/css_browser_selector/js/css_browser_selector.min.js',
-        ],
         'jQuery' => [
             'js' => 'vendor/jquery/js/jquery-2.2.4.min.js',
+        ],
+        'AdminLTE' => [
+            'js' => 'vendor/adminlte/js/adminlte.min.js',
+        ],
+        'SickCRUD' => [
+            'js' => 'js/SickCRUD.min.js',
+        ],
+        'jQuery-slimscroll' => [
+            'js' => 'vendor/jquery-slimscroll/js/jquery.slimscroll.min.js',
+        ],
+        'CssBrowserSelector' => [
+            'js' => 'vendor/css_browser_selector/js/css_browser_selector.min.js',
         ],
         'HideShowPassword' => [
             'css' => 'vendor/hide_show_password/css/hide_show_password.min.css',

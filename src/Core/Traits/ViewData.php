@@ -36,10 +36,13 @@ trait ViewData
      *
      * @return bool
      */
-    public function setBodyClass($bodyClass = null)
+    public function setBodyClass($bodyClass = [])
     {
+        // cast to array
+        $bodyClass = (array)$bodyClass;
+
         if ($bodyClass) {
-            $this->data['bodyClass'] = $bodyClass;
+            $this->data['bodyClass'] = implode(' ', $bodyClass);
 
             return true;
         }

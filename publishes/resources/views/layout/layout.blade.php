@@ -19,7 +19,7 @@
     @yield('afterStyles')
 
 </head>
-<body class="{{ $bodyClass ?? '' }} {{ SickCRUD_config('layout', 'css-skin', 'skin-purple') }}">
+<body class="{{ $bodyClass ?? '' }} {{ SickCRUD_config('layout', 'css-skin', 'skin-purple') }} {{ implode('', SickCRUD_config('layout', 'body-classes', [])) }}">
 
 <div class="wrapper">
 
@@ -29,11 +29,17 @@
 
     </header>
 
-    <main class="content">
+    <aside class="main-sidebar">
+
+        @include('SickCRUD::layout.partials.sidebar')
+
+    </aside>
+
+    <div class="content-wrapper">
 
         @yield('pageContent')
 
-    </main>
+    </div>
 
 </div>
 

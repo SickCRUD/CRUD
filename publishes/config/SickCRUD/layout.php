@@ -49,14 +49,14 @@ return [
     /*
      * Here there's a list of plugins that you can disable (they are enabled by default)
      *
-     * CssBrowserSelector: Is a plugin without dependencies (js vanilla) for using some CSS rules for specific browsers (should not be touched)
      * jQuery: The main dependency (should not be touched)
+     * CssBrowserSelector: Is a plugin without dependencies (js vanilla) for using some CSS rules for specific browsers
      * HideShowPassword: A plugin that adds a show/hide system to the password field
      *
      */
     'optional-plugins' => [
-        'CssBrowserSelector',
         'jQuery',
+        'CssBrowserSelector',
         'HideShowPassword',
     ],
 
@@ -71,9 +71,9 @@ return [
             'js' => 'vendor/jquery/js/jquery-2.2.4.min.js',
         ],
         'HideShowPassword' => [
-            'css' => 'vendor/hideShowPassword/css/hideShowPassword.css',
+            'css' => 'vendor/hide_show_password/css/hide_show_password.min.css',
             'js' => [
-                'vendor/hideShowPassword/js/hideShowPassword.min.js',
+                'vendor/hide_show_password/js/hide_show_password.min.js',
                 'js/HideShowPassword.min.js',
             ],
         ],

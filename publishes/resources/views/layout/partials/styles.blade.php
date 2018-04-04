@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-<link rel="stylesheet" href="{{ URL::asset('css/sick-crud.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('vendor/adminlte/css/AdminLTE.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('vendor/adminlte/css/skins/_all-skins.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/SickCRUD.min.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('vendor/fontawesome/css/fontawesome-all.min.css') }}">
 
 @foreach(SickCRUD_config('layout', 'optional-plugins') as $optionalPlugin)
     @php

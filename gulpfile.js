@@ -18,7 +18,7 @@ let production = false;
 gulp.task('sass', function () {
 
     return gulp.src([
-        'frontend/sass/SickCRUD.scss'
+        'frontend/sass/*.scss'
     ])
         .pipe(
             sass().on('error', sass.logError)

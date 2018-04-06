@@ -1,4 +1,3 @@
-<!-- Logo -->
 <a href="{{ SickCRUD_url('/') }}" class="logo">
     <span class="logo-mini">
         {!! SickCRUD_config('layout', 'navbar.logo.text.logo-mini') !!}

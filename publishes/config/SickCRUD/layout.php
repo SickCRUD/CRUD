@@ -71,21 +71,31 @@ return [
      * Preinitialized plugins templates Array (name => ['css' => [], 'js' => [])
      */
     'optional-plugins-list'  => [
+
         'jQuery' => [
             'js' => 'vendor/jquery/js/jquery-2.2.4.min.js',
         ],
+
         'AdminLTE' => [
             'js' => 'vendor/adminlte/js/adminlte.min.js',
         ],
+
         'SickCRUD' => [
-            'js' => 'js/SickCRUD.min.js',
+            'css' => [
+                'css/SickCRUD.min.css',
+                'css/SickCRUD-skin.min.css'
+            ],
+            'js' => 'js/SickCRUD.mins.js',
         ],
+
         'jQuery-slimscroll' => [
             'js' => 'vendor/jquery-slimscroll/js/jquery.slimscroll.min.js',
         ],
+
         'CssBrowserSelector' => [
             'js' => 'vendor/css_browser_selector/js/css_browser_selector.min.js',
         ],
+
         'HideShowPassword' => [
             'css' => 'vendor/hide_show_password/css/hide_show_password.min.css',
             'js' => [
@@ -93,6 +103,7 @@ return [
                 'js/HideShowPassword.min.js',
             ],
         ],
+
     ],
 
 ];

@@ -2,82 +2,55 @@
 
 @section('pageContent')
 
-    <section class="content container-fluid">
+    <div class="login-box">
 
+        <div class="login-box-body">
 
-        <div class="login-box">
-
-            <div class="login-box-body">
-
-                <div class="login-logo">
-                    {{-- TODO: make this configurable (img too) --}}
-                    <a href="#"><b>Sick</b>CRUD</a>
-                </div>
-
-                <p class="login-box-msg">{{ Lang::get('SickCRUD::auth.login-into-account') }}</p>
-
-                <form action="{{ URL::route('SickCRUD.auth.login') }}" method="post">
-
-                    {{ csrf_field() }}
-
-                    <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                        <input type="text" name="email" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
-
-                        @if ($errors->has('email'))
-                            <span class="help-block">
-                            {{ $errors->first('email') }}
-                        </span>
-                        @endif
-
-                        <span class="fas fa-envelope form-control-feedback"></span>
-                    </div>
-
-                    <div class="form-group has-feedback  {{ $errors->has('password') ? 'has-error' : '' }}">
-                        <input type="password" name="password" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.password') }}">
-
-                        @if ($errors->has('password'))
-                            <span class="help-block">
-                            {{ $errors->first('password') }}
-                        </span>
-                        @endif
-
-                        <span class="fas fa-lock form-control-feedback"></span>
-                    </div>
-
-                    @if(SickCRUD_config('general', 'login-reCaptcha', false) === true)
-                        <div class="form-group has-feedback {{ $errors->has('g-recaptcha-response') ? 'has-error' : '' }}">
-                            {!! NoCaptcha::display() !!}
-
-                            @if ($errors->has('g-recaptcha-response'))
-                                <span class="help-block">
-                                {{ $errors->first('g-recaptcha-response') }}
-                            </span>
-                            @endif
-
-                        </div>
-                    @endif
-
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                    <div class="icheckbox_square-blue" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div> {{ Lang::get('SickCRUD::fields.remember_me') }}
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">{{ Lang::get('SickCRUD::auth.actions.login') }}</button>
-                        </div>
-                    </div>
-
-                </form>
-
-                <a href="#">{{ Lang::get('SickCRUD::auth.actions.forgot_password') }}</a>
-
+            <div class="login-logo">
+                <a href="#"><b>Sick</b>CRUD</a>
             </div>
 
-        </div>
+            <p class="login-box-msg">{{ Lang::get('SickCRUD::auth.login-into-account') }}</p>
 
-    </section>
+            <form action="{{ URL::route('SickCRUD.auth.login') }}" method="post">
+
+                {{ csrf_field() }}
+
+                <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                    <input type="text" name="email" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
+                    <span class="fas fa-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="form-group has-feedback  {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <input type="password" name="password" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.password') }}">
+                    <span class="fas fa-lock form-control-feedback"></span>
+                </div>
+
+                @if(SickCRUD_config('general', 'login-reCaptcha', false) === true)
+                    <div class="form-group has-feedback {{ $errors->has('g-recaptcha-response') ? 'has-error' : '' }}">
+                        {!! NoCaptcha::display() !!}
+                    </div>
+                @endif
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox">
+                            <label class="checkbox-control">
+                                <input type="checkbox" name="remember"> {{ Lang::get('SickCRUD::fields.remember_me') }}
+                                <div class="checkbox-indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ Lang::get('SickCRUD::auth.actions.login') }}</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <a href="#">{{ Lang::get('SickCRUD::auth.actions.forgot_password') }}</a>
+
+        </div>
+    </div>
 
 @endsection

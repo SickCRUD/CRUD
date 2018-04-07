@@ -50,6 +50,11 @@ return [
 
     ],
 
+    /**
+     * Sidebar settings
+     */
+    'show-sidebar-in-auth-pages' => false,
+
     /*
      * Here there's a list of plugins that you can disable (they are enabled by default)
      *

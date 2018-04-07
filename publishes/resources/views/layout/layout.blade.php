@@ -29,11 +29,15 @@
 
     </header>
 
-    <aside class="main-sidebar">
+    @if(SickCRUD_config('layout', 'show-sidebar-in-auth-pages', false) == true)
 
-        @include('SickCRUD::layout.partials.sidebar')
+        <aside class="main-sidebar">
 
-    </aside>
+            @include('SickCRUD::layout.partials.sidebar')
+
+        </aside>
+
+    @endif
 
     <div class="content-wrapper">
 

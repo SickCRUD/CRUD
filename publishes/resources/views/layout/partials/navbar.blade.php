@@ -8,9 +8,12 @@
 </a>
 
 <nav class="navbar" role="navigation">
-    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-    </a>
+
+    @if(SickCRUD_config('layout', 'show-sidebar-in-auth-pages', false) == true)
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+    @endif
 
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">

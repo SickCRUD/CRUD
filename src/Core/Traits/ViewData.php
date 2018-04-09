@@ -9,7 +9,10 @@ trait ViewData
      *
      * @var array
      */
-    protected $data = [];
+    protected $data = [
+        'pageTitle' => '',
+        'bodyClasses' => [],
+    ];
 
     /**
      * Set the page title.
@@ -30,24 +33,82 @@ trait ViewData
     }
 
     /**
-     * Set the bodyclass if needed.
+     * Add a body class if it's not already in it.
      *
      * @param string $bodyClass
      *
      * @return bool
      */
-    public function setBodyClass($bodyClass = [])
+    public function addBodyClass(string $bodyClass = null)
     {
         // cast to array
         $bodyClass = (array)$bodyClass;
 
-        if ($bodyClass) {
-            $this->data['bodyClass'] = implode(' ', $bodyClass);
+        return $this->addBodyClasses($bodyClass);
+
+    }
+
+    /**
+     * Remove a body class if it's in.
+     *
+     * @param string $bodyClass
+     *
+     * @return bool
+     */
+    public function removeBodyClass(string $bodyClass = null)
+    {
+        // cast to array
+        $bodyClass = (array)$bodyClass;
+
+        return $this->removeBodyClasses($bodyClass);
+
+    }
+
+
+
+    /**
+     * Add classes from the body (bulk).
+     *
+     * @param array $bodyClasses
+     *
+     * @return bool
+     */
+    public function addBodyClasses(array $bodyClasses = [])
+    {
+        // cast to array
+        $bodyClasses = (array)$bodyClasses;
+
+        if ($bodyClasses) {
+            $this->data['bodyClasses'] =  array_merge(array_diff($bodyClasses, $this->data['bodyClasses']), $this->data['bodyClasses']);;
 
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * Remove classes from the body (bulk).
+     *
+     * @param array $bodyClasses
+     *
+     * @return bool
+     */
+    public function removeBodyClasses(array $bodyClasses = [])
+    {
+
+        // cycle the classes
+        foreach ($bodyClasses as $key => $bodyClass) {
+
+            // unset from the array
+            if (($key = array_search($bodyClass, $this->data['bodyClasses'])) !== false) {
+                unset($this->data['bodyClasses'][$key]);
+            }
+
+        }
+
+        return true;
+
     }
 
     /**
@@ -78,6 +139,7 @@ trait ViewData
      */
     public function getViewData($key = null)
     {
+        // TODO: fix here
         if ($key && array_key_exists($this->data[$key])) {
             return $this->data[$key];
         }
@@ -94,6 +156,7 @@ trait ViewData
      */
     public function deleteViewData($key = null)
     {
+        // TODO: fix here
         if ($key && array_key_exists($this->data[$key])) {
             unset($this->data[$key]);
 

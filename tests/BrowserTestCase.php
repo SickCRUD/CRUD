@@ -3,9 +3,6 @@
 namespace SickCRUD\CRUD\Tests;
 
 use Orchestra\Testbench\Dusk\TestCase;
-use SickCRUD\CRUD\Core\CRUDPanel;
-use SickCRUD\CRUD\CRUDHelpers;
-use SickCRUD\CRUD\SickCrudServiceProvider;
 use Anhskohbo\NoCaptcha\NoCaptchaServiceProvider;
 
 abstract class BrowserTestCase extends TestCase
@@ -54,7 +51,7 @@ abstract class BrowserTestCase extends TestCase
     {
         return [
             NoCaptchaServiceProvider::class,
-            SickCrudServiceProvider::class,
+            \SickCRUD\CRUD\SickCrudServiceProvider::class,
         ];
     }
 
@@ -69,9 +66,9 @@ abstract class BrowserTestCase extends TestCase
     {
         return [
             'NoCaptcha' => \Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
-            'SickCRUD' => SickCrudServiceProvider::class,
-            "CRUDPanel" => CRUDPanel::class,
-            "CRUDHelpers" => CRUDHelpers::class
+            'SickCRUD' =>  \SickCRUD\CRUD\SickCrudServiceProvider::class,
+            "CRUDPanel" => \SickCRUD\CRUD\Core\CRUDPanel::class,
+            "CRUDHelpers" => \SickCRUD\CRUD\CRUDHelpers::class
         ];
     }
 

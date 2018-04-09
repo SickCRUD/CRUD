@@ -19,6 +19,11 @@ return [
     'setup-auth-routes' => true,
 
     /*
+     * Should SickCRUD setup password reset routes?
+     */
+    'setup-password-reset-routes' => true,
+
+    /*
      * Should SickCRUD setup the register routes or not?
      */
     'setup-register-routes' => true,

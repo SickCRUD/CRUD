@@ -1,4 +1,5 @@
 <?php
+
 namespace SickCRUD\CRUD;
 
 class CRUDHelpers

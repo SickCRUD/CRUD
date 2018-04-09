@@ -19,7 +19,7 @@
     @yield('afterStyles')
 
 </head>
-<body class="{{ $bodyClass ?? '' }} {{ SickCRUD_config('layout', 'css-skin', 'skin-purple') }} {{ implode('', SickCRUD_config('layout', 'body-classes', [])) }}">
+<body class="{{ CRUDHelpers::getBodyClasses($bodyClasses) }}">
 
 <div class="wrapper">
 

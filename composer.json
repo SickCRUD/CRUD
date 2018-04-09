@@ -48,7 +48,8 @@
             ],
             "aliases": {
                 "SickCRUD": "SickCRUD\\CRUD\\SickCrudServiceProvider",
-                "CRUDPanel": "SickCRUD\\CRUD\\Facades\\CRUDPanel"
+                "CRUDPanel": "SickCRUD\\CRUD\\Facades\\CRUDPanel",
+                "CRUDHelpers": "SickCRUD\\CRUD\\CRUDHelpers"
             }
         }
     },

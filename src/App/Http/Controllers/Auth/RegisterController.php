@@ -52,7 +52,7 @@ class RegisterController extends BaseController
         $this->setPageTitle(Lang::get('SickCRUD::auth.pages.register'));
 
         // set the page body class
-        $this->setBodyClass('register-page');
+        $this->addBodyClasses(['register-page', 'fixed']);
 
         return View::make('SickCRUD::pages.auth.register', $this->getViewData());
     }

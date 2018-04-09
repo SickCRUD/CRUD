@@ -13,7 +13,7 @@ before_script:
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
 
 after_failure:
-  - tail vendor/orchestra/testbench-dusk/laravel/storage/logs/laravel.log
+  - tail ./vendor/orchestra/testbench-dusk/laravel/storage/logs/laravel.log
 
 matrix:
     allow_failures:

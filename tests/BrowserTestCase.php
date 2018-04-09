@@ -125,7 +125,7 @@ abstract class BrowserTestCase extends TestCase
      */
     public static function setUpBeforeClass()
     {
-        static::recursiveCopy(static::$packagePublicFolder, static::$laravelDuskPublicFolder);
+        // static::recursiveCopy(static::$packagePublicFolder, static::$laravelDuskPublicFolder);
         parent::setUpBeforeClass();
     }
 
@@ -136,7 +136,7 @@ abstract class BrowserTestCase extends TestCase
      */
     public static function tearDownAfterClass()
     {
-        static::deleteDirectoryContent(static::$laravelDuskPublicFolder);
+        // static::deleteDirectoryContent(static::$laravelDuskPublicFolder);
         parent::tearDownAfterClass();
     }
 

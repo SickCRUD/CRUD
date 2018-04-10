@@ -39,7 +39,7 @@
 
     @endif
 
-    <div class="content-wrapper">
+    <div class="content-wrapper {{ !CRUDHelpers::setupSidebar() ? 'content' : null }}">
 
         @yield('pageContent')
 

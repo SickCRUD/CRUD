@@ -10,7 +10,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 class CrudController extends BaseController
 {
     use ValidatesRequests;
-    use ViewData;
 
     /**
      * Declare all the actions of the controllers (array of classes).

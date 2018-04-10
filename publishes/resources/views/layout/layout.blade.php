@@ -29,7 +29,7 @@
 
     </header>
 
-    @if(SickCRUD_config('layout', 'show-sidebar-in-auth-pages', false) == true)
+    @if( CRUDHelpers::setupSidebar() )
 
         <aside class="main-sidebar">
 

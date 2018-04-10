@@ -12,9 +12,6 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
 
-after_failure:
-  - tail ./vendor/orchestra/testbench-dusk/laravel/storage/logs/laravel.log
-
 matrix:
     allow_failures:
         - php: nightly

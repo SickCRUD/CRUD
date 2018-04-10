@@ -7,9 +7,19 @@
     overflow-y: scroll;
   }
 
+  /**
+   *  HideShowPassword plugin
+   */
+
   .hideShowPassword-wrapper {
     button {
-      right: 30px;
+      right: 25px!important;
+    }
+  }
+
+  &.fixed {
+    .content-wrapper {
+      min-height: 100vh;
     }
   }
 

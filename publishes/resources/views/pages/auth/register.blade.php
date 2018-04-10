@@ -2,82 +2,71 @@
 
 @section('pageContent')
 
-    <div class="d-table auth-box-container">
+    <div class="register-box">
 
-        <div class="auth-box-aligned">
+        <div class="register-box-body">
 
-            <div class="auth-box">
+            <div class="register-logo">
+                <a href="#"><b>Sick</b>CRUD</a>
+            </div>
 
-                <div class="logo">
-                    <!-- This can be a letter, or an image -->
-                    <img src="http://via.placeholder.com/350x350" alt="">
-                    <!-- <span>C</span> -->
+            <p class="register-box-msg">{{ Lang::get('SickCRUD::auth.register-account') }}</p>
+
+            <form action="{{ URL::route('SickCRUD.auth.register') }}" method="post">
+
+                {{ csrf_field() }}
+
+                <div class="form-group has-feedback {{ $errors->has('name') ? 'has-error' : '' }}">
+                    <input type="text" name="name" value="{{ Request::old('name') }}" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.name') }}">
+                    <span class="fas fa-user form-control-feedback"></span>
+                    @if ($errors->has('name'))
+                        <span class="help-block">{{ $errors->first('name') }}</span>
+                    @endif
                 </div>
 
-                <h5 class="mt-3 mb-4 text-center lead">{{ Lang::get('SickCRUD::auth.register-account') }}</h5>
-
-                <form method="post" action="{{ URL::route('SickCRUD.auth.register') }}">
-
-                    {{ csrf_field() }}
-
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ Request::old('name') }}" placeholder="{{ Lang::get('SickCRUD::fields.name') }}" autocomplete="off" data-lpignore="true">
-                        @if ($errors->has('name'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ Request::old('email') }}" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
-                        @if ($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" name="password" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="{{ Lang::get('SickCRUD::fields.password') }}" data-show="Show" data-hide="Hide">
-                        @if ($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="form-group">
-                        <input type="password" name="password_confirmation" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" placeholder="{{ Lang::get('SickCRUD::fields.password_confirmation') }}" data-show="Show" data-hide="Hide">
-                        @if ($errors->has('password_confirmation'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password_confirmation') }}
-                            </div>
-                        @endif
-                    </div>
-
-                    @if(SickCRUD_config('general', 'register-reCaptcha', false) === true)
-                        <div class="form-group">
-                            {!! NoCaptcha::display() !!}
-                            @if ($errors->has('g-recaptcha-response'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('g-recaptcha-response') }}
-                                </div>
-                            @endif
-                        </div>
+                <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
+                    <input type="text" name="email" value="{{ Request::old('email') }}" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
+                    <span class="fas fa-envelope form-control-feedback"></span>
+                    @if ($errors->has('email'))
+                        <span class="help-block">{{ $errors->first('email') }}</span>
                     @endif
+                </div>
 
-                    @if(SickCRUD_config('general', 'register-require-tos', false) === true)
-
-                        @include('SickCRUD::pages.auth.partials.tos')
-
+                <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
+                    <input type="password" name="password" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.password') }}">
+                    <span class="fas fa-lock form-control-feedback"></span>
+                    @if ($errors->has('password'))
+                        <span class="help-block">{{ $errors->first('password') }}</span>
                     @endif
+                </div>
 
-                    <button type="submit" class="submit-button btn btn-block btn-primary my-4 mx-auto">{{ Lang::get('SickCRUD::auth.actions.register') }}</button>
+                <div class="form-group has-feedback {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.password_confirmation') }}">
+                    <span class="fas fa-lock form-control-feedback"></span>
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">{{ $errors->first('password_confirmation') }}</span>
+                    @endif
+                </div>
 
-                </form>
+                @if(SickCRUD_config('general', 'register-reCaptcha', false) === true)
+                    <div class="form-group has-feedback {{ $errors->has('g-recaptcha-response') ? 'has-error' : '' }}">
+                        {!! NoCaptcha::display() !!}
+                    </div>
+                @endif
 
-            </div>
+                @if(SickCRUD_config('general', 'register-require-tos', false) === true)
+
+                    @include('SickCRUD::pages.auth.partials.tos')
+
+                @endif
+
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-8">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ Lang::get('SickCRUD::auth.actions.register') }}</button>
+                    </div>
+                </div>
+
+            </form>
 
         </div>
 

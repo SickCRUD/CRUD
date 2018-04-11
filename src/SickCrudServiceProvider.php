@@ -91,11 +91,11 @@ class SickCrudServiceProvider extends ServiceProvider
     /**
      * Router function to build the routes.
      *
-     * @return \SickCRUD\CRUD\CrudRouter;
+     * @return \SickCRUD\CRUD\CRUDRouter;
      */
     public static function resource($name, $controller, array $options = [])
     {
-        return new CrudRouter($name, $controller, $options);
+        return new CRUDRouter($name, $controller, $options);
     }
 
     /**

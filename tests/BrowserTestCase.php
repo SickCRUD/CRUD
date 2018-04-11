@@ -67,8 +67,8 @@ abstract class BrowserTestCase extends TestCase
         return [
             'NoCaptcha' => \Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
             'SickCRUD' =>  \SickCRUD\CRUD\SickCrudServiceProvider::class,
-            "CRUDPanel" => \SickCRUD\CRUD\Facades\CRUDPanel::class,
-            "CRUDHelpers" => \SickCRUD\CRUD\CRUDHelpers::class
+            'CRUDPanel' => \SickCRUD\CRUD\Facades\CRUDPanel::class,
+            'CRUDHelpers' => \SickCRUD\CRUD\CRUDHelpers::class,
         ];
     }
 

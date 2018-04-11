@@ -42,10 +42,9 @@ trait ViewData
     public function addBodyClass(string $bodyClass = null)
     {
         // cast to array
-        $bodyClass = (array)$bodyClass;
+        $bodyClass = (array) $bodyClass;
 
         return $this->addBodyClasses($bodyClass);
-
     }
 
     /**
@@ -58,13 +57,10 @@ trait ViewData
     public function removeBodyClass(string $bodyClass = null)
     {
         // cast to array
-        $bodyClass = (array)$bodyClass;
+        $bodyClass = (array) $bodyClass;
 
         return $this->removeBodyClasses($bodyClass);
-
     }
-
-
 
     /**
      * Add classes from the body (bulk).
@@ -76,10 +72,10 @@ trait ViewData
     public function addBodyClasses(array $bodyClasses = [])
     {
         // cast to array
-        $bodyClasses = (array)$bodyClasses;
+        $bodyClasses = (array) $bodyClasses;
 
         if ($bodyClasses) {
-            $this->data['bodyClasses'] =  array_merge(array_diff($bodyClasses, $this->data['bodyClasses']), $this->data['bodyClasses']);;
+            $this->data['bodyClasses'] = array_merge(array_diff($bodyClasses, $this->data['bodyClasses']), $this->data['bodyClasses']);
 
             return true;
         }
@@ -104,11 +100,9 @@ trait ViewData
             if (($key = array_search($bodyClass, $this->data['bodyClasses'])) !== false) {
                 unset($this->data['bodyClasses'][$key]);
             }
-
         }
 
         return true;
-
     }
 
     /**

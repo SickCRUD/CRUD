@@ -21,7 +21,7 @@ return [
     ],
 
     'body-classes' => [
-        'sidebar-mini'
+        'sidebar-mini',
     ],
 
     /*
@@ -50,7 +50,7 @@ return [
 
     ],
 
-    /**
+    /*
      * Sidebar settings
      */
     'show-sidebar-in-auth-pages' => false,
@@ -88,7 +88,7 @@ return [
         'SickCRUD' => [
             'css' => [
                 'css/SickCRUD.min.css',
-                'css/SickCRUD-skin.min.css'
+                'css/SickCRUD-skin.min.css',
             ],
             'js' => 'js/SickCRUD.mins.js',
         ],

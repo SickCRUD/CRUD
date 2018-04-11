@@ -6,7 +6,7 @@ namespace SickCRUD\CRUD;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
-class CrudRouter
+class CRUDRouter
 {
     /**
      * Route name parameter.
@@ -132,7 +132,7 @@ class CrudRouter
 
     /**
      * Call other methods in this class, that register extra routes.
-     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L84
+     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L84.
      *
      * @param mixed $injectables
      *
@@ -159,7 +159,7 @@ class CrudRouter
 
     /**
      * Register the routes that were passed using the "with" syntax.
-     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L112
+     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L112.
      *
      * @return void
      */
@@ -186,7 +186,7 @@ class CrudRouter
 
     /**
      * Call eventual CrudRouter methods.
-     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L123
+     * From: @see https://github.com/Laravel-Backpack/CRUD/blob/master/src/CrudRouter.php#L123.
      *
      * @return void
      */

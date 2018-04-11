@@ -32,13 +32,11 @@ class CRUDHelpers
         // check if it is an auth-page
         $isAuthPage = preg_match('/SickCRUD\.auth\.(?:login|logout|register|password.*)/', \Route::currentRouteName());
 
-        if($isAuthPage){
+        if ($isAuthPage) {
             // strict check
             return SickCRUD_config('layout', 'show-sidebar-in-auth-pages', false) === true;
         }
 
         return true;
-
     }
-
 }

@@ -17,7 +17,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-                    <input type="text" name="email" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
+                    <input type="text" name="email" value="{{ Request::old('email') }}" class="form-control" placeholder="{{ Lang::get('SickCRUD::fields.email') }}">
                     <span class="fas fa-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
                         <span class="help-block">{{ $errors->first('email') }}</span>
@@ -45,7 +45,7 @@
                     <div class="col-xs-8">
                         <div class="checkbox">
                             <label class="checkbox-control">
-                                <input type="checkbox" name="remember"> {{ Lang::get('SickCRUD::fields.remember_me') }}
+                                <input type="checkbox"name="remember" {{ Request::old('remember') ? 'checked' : null }}> {{ Lang::get('SickCRUD::fields.remember_me') }}
                                 <div class="checkbox-indicator"></div>
                             </label>
                         </div>

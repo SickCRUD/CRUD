@@ -62,7 +62,7 @@ class LoginController extends BaseController
     {
         // declare validation rules
         $validationRules = [
-            $this->username() => 'required|string',
+            $this->username() => 'required|email|string',
             'password' => 'required|string',
         ];
 

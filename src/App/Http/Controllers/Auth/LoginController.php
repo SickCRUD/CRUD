@@ -46,7 +46,15 @@ class LoginController extends BaseController
         $this->setPageTitle(Lang::get('SickCRUD::auth.pages.login'));
 
         // set the page body classes
-        $this->addBodyClasses(['login-page', 'fixed']);
+        $bodyClasses = ['login-page'];
+
+        // check whether it's fixed or not
+        if(SickCRUD_config('layout', 'navbar.navbar-fixed', true) == true){
+            $bodyClasses[] = 'fixed';
+        }
+
+        // set body classes
+        $this->addBodyClasses($bodyClasses);
 
         return View::make('SickCRUD::pages.auth.login', $this->getViewData());
     }

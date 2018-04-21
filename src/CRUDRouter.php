@@ -39,7 +39,7 @@ class CRUDRouter
         $lastRouteOfStack = $this->getLastRouteOfStack();
 
         // build the element namespace
-        $controllerFqn = $this->buildFqn($lastRouteOfStack['namespace'], $this->controller);
+        $controllerFqn = $this->buildFqn($lastRouteOfStack['namespace'] ?? false, $this->controller);
 
         // get the actions of the controller
         $controllerActions = $this->getControllerActions($controllerFqn);
@@ -127,7 +127,7 @@ class CRUDRouter
      */
     protected function buildFqn(string $namespace, string $class)
     {
-        return '\\'.ltrim(($namespace.'\\'.$class), '\\');
+        return $namespace ? '\\'.ltrim(($namespace.'\\'.$class), '\\') : '\\'.ltrim(('\\'.$class), '\\');
     }
 
     /**

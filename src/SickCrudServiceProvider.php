@@ -93,9 +93,9 @@ class SickCrudServiceProvider extends ServiceProvider
      *
      * @return \SickCRUD\CRUD\CRUDRouter;
      */
-    public static function resource($name, $controller, array $options = [])
+    public static function resource($name, $controller)
     {
-        return new CRUDRouter($name, $controller, $options);
+        return new CRUDRouter($name, $controller);
     }
 
     /**

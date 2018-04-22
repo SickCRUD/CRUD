@@ -35,7 +35,7 @@ trait ActionAccess
      *
      * @return array
      */
-    public function denyAction($actionName)
+    public function denyActionAccess($actionName)
     {
         return $this->actionAccess = array_diff($this->actionAccess, (array) $actionName);
     }

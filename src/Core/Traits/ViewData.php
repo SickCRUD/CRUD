@@ -133,8 +133,7 @@ trait ViewData
      */
     public function getViewData($key = null)
     {
-        // TODO: fix here
-        if ($key && array_key_exists($this->data[$key])) {
+        if ($key && array_key_exists($key, $this->data)) {
             return $this->data[$key];
         }
 
@@ -150,13 +149,32 @@ trait ViewData
      */
     public function deleteViewData($key = null)
     {
-        // TODO: fix here
-        if ($key && array_key_exists($this->data[$key])) {
+        if ($key && array_key_exists($key, $this->data)) {
             unset($this->data[$key]);
 
-            return ! array_key_exists($this->data[$key]);
+            return ! array_key_exists($key, $this->data);
         }
 
         return false;
+    }
+
+    /**
+     * Set the view data with a passed array.
+     *
+     * @param array $data
+     *
+     * @return bool
+     */
+    public function updateViewData(array $data)
+    {
+        foreach ($data as $key => $datum) {
+
+            if($datum && array_key_exists($key, $this->data) && $this->data[$key] !== $datum) {
+                $this->data[$key] = $datum;
+            }
+
+        }
+
+        return true;
     }
 }

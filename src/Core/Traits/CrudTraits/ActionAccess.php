@@ -7,14 +7,24 @@ use SickCRUD\CRUD\Core\Exceptions\AccessDeniedException;
 trait ActionAccess
 {
     /**
+     * It contains the allowed actions to execute.
+     *
+     * @var array
+     */
+    public $actionAccess = [];
+
+    /**
      *  Allows one or more actions to execute.
      *
-     * @param array $actionNames
+     * @param array|string $actionNames
      *
      * @return array
      */
-    public function allowActionAccess(array $actionNames)
+    public function allowActionAccess($actionNames)
     {
+        // string to array conversion
+        $actionNames = (array)$actionNames;
+
         return $this->actionAccess = array_merge(array_diff((array) $actionNames, $this->actionAccess), $this->actionAccess);
     }
 
@@ -31,13 +41,16 @@ trait ActionAccess
     /**
      *  Denies a specific action to execute.
      *
-     * @param $actionName
+     * @param string|array $actionNames
      *
      * @return array
      */
-    public function denyActionAccess($actionName)
+    public function denyActionAccess($actionNames)
     {
-        return $this->actionAccess = array_diff($this->actionAccess, (array) $actionName);
+        // string to array conversion
+        $actionNames = (array)$actionNames;
+
+        return $this->actionAccess = array_diff($this->actionAccess, (array) $actionNames);
     }
 
     /**

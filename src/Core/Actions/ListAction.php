@@ -2,7 +2,9 @@
 
 namespace SickCRUD\CRUD\Core\Actions;
 
+use Illuminate\Http\Request;
 use SickCRUD\CRUD\Core\Traits\ViewData;
+use Illuminate\Support\Facades\View;
 
 class ListAction extends Action
 {
@@ -13,17 +15,7 @@ class ListAction extends Action
      *
      * @var string
      */
-    protected $actionName = null;
-
-    /**
-     * The HTTP requests supported (piped|piped).
-     *
-     * @var string|array
-     */
-    protected $actionRequests = [
-        'post',
-        'get',
-    ];
+    protected $name = 'list';
 
     /**
      * This function will handle the bulk action.
@@ -34,9 +26,9 @@ class ListAction extends Action
     {
     }
 
-    public function getList()
+    public function actionGetList(Request $request, $controller)
     {
-        return View::make('SickCRUD::layout.layout');
+        return View::make('SickCRUD::layout.layout', $controller->getViewData());
     }
 
     public function postList()

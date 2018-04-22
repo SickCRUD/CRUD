@@ -2,6 +2,7 @@
 
 namespace SickCRUD\CRUD\App\Http\Controllers;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\App;
 use SickCRUD\CRUD\Facades\CRUDPanel;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -39,10 +40,15 @@ class CrudController extends BaseController
         if (! $this->crud) {
             $this->crud = CRUDPanel::getFacadeRoot();
             $this->middleware(function ($request, $next) {
+
                 // set the request where it should be
                 $this->setRequest($request);
+
                 // run the setup function
                 $this->crudStartup();
+
+                // sync the data that will be sent to the view
+                $this->syncViewData();
 
                 return $next($request);
             });
@@ -89,7 +95,7 @@ class CrudController extends BaseController
         }
 
         // build the parameters, passing an instance of the controller
-        $parameters = array_merge([$this], $arguments);
+        $parameters = array_merge([Request::instance(), $this], $arguments);
 
         // call the function and pass as parameters an array of arguments, first the controller instance itself
         return call_user_func_array([$actionInstance, $actionMethod], $parameters);
@@ -139,7 +145,7 @@ class CrudController extends BaseController
 
     /**
      * Set the request where it should be.
-     *
+     * TODO: maybe change this.
      * @param $request
      *
      * @return void
@@ -151,4 +157,15 @@ class CrudController extends BaseController
             $this->crud->request = $request;
         }
     }
+
+    /**
+     * Function to sync Controller and CRUDPanel view data.
+     *
+     * @return bool
+     */
+    public function syncViewData()
+    {
+        return $this->updateViewData($this->crud->getViewData());
+    }
+
 }

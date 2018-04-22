@@ -3,24 +3,18 @@ namespace SickCRUD\CRUD\Core;
 
 use SickCRUD\CRUD\Core\Traits\CrudTraits\ActionAccess;
 use SickCRUD\CRUD\Core\Traits\CrudTraits\Read;
+use SickCRUD\CRUD\Core\Traits\CrudTraits\ViewData;
 
 class CRUDPanel
 {
-    use ActionAccess, Read;
-
-    /**
-     * It contains the allowed actions to execute.
-     *
-     * @var array
-     */
-    public $actionAccess = [];
+    use ActionAccess, Read, ViewData;
 
     /**
      * It contains the current requested entry.
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    public $entry;
+    public $entry = null;
 
     /**
      * Define the current CRUD model.
@@ -28,13 +22,6 @@ class CRUDPanel
      * @var mixed
      */
     public $model = '\App\UnexistingModel';
-
-    /**
-     * It contains the current query to be executed.
-     *
-     * @var mixed
-     */
-    public $query = false;
 
     /**
      * It stores the current request.
